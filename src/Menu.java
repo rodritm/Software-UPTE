@@ -42,7 +42,7 @@ public class Menu {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 500);
 		frame.setLocationRelativeTo(null);
-		frame.setUndecorated(true);
+		frame.setUndecorated(true);	
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.getContentPane().setLayout(null);
@@ -54,6 +54,12 @@ public class Menu {
 		frame.getContentPane().add(label);
 		
 		JButton Btinsc = new JButton("Inscripciones");
+		Btinsc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Ficha nueva = new Ficha();
+				nueva.main(null);
+			}
+		});
 		Btinsc.setBounds(547, 108, 134, 42);
 		frame.getContentPane().add(Btinsc);
 		
