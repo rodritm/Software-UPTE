@@ -65,7 +65,7 @@ public class Home {
 		lblUsuario.setHorizontalAlignment(JTextField.CENTER);
 		frame.getContentPane().add(lblUsuario);
 		
-		JLabel lblContrasea = new JLabel("Password123");
+		JLabel lblContrasea = new JLabel("Password");
 		lblContrasea.setBounds(147, 247, 110, 14);
 		lblContrasea.setHorizontalAlignment(JTextField.CENTER);
 		frame.getContentPane().add(lblContrasea);
