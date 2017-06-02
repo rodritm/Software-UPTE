@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
@@ -121,9 +122,11 @@ public class Home {
 		});
 		btnSalir.setBounds(165, 420, 110, 23);
 		frame.getContentPane().add(btnSalir);
-		
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("images\\logopeque.jpg"));
+		
+		ImageIcon icon = new ImageIcon("images/logopeque.jpg");
+		//lblNewLabel.setIcon(new ImageIcon("images\\logopeque.jpg"));
+		lblNewLabel.setIcon(icon);
 		lblNewLabel.setBounds(130, 10, 180, 220);
 		frame.getContentPane().add(lblNewLabel);
 	}
