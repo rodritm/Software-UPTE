@@ -104,5 +104,9 @@ public class Ficha {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(1155, 53, 199, 24);
 		frame.getContentPane().add(comboBox);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(890, 470, 117, 25);
+		frame.getContentPane().add(btnNewButton);
 	}
 }
