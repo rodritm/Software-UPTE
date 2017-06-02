@@ -48,7 +48,8 @@ public class Menu {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("images\\logo_ucb_med.gif"));
+		ImageIcon icon = new ImageIcon("images/logo_ucb_med.gif");
+		label.setIcon(icon);
 		label.setBounds(51, 40, 299, 417);
 		frame.getContentPane().add(label);
 		
@@ -57,7 +58,13 @@ public class Menu {
 		frame.getContentPane().add(Btinsc);
 		
 		JButton Btreport = new JButton("Reportes");
-		Btreport.setBounds(547, 176, 134, 42);
+		Btreport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Reportes nueva = new Reportes();
+				nueva.main(null);
+			}
+		});
+		Btreport.setBounds(547, 176, 134, 42);		
 		frame.getContentPane().add(Btreport);
 		
 		JButton Btrecibos = new JButton("Recibos");
@@ -67,8 +74,7 @@ public class Menu {
 		JButton btsalir = new JButton("Salir");
 		btsalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				//System.exit(0);
+				System.exit(0);
 			}
 		});
 		btsalir.setBounds(547, 415, 134, 42);
