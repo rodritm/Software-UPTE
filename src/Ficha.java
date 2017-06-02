@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JComboBox;
 
 public class Ficha {
 
@@ -11,6 +13,7 @@ public class Ficha {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
@@ -80,6 +83,26 @@ public class Ficha {
 		textField_2.setBounds(141, 56, 519, 19);
 		frame.getContentPane().add(textField_2);
 		textField_2.setColumns(10);
+		
+		JLabel lblCedulaDeIdentidad = new JLabel("Cedula de identidad:");
+		lblCedulaDeIdentidad.setBounds(678, 58, 159, 15);
+		frame.getContentPane().add(lblCedulaDeIdentidad);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(830, 56, 277, 19);
+		frame.getContentPane().add(textField_3);
+		textField_3.setColumns(10);
+		
+		JLabel lblExp = new JLabel("exp:");
+		lblExp.setBounds(1115, 58, 70, 15);
+		frame.getContentPane().add(lblExp);
+		
+		JList list = new JList();
+		list.setBounds(1155, 61, 1, 1);
+		frame.getContentPane().add(list);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(1155, 53, 199, 24);
+		frame.getContentPane().add(comboBox);
 	}
-
 }
