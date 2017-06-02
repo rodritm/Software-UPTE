@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -47,6 +48,7 @@ public class Home {
 		frame.setTitle("Inicio de sesion");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setUndecorated(true);
 		
 		tfusuario = new JTextField();
@@ -59,14 +61,16 @@ public class Home {
 		frame.getContentPane().add(tfpass);
 		
 		JLabel lblUsuario = new JLabel("Usuario");
-		lblUsuario.setBounds(171, 190, 51, 14);
+		lblUsuario.setBounds(147, 190, 110, 14);
+		lblUsuario.setHorizontalAlignment(JTextField.CENTER);
 		frame.getContentPane().add(lblUsuario);
 		
 		JLabel lblContrasea = new JLabel("Contraseña");
-		lblContrasea.setBounds(157, 247, 65, 14);
+		lblContrasea.setBounds(147, 247, 110, 14);
+		lblContrasea.setHorizontalAlignment(JTextField.CENTER);
 		frame.getContentPane().add(lblContrasea);
 		
-		JButton btnComprobar = new JButton("Comprobar");
+		JButton btnComprobar = new JButton("Ingresar");
 		btnComprobar.setBounds(147, 324, 110, 23);
 		frame.getContentPane().add(btnComprobar);
 		
