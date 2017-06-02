@@ -123,7 +123,7 @@ public class Home {
 		frame.getContentPane().add(btnSalir);
 		
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\guto_\\Desktop\\logopeque.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("images\\logopeque.jpg"));
 		lblNewLabel.setBounds(130, 10, 180, 220);
 		frame.getContentPane().add(lblNewLabel);
 	}

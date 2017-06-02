@@ -40,7 +40,7 @@ public class Menu {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 900, 500);
+		frame.setBounds(100, 100, 800, 500);
 		frame.setLocationRelativeTo(null);
 		frame.setUndecorated(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,7 +48,7 @@ public class Menu {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("C:\\Users\\guto_\\Desktop\\logo_ucb_med.gif"));
+		label.setIcon(new ImageIcon("images\\logo_ucb_med.gif"));
 		label.setBounds(51, 40, 299, 417);
 		frame.getContentPane().add(label);
 		
