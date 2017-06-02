@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -9,9 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.net.URL;
 import java.awt.event.ActionEvent;
-import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 
 public class Home {
@@ -20,7 +17,6 @@ public class Home {
 	private JTextField tfusuario;
 	private JPasswordField tfpass;
 	private JButton btnSalir;
-	private Image logo;
 	private JLabel lblNewLabel;
 	private int restantes = 3;
 
@@ -125,7 +121,6 @@ public class Home {
 		lblNewLabel = new JLabel("");
 		
 		ImageIcon icon = new ImageIcon("images/logopeque.jpg");
-		//lblNewLabel.setIcon(new ImageIcon("images\\logopeque.jpg"));
 		lblNewLabel.setIcon(icon);
 		lblNewLabel.setBounds(130, 10, 180, 220);
 		frame.getContentPane().add(lblNewLabel);
