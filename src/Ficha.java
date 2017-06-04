@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -5,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JDayChooser;
@@ -32,6 +34,14 @@ public class Ficha {
 	private JTextField textField_15;
 	private JTextField textField_16;
 	private JTextField textField_17;
+	private JTextField textField_18;
+	private JTextField textField_19;
+	private JTextField textField_20;
+	private JTextField textField_21;
+	private JTextField textField_22;
+	private JTextField textField_23;
+	private JTextField textField_24;
+	private JTextField textField_25;
 
 	/**
 	 * Launch the application.
@@ -61,13 +71,14 @@ public class Ficha {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		//frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setUndecorated(true);
-		frame.setBounds(0, 0, 10000, 800);
+		frame.setBounds(300, 0, 670, 730);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblEstudiantes = new JLabel("Estudiantes");
+		JLabel lblEstudiantes = new JLabel("Estudiante");
 		lblEstudiantes.setBounds(12, 12, 94, 15);
 		frame.getContentPane().add(lblEstudiantes);
 		
@@ -84,8 +95,22 @@ public class Ficha {
 		lblApellidoPaterno.setBounds(12, 85, 139, 15);
 		frame.getContentPane().add(lblApellidoPaterno);
 		
-		JButton btnAtras = new JButton("Atras");
-		btnAtras.setBounds(1006, 672, 117, 25);
+		JButton btnAtras = new JButton("Cancelar");
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int option = JOptionPane.showOptionDialog(null, "Esta segura/o?", "Confirmación",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, 
+				null, new Object[]{"SI","NO"},"SI");
+				
+				if(option == 0){
+					Menu nuevo = new Menu();
+					nuevo.main(null);
+					frame.dispose();
+				}
+				
+			}
+		});
+		btnAtras.setBounds(406, 696, 117, 25);
 		frame.getContentPane().add(btnAtras);
 		
 		textField_1 = new JTextField();
@@ -275,5 +300,93 @@ public class Ficha {
 		textField_17.setColumns(10);
 		textField_17.setBounds(535, 396, 125, 19);
 		frame.getContentPane().add(textField_17);
+		
+		JLabel label_2 = new JLabel("Estudiante");
+		label_2.setBounds(12, 440, 94, 15);
+		frame.getContentPane().add(label_2);
+		
+		JLabel lblNivelDeInstruccin = new JLabel("Nivel de instrucción:");
+		lblNivelDeInstruccin.setBounds(12, 460, 152, 15);
+		frame.getContentPane().add(lblNivelDeInstruccin);
+		
+		JComboBox comboBox_3 = new JComboBox();
+		comboBox_3.setBounds(164, 455, 147, 24);
+		frame.getContentPane().add(comboBox_3);
+		
+		JLabel lblProfesin = new JLabel("Profesión:");
+		lblProfesin.setBounds(330, 460, 73, 15);
+		frame.getContentPane().add(lblProfesin);
+		
+		textField_18 = new JTextField();
+		textField_18.setBounds(409, 458, 251, 19);
+		frame.getContentPane().add(textField_18);
+		textField_18.setColumns(10);
+		
+		JLabel lblOcupacinActual = new JLabel("Ocupación actual:");
+		lblOcupacinActual.setBounds(12, 487, 152, 15);
+		frame.getContentPane().add(lblOcupacinActual);
+		
+		textField_19 = new JTextField();
+		textField_19.setBounds(152, 485, 508, 19);
+		frame.getContentPane().add(textField_19);
+		textField_19.setColumns(10);
+		
+		JLabel lblActividadEnFin = new JLabel("Actividad en fin de semana:");
+		lblActividadEnFin.setBounds(12, 514, 202, 15);
+		frame.getContentPane().add(lblActividadEnFin);
+		
+		textField_20 = new JTextField();
+		textField_20.setBounds(214, 512, 446, 19);
+		frame.getContentPane().add(textField_20);
+		textField_20.setColumns(10);
+		
+		JLabel lblPersonasConLas = new JLabel("Personas con las que vive:");
+		lblPersonasConLas.setBounds(12, 541, 202, 15);
+		frame.getContentPane().add(lblPersonasConLas);
+		
+		textField_21 = new JTextField();
+		textField_21.setColumns(10);
+		textField_21.setBounds(214, 537, 446, 19);
+		frame.getContentPane().add(textField_21);
+		
+		JLabel lblTipoDeIngreso = new JLabel("Tipo de ingreso economico:");
+		lblTipoDeIngreso.setBounds(12, 568, 202, 15);
+		frame.getContentPane().add(lblTipoDeIngreso);
+		
+		textField_22 = new JTextField();
+		textField_22.setColumns(10);
+		textField_22.setBounds(214, 566, 446, 19);
+		frame.getContentPane().add(textField_22);
+		
+		JLabel lblMedioPorEl = new JLabel("Medio por el cual se entero de la UPTE:");
+		lblMedioPorEl.setBounds(12, 595, 281, 15);
+		frame.getContentPane().add(lblMedioPorEl);
+		
+		textField_23 = new JTextField();
+		textField_23.setBounds(295, 593, 365, 19);
+		frame.getContentPane().add(textField_23);
+		textField_23.setColumns(10);
+		
+		JLabel lblMotivoDelCurso = new JLabel("Motivo del curso:");
+		lblMotivoDelCurso.setBounds(12, 622, 139, 15);
+		frame.getContentPane().add(lblMotivoDelCurso);
+		
+		textField_24 = new JTextField();
+		textField_24.setColumns(10);
+		textField_24.setBounds(152, 620, 508, 19);
+		frame.getContentPane().add(textField_24);
+		
+		JLabel lblProblemasDeSalud = new JLabel("Problemas de salud:");
+		lblProblemasDeSalud.setBounds(12, 649, 159, 15);
+		frame.getContentPane().add(lblProblemasDeSalud);
+		
+		textField_25 = new JTextField();
+		textField_25.setBounds(164, 647, 496, 19);
+		frame.getContentPane().add(textField_25);
+		textField_25.setColumns(10);
+		
+		JButton btnOk = new JButton("OK");
+		btnOk.setBounds(535, 696, 117, 25);
+		frame.getContentPane().add(btnOk);
 	}
 }
