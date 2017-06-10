@@ -44,7 +44,7 @@ public class Menu {
 		frame.setLocationRelativeTo(null);
 		frame.setUndecorated(true);	
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setBackground(Color.cyan);
+		frame.getContentPane().setBackground(Color.WHITE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel label = new JLabel("");
