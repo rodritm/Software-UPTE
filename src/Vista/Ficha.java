@@ -1,3 +1,5 @@
+package Vista;
+
 import java.awt.Color;
 import java.awt.EventQueue;
 
@@ -10,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JDayChooser;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
