@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 public class Reportes {
 
 	private JFrame frame;
-	private String [] botonescont = {"Recibos", "Recibos Anulados", "NITS"};
-	private String [] botonesesta = {"Generales", "Genero", "Cursos", "Rangos de Edad"};
+	private String [] botonescont = {"Recibos", "Recibos Anulados", "NITS", "Cancelar"};
+	private String [] botonesesta = {"Generales", "Genero", "Cursos", "Rangos de Edad", "Cancelar"};
 
 	/**
 	 * Launch the application.
@@ -72,6 +72,27 @@ public class Reportes {
 			public void actionPerformed(ActionEvent e) {
 				int variable = JOptionPane.showOptionDialog (null, " Seleccione el reporte contable", "Reportes Contables",
 						JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botonescont, botonescont[0]);
+				switch (variable) {
+				case 0:
+					Recibos nuevo1 = new Recibos();
+					nuevo1.main(null);
+					frame.dispose();
+					break;
+
+				case 1:
+					Anulados nuevo2 = new Anulados();
+					nuevo2.main(null);
+					frame.dispose();
+					break;
+				case 2:
+					Nits nuevo3 = new Nits();
+					nuevo3.main(null);
+					frame.dispose();
+					break;
+				case 3:
+					variable = 0 ;
+					break;
+			}
 			}
 		});
 		btnContables.setBounds(296, 40, 133, 37);

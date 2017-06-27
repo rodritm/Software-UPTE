@@ -83,7 +83,8 @@ public class Home {
 				char clave[]=tfpass.getPassword();
 				String clavedef=new String(clave);
 				
-				if(tfusuario.getText().equals("Augusto") && clavedef.equals("123")){
+				if(tfusuario.getText().equals("Augusto") && clavedef.equals("123") ||
+						tfusuario.getText().equals("prime") && clavedef.equals("123")){
 					JOptionPane.showMessageDialog(null, "Bienvenido\n"
 		                    + "Has ingresado satisfactoriamente al sistema.\nBienvenido: "+tfusuario.getText());
 					Menu nuevo = new Menu();

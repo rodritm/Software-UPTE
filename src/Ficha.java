@@ -211,8 +211,6 @@ public class Ficha {
 		frame.getContentPane().add(textField_7);
 		textField_7.setColumns(10);
 		
-		System.out.println("HOLA");
-		
 		JLabel lblZona = new JLabel("Zona:");
 		lblZona.setBounds(12, 225, 47, 15);
 		frame.getContentPane().add(lblZona);

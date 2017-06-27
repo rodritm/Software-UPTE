@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -50,13 +49,14 @@ public class Menu {
 		JLabel label = new JLabel("");
 		ImageIcon icon = new ImageIcon("images/logo_ucb_med.gif");
 		label.setIcon(icon);
-		label.setBounds(51, 40, 299, 417);
+		label.setBounds(51, 40, 299, 417);frame.dispose();
 		frame.getContentPane().add(label);
 		
 		JButton Btinsc = new JButton("Inscripciones");
 		Btinsc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Ficha nueva = new Ficha();
+				frame.dispose();
 				nueva.main(null);
 			}
 		});
@@ -67,6 +67,7 @@ public class Menu {
 		Btreport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Reportes nueva = new Reportes();
+				frame.dispose();
 				nueva.main(null);
 			}
 		});
