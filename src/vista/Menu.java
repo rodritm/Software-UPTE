@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.net.URL;
 import java.awt.event.ActionEvent;
 
 public class Menu {
@@ -49,13 +48,12 @@ public class Menu {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel label = new JLabel("");
-		URL url = Home.class.getResource("/logo_ucb_med.gif");
-		ImageIcon icon = new ImageIcon(url);
+		ImageIcon icon = new ImageIcon("images/logo_ucb_med.gif");
 		label.setIcon(icon);
-		label.setBounds(51, 40, 299, 417);frame.dispose();
+		label.setBounds(265, 121, 255, 293);frame.dispose();
 		frame.getContentPane().add(label);
 		
-		JButton Btinsc = new JButton("Inscripciones");
+		JButton Btinsc = new JButton("Registrar");
 		Btinsc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Ficha nueva = new Ficha();
@@ -63,10 +61,10 @@ public class Menu {
 				nueva.main(null);
 			}
 		});
-		Btinsc.setBounds(547, 108, 134, 42);
+		Btinsc.setBounds(601, 146, 134, 48);
 		frame.getContentPane().add(Btinsc);
 		
-		JButton Btreport = new JButton("Reportes");
+		JButton Btreport = new JButton("Reportes ");
 		Btreport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Reportes nueva = new Reportes();
@@ -74,12 +72,9 @@ public class Menu {
 				nueva.main(null);
 			}
 		});
-		Btreport.setBounds(547, 176, 134, 42);		
+		Btreport.setBounds(69, 146, 134, 42);		
 		frame.getContentPane().add(Btreport);
 		
-		JButton Btrecibos = new JButton("Recibos");
-		Btrecibos.setBounds(547, 241, 134, 42);
-		frame.getContentPane().add(Btrecibos);
 		
 		JButton btsalir = new JButton("Salir");
 		btsalir.addActionListener(new ActionListener() {
@@ -87,8 +82,31 @@ public class Menu {
 				System.exit(0);
 			}
 		});
-		btsalir.setBounds(547, 415, 134, 42);
+		btsalir.setBounds(638, 429, 134, 42);
 		frame.getContentPane().add(btsalir);
+		
+		JButton btnAdministrar = new JButton("Administrar");
+		btnAdministrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Administrar nuevo = new Administrar();
+				frame.dispose();
+				nuevo.main(null);
+			}
+		});
+		btnAdministrar.setBounds(332, 37, 134, 42);
+		frame.getContentPane().add(btnAdministrar);
+		
+		JButton btnInscribir = new JButton("Inscribir");
+		btnInscribir.setBounds(601, 230, 134, 48);
+		frame.getContentPane().add(btnInscribir);
+		
+		JButton btnNewButton = new JButton("Anular");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton.setBounds(69, 230, 134, 48);
+		frame.getContentPane().add(btnNewButton);
 	}
 
 }
