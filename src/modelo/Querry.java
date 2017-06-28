@@ -23,6 +23,21 @@ public class Querry {
 	}
 	
 	
+	//						AUTOCOMPLETAR
+	
+	
+	public ResultSet auto() throws SQLException{
+		DB_Connect con = new DB_Connect();
+		Connection conn=con.conexion();
+		Statement st;
+		ResultSet rs = null;
+		st = (Statement)conn.createStatement();
+		String querry = "select idempleados from empleados";
+		rs = st.executeQuery(querry);
+		return rs;
+	}
+	
+	
 	//					ESTADISTICOS
 	
 	
