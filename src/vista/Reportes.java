@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -63,7 +64,8 @@ public class Reportes {
 		frame.getContentPane().add(btnAtras);
 		
 		JLabel label = new JLabel("");
-		ImageIcon icon = new ImageIcon("images/logopeque.jpg");
+		URL url = Reportes.class.getResource("/logopeque.jpg");
+		ImageIcon icon = new ImageIcon(url);
 		label.setIcon(icon);
 		label.setBounds(10, 11, 219, 278);
 		frame.getContentPane().add(label);
