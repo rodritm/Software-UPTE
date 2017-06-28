@@ -1,4 +1,5 @@
 package vista;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -57,6 +58,9 @@ public class Recibos {
 		frame.setBounds(100, 100, 421, 279);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
+		frame.setUndecorated(true);
+		frame.getContentPane().setBackground(Color.WHITE);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(176, 32, 224, 24);
@@ -71,7 +75,7 @@ public class Recibos {
 		frame.getContentPane().add(comboBox_2);
 		
 		textField = new JTextField();
-		textField.setBounds(12, 168, 265, 19);
+		textField.setBounds(22, 168, 255, 19);
 		frame.getContentPane().add(textField);
 		textField.setEditable(false);
 		textField.setColumns(10);
@@ -92,8 +96,19 @@ public class Recibos {
 		lblCurso.setBounds(80, 75, 55, 15);
 		frame.getContentPane().add(lblCurso);
 		
-		JLabel lblParalelo = new JLabel("PARALELO:");
+		JLabel lblParalelo = new JLabel("PARALELO: ");
 		lblParalelo.setBounds(80, 121, 78, 15);
 		frame.getContentPane().add(lblParalelo);
+		
+		JButton btnAtras = new JButton("ATRAS");
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Reportes nuevo1 = new Reportes();
+				nuevo1.main(null);
+				frame.dispose();
+			}
+		});
+		btnAtras.setBounds(22, 199, 98, 25);
+		frame.getContentPane().add(btnAtras);
 	}
 }
