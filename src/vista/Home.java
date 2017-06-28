@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+import controlador.Empleados;
 import controlador.Login;
 
 import javax.swing.JPasswordField;
@@ -77,8 +78,9 @@ public class Home {
             	char clave[]=tfpass.getPassword();
 				String clavedef=new String(clave);
 				String user = tfusuario.getText().toString();
+				Empleados emp = new Empleados(user, clavedef);
 				Login log = new Login();
-				if (log.login(clavedef,user, restantes)){
+				if (log.login(emp, restantes)){
 					Menu nuevo = new Menu();
 					nuevo.main(null);
 					frame.dispose();
@@ -106,8 +108,9 @@ public class Home {
             	char clave[]=tfpass.getPassword();
 				String clavedef=new String(clave);
 				String user = tfusuario.getText().toString();
+				Empleados emp = new Empleados(user,clavedef);
 				Login log = new Login();
-				if (log.login(clavedef,user, restantes)){
+				if (log.login(emp, restantes)){
 					Menu nuevo = new Menu();
 					nuevo.main(null);
 					frame.dispose();

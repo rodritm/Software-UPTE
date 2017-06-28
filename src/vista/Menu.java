@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.awt.event.ActionEvent;
 
 public class Menu {
@@ -48,9 +49,11 @@ public class Menu {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel label = new JLabel("");
-		ImageIcon icon = new ImageIcon("images/logo_ucb_med.gif");
+		URL url = Menu.class.getResource("/logo_ucb_med.gif"); 
+		ImageIcon icon = new ImageIcon(url);
 		label.setIcon(icon);
-		label.setBounds(265, 121, 255, 293);frame.dispose();
+		label.setBounds(265, 121, 255, 293);
+		frame.dispose();
 		frame.getContentPane().add(label);
 		
 		JButton Btinsc = new JButton("Registrar");
