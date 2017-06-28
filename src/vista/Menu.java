@@ -52,7 +52,8 @@ public class Menu {
 		URL url = Menu.class.getResource("/logo_ucb_med.gif");
 		ImageIcon icon = new ImageIcon(url);
 		label.setIcon(icon);
-		label.setBounds(287, 117, 255, 293);frame.dispose();
+		label.setBounds(287, 117, 255, 293);
+		frame.dispose();
 		frame.getContentPane().add(label);
 		
 		JButton Btinsc = new JButton("Registrar");
