@@ -5,11 +5,15 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+
+import controlador.Login;
+
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
@@ -21,6 +25,7 @@ public class Home {
 	private JButton btnSalir;
 	private JLabel lblNewLabel;
 	private int restantes = 3;
+
 	/**
 	 * Launch the application.
 	 */
@@ -66,9 +71,26 @@ public class Home {
 		
 		tfpass = new JPasswordField();
 		tfpass.setBounds(165, 334, 110, 20);
-		frame.getContentPane().add(tfpass);
-		
-		JLabel lblUsuario = new JLabel("Usuario ");
+		frame.getContentPane().add(tfpass);		
+		tfpass.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+            	char clave[]=tfpass.getPassword();
+				String clavedef=new String(clave);
+				String user = tfusuario.getText().toString();
+				Login log = new Login();
+				if (log.login(clavedef,user, restantes)){
+					Menu nuevo = new Menu();
+					nuevo.main(null);
+					frame.dispose();
+				}else{
+					restantes--;
+					tfpass.setText("");
+					tfusuario.setText("");
+				}
+			}
+            });
+
+		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setBounds(165, 252, 110, 14);
 		lblUsuario.setHorizontalAlignment(JTextField.CENTER);
 		frame.getContentPane().add(lblUsuario);
@@ -77,38 +99,26 @@ public class Home {
 		lblContrasea.setBounds(165, 309, 110, 14);
 		lblContrasea.setHorizontalAlignment(JTextField.CENTER);
 		frame.getContentPane().add(lblContrasea);
-		
+				
 		JButton btnComprobar = new JButton("Ingresar");
 		btnComprobar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				char clave[]=tfpass.getPassword();
+			public void actionPerformed(ActionEvent e){
+            	char clave[]=tfpass.getPassword();
 				String clavedef=new String(clave);
-				
-				if(tfusuario.getText().equals("Augusto") && clavedef.equals("123") ||
-						tfusuario.getText().equals("prime") && clavedef.equals("123")){
-					JOptionPane.showMessageDialog(null, "Bienvenido\n"
-		                    + "Has ingresado satisfactoriamente al sistema.\nBienvenido: "+tfusuario.getText());
+				String user = tfusuario.getText().toString();
+				Login log = new Login();
+				if (log.login(clavedef,user, restantes)){
 					Menu nuevo = new Menu();
 					nuevo.main(null);
 					frame.dispose();
 				}else{
-					if(restantes>1){
-						restantes--;
-						JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
-			                    + "Por favor ingrese un usuario y/o contraseña correctos \nIntentos Disponibles: "+restantes, "Acceso denegado",
-			                    JOptionPane.ERROR_MESSAGE);
-						tfpass.setText("");
-						tfusuario.setText("");
-					}
-					else{
-						JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
-			                    + "Exceso de ingresos permitidos", "Acceso denegado",
-			                    JOptionPane.ERROR_MESSAGE);
-						System.exit(0);
-					}
+					restantes--;
+					tfpass.setText("");
+					tfusuario.setText("");
 				}
 			}
-		});
+            });
+
 		btnComprobar.setBounds(165, 386, 110, 23);
 		frame.getContentPane().add(btnComprobar);
 		
@@ -122,7 +132,8 @@ public class Home {
 		frame.getContentPane().add(btnSalir);
 		lblNewLabel = new JLabel("");
 		
-		ImageIcon icon = new ImageIcon("images/logopeque.jpg");
+		URL url = Home.class.getResource("/logopeque.jpg");
+		ImageIcon icon = new ImageIcon(url);
 		lblNewLabel.setIcon(icon);
 		lblNewLabel.setBounds(130, 10, 180, 220);
 		frame.getContentPane().add(lblNewLabel);
