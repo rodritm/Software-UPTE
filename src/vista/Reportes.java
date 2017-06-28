@@ -107,6 +107,9 @@ public class Reportes {
 		JButton btnAcademicos = new JButton("Academicos");
 		btnAcademicos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Academicos nuevo = new Academicos();
+				frame.dispose();
+				nuevo.main(null);
 			}
 		});
 		btnAcademicos.setBounds(296, 136, 133, 37);
