@@ -9,7 +9,7 @@ public class Login {
 		String user = emp.user;
 		String pass = emp.pass;
 		
-		String userbd = null, passbd = null,name=null;
+		String userbd = null, passbd = null,name = null;
 		ResultSet rs;
 		try{
 			Querry que = new Querry();
