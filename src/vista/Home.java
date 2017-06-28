@@ -93,6 +93,7 @@ public class Home {
 					restantes--;
 					tfpass.setText("");
 					tfusuario.setText("");
+					tfusuario.requestFocusInWindow();
 				}
 			}
             });

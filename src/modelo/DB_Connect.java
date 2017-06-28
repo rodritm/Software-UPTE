@@ -15,7 +15,7 @@ public class DB_Connect {
 	public Connection conexion(){
 		try{
 			Class.forName("java.sql.Driver");
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ronald","root","");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
 		}catch(Exception e){
 			System.out.println("");
 		}
