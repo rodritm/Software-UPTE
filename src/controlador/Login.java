@@ -5,12 +5,9 @@ import javax.swing.JOptionPane;
 import vista.Menu;
 
 public class Login {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-	public static boolean login(String pass, String user, int restantes){
+	public static boolean login(Empleados emp, int restantes){
+		String user = emp.user;
+		String pass = emp.pass;
 		if(user.equals("Augusto") && pass.equals("123") ||
 				user.equals("prime") && pass.equals("123")){
 			JOptionPane.showMessageDialog(null, "Bienvenido\n"
