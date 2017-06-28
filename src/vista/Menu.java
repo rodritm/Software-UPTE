@@ -82,7 +82,9 @@ public class Menu {
 		JButton btsalir = new JButton("Cerrar Sesion");
 		btsalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				Home nuevo = new Home();
+				nuevo.main(null);
+				frame.dispose();
 			}
 		});
 		btsalir.setBounds(638, 429, 134, 42);
