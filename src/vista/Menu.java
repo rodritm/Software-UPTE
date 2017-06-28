@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.awt.event.ActionEvent;
 
 public class Menu {
@@ -48,9 +49,10 @@ public class Menu {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel label = new JLabel("");
-		ImageIcon icon = new ImageIcon("images/logo_ucb_med.gif");
+		URL url = Menu.class.getResource("/logo_ucb_med.gif");
+		ImageIcon icon = new ImageIcon(url);
 		label.setIcon(icon);
-		label.setBounds(265, 121, 255, 293);frame.dispose();
+		label.setBounds(287, 117, 255, 293);frame.dispose();
 		frame.getContentPane().add(label);
 		
 		JButton Btinsc = new JButton("Registrar");
@@ -61,7 +63,7 @@ public class Menu {
 				nueva.main(null);
 			}
 		});
-		Btinsc.setBounds(601, 146, 134, 48);
+		Btinsc.setBounds(345, 86, 134, 48);
 		frame.getContentPane().add(Btinsc);
 		
 		JButton Btreport = new JButton("Reportes ");
@@ -72,11 +74,11 @@ public class Menu {
 				nueva.main(null);
 			}
 		});
-		Btreport.setBounds(69, 146, 134, 42);		
+		Btreport.setBounds(135, 146, 134, 48);		
 		frame.getContentPane().add(Btreport);
 		
 		
-		JButton btsalir = new JButton("Salir");
+		JButton btsalir = new JButton("Cerrar Sesion");
 		btsalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -93,11 +95,11 @@ public class Menu {
 				nuevo.main(null);
 			}
 		});
-		btnAdministrar.setBounds(332, 37, 134, 42);
+		btnAdministrar.setBounds(69, 233, 134, 45);
 		frame.getContentPane().add(btnAdministrar);
 		
 		JButton btnInscribir = new JButton("Inscribir");
-		btnInscribir.setBounds(601, 230, 134, 48);
+		btnInscribir.setBounds(560, 146, 134, 48);
 		frame.getContentPane().add(btnInscribir);
 		
 		JButton btnNewButton = new JButton("Anular");
@@ -105,7 +107,7 @@ public class Menu {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(69, 230, 134, 48);
+		btnNewButton.setBounds(613, 231, 134, 48);
 		frame.getContentPane().add(btnNewButton);
 	}
 
