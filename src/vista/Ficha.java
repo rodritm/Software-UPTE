@@ -43,7 +43,6 @@ public class Ficha {
 	private JTextField textField_21;
 	private JTextField textField_22;
 	private JTextField textField_23;
-	private JTextField textField_24;
 	private JTextField textField_25;
 
 	/**
@@ -76,10 +75,12 @@ public class Ficha {
 		frame = new JFrame();
 		//frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setUndecorated(true);
-		frame.setBounds(300, 0, 670, 730);
+		frame.setBounds(100, 100, 670, 680);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
+		frame.setUndecorated(true);
+		frame.getContentPane().setBackground(Color.WHITE);
 		
 		JLabel lblEstudiantes = new JLabel("Estudiante");
 		lblEstudiantes.setBounds(12, 12, 94, 15);
@@ -113,7 +114,7 @@ public class Ficha {
 				
 			}
 		});
-		btnAtras.setBounds(406, 696, 117, 25);
+		btnAtras.setBounds(406, 632, 117, 25);
 		frame.getContentPane().add(btnAtras);
 		
 		textField_1 = new JTextField();
@@ -251,145 +252,132 @@ public class Ficha {
 		textField_11.setColumns(10);
 		
 		JLabel lblPersonaDeContacto = new JLabel("Persona de contacto");
-		lblPersonaDeContacto.setBounds(12, 298, 152, 15);
+		lblPersonaDeContacto.setBounds(12, 489, 152, 15);
 		frame.getContentPane().add(lblPersonaDeContacto);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nombre:");
-		lblNewLabel_1.setBounds(12, 317, 70, 15);
+		lblNewLabel_1.setBounds(12, 510, 70, 15);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		textField_12 = new JTextField();
-		textField_12.setBounds(76, 315, 584, 19);
+		textField_12.setBounds(76, 508, 584, 19);
 		frame.getContentPane().add(textField_12);
 		textField_12.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Apellido Paterno:");
-		lblNewLabel_2.setBounds(12, 344, 139, 15);
+		lblNewLabel_2.setBounds(12, 537, 139, 15);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		textField_13 = new JTextField();
-		textField_13.setBounds(141, 342, 519, 19);
+		textField_13.setBounds(141, 535, 519, 19);
 		frame.getContentPane().add(textField_13);
 		textField_13.setColumns(10);
 		
 		JLabel lblApellidoMaterno = new JLabel("Apellido Materno:");
-		lblApellidoMaterno.setBounds(12, 371, 139, 15);
+		lblApellidoMaterno.setBounds(12, 564, 139, 15);
 		frame.getContentPane().add(lblApellidoMaterno);
 		
 		textField_14 = new JTextField();
-		textField_14.setBounds(141, 369, 519, 19);
+		textField_14.setBounds(141, 562, 519, 19);
 		frame.getContentPane().add(textField_14);
 		textField_14.setColumns(10);
 		
 		JLabel label = new JLabel("Correo:");
-		label.setBounds(12, 398, 70, 15);
+		label.setBounds(12, 591, 70, 15);
 		frame.getContentPane().add(label);
 		
 		textField_15 = new JTextField();
 		textField_15.setColumns(10);
-		textField_15.setBounds(70, 396, 241, 19);
+		textField_15.setBounds(76, 589, 241, 19);
 		frame.getContentPane().add(textField_15);
 		
 		JLabel label_1 = new JLabel("Cel/Tel:");
-		label_1.setBounds(335, 398, 58, 15);
+		label_1.setBounds(335, 591, 58, 15);
 		frame.getContentPane().add(label_1);
 		
 		textField_16 = new JTextField();
 		textField_16.setColumns(10);
-		textField_16.setBounds(398, 396, 125, 19);
+		textField_16.setBounds(385, 589, 125, 19);
 		frame.getContentPane().add(textField_16);
 		
 		textField_17 = new JTextField();
 		textField_17.setColumns(10);
-		textField_17.setBounds(535, 396, 125, 19);
+		textField_17.setBounds(535, 589, 125, 19);
 		frame.getContentPane().add(textField_17);
 		
-		JLabel label_2 = new JLabel("Estudiante");
-		label_2.setBounds(12, 440, 94, 15);
-		frame.getContentPane().add(label_2);
-		
 		JLabel lblNivelDeInstruccin = new JLabel("Nivel de instrucción:");
-		lblNivelDeInstruccin.setBounds(12, 460, 152, 15);
+		lblNivelDeInstruccin.setBounds(12, 281, 152, 15);
 		frame.getContentPane().add(lblNivelDeInstruccin);
 		
 		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(164, 455, 147, 24);
+		comboBox_3.setBounds(164, 276, 147, 24);
 		frame.getContentPane().add(comboBox_3);
 		
 		JLabel lblProfesin = new JLabel("Profesión:");
-		lblProfesin.setBounds(330, 460, 73, 15);
+		lblProfesin.setBounds(330, 281, 73, 15);
 		frame.getContentPane().add(lblProfesin);
 		
 		textField_18 = new JTextField();
-		textField_18.setBounds(409, 458, 251, 19);
+		textField_18.setBounds(396, 279, 264, 19);
 		frame.getContentPane().add(textField_18);
 		textField_18.setColumns(10);
 		
 		JLabel lblOcupacinActual = new JLabel("Ocupación actual:");
-		lblOcupacinActual.setBounds(12, 487, 152, 15);
+		lblOcupacinActual.setBounds(12, 308, 152, 15);
 		frame.getContentPane().add(lblOcupacinActual);
 		
 		textField_19 = new JTextField();
-		textField_19.setBounds(152, 485, 508, 19);
+		textField_19.setBounds(152, 306, 508, 19);
 		frame.getContentPane().add(textField_19);
 		textField_19.setColumns(10);
 		
 		JLabel lblActividadEnFin = new JLabel("Actividad en fin de semana:");
-		lblActividadEnFin.setBounds(12, 514, 202, 15);
+		lblActividadEnFin.setBounds(12, 335, 202, 15);
 		frame.getContentPane().add(lblActividadEnFin);
 		
 		textField_20 = new JTextField();
-		textField_20.setBounds(214, 512, 446, 19);
+		textField_20.setBounds(188, 333, 472, 19);
 		frame.getContentPane().add(textField_20);
 		textField_20.setColumns(10);
 		
 		JLabel lblPersonasConLas = new JLabel("Personas con las que vive:");
-		lblPersonasConLas.setBounds(12, 541, 202, 15);
+		lblPersonasConLas.setBounds(12, 362, 202, 15);
 		frame.getContentPane().add(lblPersonasConLas);
 		
 		textField_21 = new JTextField();
 		textField_21.setColumns(10);
-		textField_21.setBounds(214, 537, 446, 19);
+		textField_21.setBounds(188, 360, 472, 19);
 		frame.getContentPane().add(textField_21);
 		
 		JLabel lblTipoDeIngreso = new JLabel("Tipo de ingreso economico:");
-		lblTipoDeIngreso.setBounds(12, 568, 202, 15);
+		lblTipoDeIngreso.setBounds(12, 389, 202, 15);
 		frame.getContentPane().add(lblTipoDeIngreso);
 		
 		textField_22 = new JTextField();
 		textField_22.setColumns(10);
-		textField_22.setBounds(214, 566, 446, 19);
+		textField_22.setBounds(188, 387, 472, 19);
 		frame.getContentPane().add(textField_22);
 		
 		JLabel lblMedioPorEl = new JLabel("Medio por el cual se entero de la UPTE:");
-		lblMedioPorEl.setBounds(12, 595, 281, 15);
+		lblMedioPorEl.setBounds(12, 416, 281, 15);
 		frame.getContentPane().add(lblMedioPorEl);
 		
 		textField_23 = new JTextField();
-		textField_23.setBounds(295, 593, 365, 19);
+		textField_23.setBounds(262, 414, 398, 19);
 		frame.getContentPane().add(textField_23);
 		textField_23.setColumns(10);
 		
-		JLabel lblMotivoDelCurso = new JLabel("Motivo del curso:");
-		lblMotivoDelCurso.setBounds(12, 622, 139, 15);
-		frame.getContentPane().add(lblMotivoDelCurso);
-		
-		textField_24 = new JTextField();
-		textField_24.setColumns(10);
-		textField_24.setBounds(152, 620, 508, 19);
-		frame.getContentPane().add(textField_24);
-		
 		JLabel lblProblemasDeSalud = new JLabel("Problemas de salud:");
-		lblProblemasDeSalud.setBounds(12, 649, 159, 15);
+		lblProblemasDeSalud.setBounds(12, 444, 159, 15);
 		frame.getContentPane().add(lblProblemasDeSalud);
 		
 		textField_25 = new JTextField();
-		textField_25.setBounds(164, 647, 496, 19);
+		textField_25.setBounds(164, 443, 496, 19);
 		frame.getContentPane().add(textField_25);
 		textField_25.setColumns(10);
 		
 		JButton btnOk = new JButton("OK");
-		btnOk.setBounds(535, 696, 117, 25);
+		btnOk.setBounds(543, 632, 117, 25);
 		frame.getContentPane().add(btnOk);
 	}
 }
