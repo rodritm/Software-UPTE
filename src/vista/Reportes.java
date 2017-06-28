@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
 public class Reportes {
 
 	private JFrame frame;
-	private String [] botonescont = {"Recibos", "Recibos Anulados", "NITS", "Cancelar"};
-	private String [] botonesesta = {"Generales", "Genero", "Cursos", "Rangos de Edad", "Cancelar"};
+	private String [] botonescont = {"Recibos", "Recibos Anulados", "Cancelar"};
+	private String [] botonesesta = {"Generales", "Genero", "Cursos ", "Edad", "Cancelar"};
 
 	/**
 	 * Launch the application.
@@ -86,11 +86,6 @@ public class Reportes {
 					frame.dispose();
 					break;
 				case 2:
-					Nits nuevo3 = new Nits();
-					nuevo3.main(null);
-					frame.dispose();
-					break;
-				case 3:
 					variable = 0 ;
 					break;
 			}
