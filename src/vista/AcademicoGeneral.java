@@ -78,7 +78,7 @@ public class AcademicoGeneral {
 		JButton btnAtras = new JButton("ATRAS");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Academicos nuevo1 = new Academicos();
+				Reportes nuevo1 = new Reportes();
 				nuevo1.main(null);
 				frame.dispose();
 			}
