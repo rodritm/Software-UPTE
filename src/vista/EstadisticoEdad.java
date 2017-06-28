@@ -11,9 +11,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class EstadisticoGeneral {
+public class EstadisticoEdad {
 
 	private JFrame frame;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -22,7 +23,7 @@ public class EstadisticoGeneral {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EstadisticoGeneral window = new EstadisticoGeneral();
+					EstadisticoEdad window = new EstadisticoEdad();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +35,7 @@ public class EstadisticoGeneral {
 	/**
 	 * Create the application.
 	 */
-	public EstadisticoGeneral() {
+	public EstadisticoEdad() {
 		initialize();
 	}
 
@@ -62,8 +63,13 @@ public class EstadisticoGeneral {
 		comboBox_2.setBounds(176, 116, 224, 24);
 		frame.getContentPane().add(comboBox_2);
 		
+		textField = new JTextField();
+		textField.setBounds(176, 156, 114, 19);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
 		JButton btnOk = new JButton("OK");
-		btnOk.setBounds(302, 212, 98, 25);
+		btnOk.setBounds(302, 199, 98, 25);
 		frame.getContentPane().add(btnOk);
 		
 		JLabel lblGestion = new JLabel("GESTION:");
@@ -86,15 +92,11 @@ public class EstadisticoGeneral {
 				frame.dispose();
 			}
 		});
-		btnAtras.setBounds(37, 212, 98, 25);
+		btnAtras.setBounds(22, 199, 98, 25);
 		frame.getContentPane().add(btnAtras);
 		
-		JLabel lblGenero = new JLabel("GENERO:");
-		lblGenero.setBounds(80, 165, 55, 15);
-		frame.getContentPane().add(lblGenero);
-		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(176, 160, 224, 24);
-		frame.getContentPane().add(comboBox_3);
+		JLabel lblEdad = new JLabel("EDAD:");
+		lblEdad.setBounds(80, 158, 55, 15);
+		frame.getContentPane().add(lblEdad);
 	}
 }

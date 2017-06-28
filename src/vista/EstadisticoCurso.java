@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class EstadisticoGeneral {
+public class EstadisticoCurso {
 
 	private JFrame frame;
 
@@ -22,7 +22,7 @@ public class EstadisticoGeneral {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EstadisticoGeneral window = new EstadisticoGeneral();
+					EstadisticoCurso window = new EstadisticoCurso();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +34,7 @@ public class EstadisticoGeneral {
 	/**
 	 * Create the application.
 	 */
-	public EstadisticoGeneral() {
+	public EstadisticoCurso() {
 		initialize();
 	}
 
@@ -43,7 +43,7 @@ public class EstadisticoGeneral {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 421, 279);
+		frame.setBounds(100, 100, 421, 216);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
@@ -62,8 +62,9 @@ public class EstadisticoGeneral {
 		comboBox_2.setBounds(176, 116, 224, 24);
 		frame.getContentPane().add(comboBox_2);
 		
+		
 		JButton btnOk = new JButton("OK");
-		btnOk.setBounds(302, 212, 98, 25);
+		btnOk.setBounds(302, 166, 98, 25);
 		frame.getContentPane().add(btnOk);
 		
 		JLabel lblGestion = new JLabel("GESTION:");
@@ -86,15 +87,9 @@ public class EstadisticoGeneral {
 				frame.dispose();
 			}
 		});
-		btnAtras.setBounds(37, 212, 98, 25);
+		btnAtras.setBounds(22, 166, 98, 25);
 		frame.getContentPane().add(btnAtras);
-		
-		JLabel lblGenero = new JLabel("GENERO:");
-		lblGenero.setBounds(80, 165, 55, 15);
-		frame.getContentPane().add(lblGenero);
-		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(176, 160, 224, 24);
-		frame.getContentPane().add(comboBox_3);
+
 	}
+
 }

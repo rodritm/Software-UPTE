@@ -110,11 +110,21 @@ public class Reportes {
 					break;
 
 				case 1:
-					Anulados nuevo2 = new Anulados();
-					nuevo2.main(null);
+					EstadisticoGenero nuevo1 = new EstadisticoGenero();
+					nuevo1.main(null);
 					frame.dispose();
 					break;
 				case 2:
+					EstadisticoCurso nuevo2 = new EstadisticoCurso();
+					nuevo2.main(null);
+					frame.dispose();
+					break;
+				case 3:
+					EstadisticoEdad nuevo3 = new EstadisticoEdad();
+					nuevo3.main(null);
+					frame.dispose();
+					break;
+				case 4:
 					variable = 0 ;
 					break;
 				}

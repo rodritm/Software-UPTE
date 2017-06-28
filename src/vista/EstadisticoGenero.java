@@ -9,9 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 
-public class EstadisticoGeneral {
+public class EstadisticoGenero {
 
 	private JFrame frame;
 
@@ -22,7 +21,7 @@ public class EstadisticoGeneral {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EstadisticoGeneral window = new EstadisticoGeneral();
+					EstadisticoGenero window = new EstadisticoGenero();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +33,7 @@ public class EstadisticoGeneral {
 	/**
 	 * Create the application.
 	 */
-	public EstadisticoGeneral() {
+	public EstadisticoGenero() {
 		initialize();
 	}
 
@@ -42,8 +41,10 @@ public class EstadisticoGeneral {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+
+
 		frame = new JFrame();
-		frame.setBounds(100, 100, 421, 279);
+		frame.setBounds(100, 100, 421, 190);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
@@ -51,32 +52,16 @@ public class EstadisticoGeneral {
 		frame.getContentPane().setBackground(Color.WHITE);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(176, 32, 224, 24);
+		comboBox.setBounds(160, 66, 224, 24);
 		frame.getContentPane().add(comboBox);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(176, 75, 224, 24);
-		frame.getContentPane().add(comboBox_1);
-		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(176, 116, 224, 24);
-		frame.getContentPane().add(comboBox_2);
-		
 		JButton btnOk = new JButton("OK");
-		btnOk.setBounds(302, 212, 98, 25);
+		btnOk.setBounds(286, 102, 98, 25);
 		frame.getContentPane().add(btnOk);
 		
 		JLabel lblGestion = new JLabel("GESTION:");
-		lblGestion.setBounds(80, 32, 55, 15);
+		lblGestion.setBounds(87, 71, 55, 15);
 		frame.getContentPane().add(lblGestion);
-		
-		JLabel lblCurso = new JLabel("CURSO:");
-		lblCurso.setBounds(80, 75, 55, 15);
-		frame.getContentPane().add(lblCurso);
-		
-		JLabel lblParalelo = new JLabel("PARALELO: ");
-		lblParalelo.setBounds(80, 121, 78, 15);
-		frame.getContentPane().add(lblParalelo);
 		
 		JButton btnAtras = new JButton("ATRAS");
 		btnAtras.addActionListener(new ActionListener() {
@@ -86,15 +71,8 @@ public class EstadisticoGeneral {
 				frame.dispose();
 			}
 		});
-		btnAtras.setBounds(37, 212, 98, 25);
+		btnAtras.setBounds(87, 102, 98, 25);
 		frame.getContentPane().add(btnAtras);
-		
-		JLabel lblGenero = new JLabel("GENERO:");
-		lblGenero.setBounds(80, 165, 55, 15);
-		frame.getContentPane().add(lblGenero);
-		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(176, 160, 224, 24);
-		frame.getContentPane().add(comboBox_3);
 	}
+
 }
