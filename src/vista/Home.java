@@ -1,4 +1,4 @@
-package Vista;
+package vista;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
@@ -69,6 +70,44 @@ public class Home {
 		tfpass.setBounds(165, 334, 110, 20);
 		frame.getContentPane().add(tfpass);
 		
+		tfpass.addActionListener(new ActionListener(){
+
+            public void actionPerformed(ActionEvent e){
+            	char clave[]=tfpass.getPassword();
+				String clavedef=new String(clave);
+				
+				if(tfusuario.getText().equals("Augusto") && clavedef.equals("123") ||
+						tfusuario.getText().equals("prime") && clavedef.equals("123")){
+					JOptionPane.showMessageDialog(null, "Bienvenido\n"
+		                    + "Has ingresado satisfactoriamente al sistema.\nBienvenido: "+tfusuario.getText());
+					Menu nuevo = new Menu();
+					nuevo.main(null);
+					frame.dispose();
+				}else{
+					if(restantes>1){
+						restantes--;
+						JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
+			                    + "Por favor ingrese un usuario y/o contraseña correctos \nIntentos Disponibles: "+restantes, "Acceso denegado",
+			                    JOptionPane.ERROR_MESSAGE);
+						tfpass.setText("");
+						tfusuario.setText("");
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
+			                    + "Exceso de ingresos permitidos", "Acceso denegado",
+			                    JOptionPane.ERROR_MESSAGE);
+						System.exit(0);
+					}
+				}
+			}
+            });
+
+		
+		
+		
+		
+		
+		
 		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setBounds(165, 252, 110, 14);
 		lblUsuario.setHorizontalAlignment(JTextField.CENTER);
@@ -78,7 +117,7 @@ public class Home {
 		lblContrasea.setBounds(165, 309, 110, 14);
 		lblContrasea.setHorizontalAlignment(JTextField.CENTER);
 		frame.getContentPane().add(lblContrasea);
-		
+				
 		JButton btnComprobar = new JButton("Ingresar");
 		btnComprobar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -123,7 +162,8 @@ public class Home {
 		frame.getContentPane().add(btnSalir);
 		lblNewLabel = new JLabel("");
 		
-		ImageIcon icon = new ImageIcon("images/logopeque.jpg");
+		URL url = Home.class.getResource("/logopeque.jpg");
+		ImageIcon icon = new ImageIcon(url);
 		lblNewLabel.setIcon(icon);
 		lblNewLabel.setBounds(130, 10, 180, 220);
 		frame.getContentPane().add(lblNewLabel);

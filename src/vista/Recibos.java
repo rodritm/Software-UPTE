@@ -1,15 +1,27 @@
-package Vista;
-
-
+package vista;
 import java.awt.EventQueue;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
-public class Anulados {
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.awt.event.ActionEvent;
+
+public class Recibos {
 
 	private JFrame frame;
 	private JTextField textField;
@@ -21,7 +33,7 @@ public class Anulados {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Anulados window = new Anulados();
+					Recibos window = new Recibos();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +45,7 @@ public class Anulados {
 	/**
 	 * Create the application.
 	 */
-	public Anulados() {
+	public Recibos() {
 		initialize();
 	}
 
@@ -84,5 +96,4 @@ public class Anulados {
 		lblParalelo.setBounds(80, 121, 78, 15);
 		frame.getContentPane().add(lblParalelo);
 	}
-
 }

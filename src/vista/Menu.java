@@ -1,4 +1,4 @@
-package Vista;
+package vista;
 import java.awt.Color;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.awt.event.ActionEvent;
 
 public class Menu {
@@ -48,7 +49,8 @@ public class Menu {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel label = new JLabel("");
-		ImageIcon icon = new ImageIcon("images/logo_ucb_med.gif");
+		URL url = Home.class.getResource("/logo_ucb_med.gif");
+		ImageIcon icon = new ImageIcon(url);
 		label.setIcon(icon);
 		label.setBounds(51, 40, 299, 417);frame.dispose();
 		frame.getContentPane().add(label);

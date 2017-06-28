@@ -1,4 +1,5 @@
-package Vista;
+package vista;
+
 
 import java.awt.EventQueue;
 
@@ -8,12 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class Nits {
-
+public class Anulados {
 
 	private JFrame frame;
 	private JTextField textField;
-
 
 	/**
 	 * Launch the application.
@@ -22,7 +21,7 @@ public class Nits {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Nits window = new Nits();
+					Anulados window = new Anulados();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +33,7 @@ public class Nits {
 	/**
 	 * Create the application.
 	 */
-	public Nits() {
+	public Anulados() {
 		initialize();
 	}
 
@@ -42,7 +41,6 @@ public class Nits {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-
 		frame = new JFrame();
 		frame.setBounds(100, 100, 421, 279);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

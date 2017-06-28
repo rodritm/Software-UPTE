@@ -1,30 +1,19 @@
-package Vista;
+package vista;
+
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
+public class Nits {
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.event.ActionListener;
-import java.io.FileOutputStream;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.awt.event.ActionEvent;
-
-public class Recibos {
 
 	private JFrame frame;
 	private JTextField textField;
+
 
 	/**
 	 * Launch the application.
@@ -33,7 +22,7 @@ public class Recibos {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Recibos window = new Recibos();
+					Nits window = new Nits();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +34,7 @@ public class Recibos {
 	/**
 	 * Create the application.
 	 */
-	public Recibos() {
+	public Nits() {
 		initialize();
 	}
 
@@ -53,6 +42,7 @@ public class Recibos {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+
 		frame = new JFrame();
 		frame.setBounds(100, 100, 421, 279);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,4 +86,5 @@ public class Recibos {
 		lblParalelo.setBounds(80, 121, 78, 15);
 		frame.getContentPane().add(lblParalelo);
 	}
+
 }
