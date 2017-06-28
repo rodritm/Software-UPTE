@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+
+import controlador.Login;
+
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -68,46 +71,25 @@ public class Home {
 		
 		tfpass = new JPasswordField();
 		tfpass.setBounds(165, 334, 110, 20);
-		frame.getContentPane().add(tfpass);
-		
+		frame.getContentPane().add(tfpass);		
 		tfpass.addActionListener(new ActionListener(){
-
             public void actionPerformed(ActionEvent e){
             	char clave[]=tfpass.getPassword();
 				String clavedef=new String(clave);
-				
-				if(tfusuario.getText().equals("Augusto") && clavedef.equals("123") ||
-						tfusuario.getText().equals("prime") && clavedef.equals("123")){
-					JOptionPane.showMessageDialog(null, "Bienvenido\n"
-		                    + "Has ingresado satisfactoriamente al sistema.\nBienvenido: "+tfusuario.getText());
+				String user = tfusuario.getText().toString();
+				Login log = new Login();
+				if (log.login(clavedef,user, restantes)){
 					Menu nuevo = new Menu();
 					nuevo.main(null);
 					frame.dispose();
 				}else{
-					if(restantes>1){
-						restantes--;
-						JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
-			                    + "Por favor ingrese un usuario y/o contraseña correctos \nIntentos Disponibles: "+restantes, "Acceso denegado",
-			                    JOptionPane.ERROR_MESSAGE);
-						tfpass.setText("");
-						tfusuario.setText("");
-					}
-					else{
-						JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
-			                    + "Exceso de ingresos permitidos", "Acceso denegado",
-			                    JOptionPane.ERROR_MESSAGE);
-						System.exit(0);
-					}
+					restantes--;
+					tfpass.setText("");
+					tfusuario.setText("");
 				}
 			}
             });
 
-		
-		
-		
-		
-		
-		
 		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setBounds(165, 252, 110, 14);
 		lblUsuario.setHorizontalAlignment(JTextField.CENTER);
@@ -120,35 +102,23 @@ public class Home {
 				
 		JButton btnComprobar = new JButton("Ingresar");
 		btnComprobar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				char clave[]=tfpass.getPassword();
+			public void actionPerformed(ActionEvent e){
+            	char clave[]=tfpass.getPassword();
 				String clavedef=new String(clave);
-				
-				if(tfusuario.getText().equals("Augusto") && clavedef.equals("123") ||
-						tfusuario.getText().equals("prime") && clavedef.equals("123")){
-					JOptionPane.showMessageDialog(null, "Bienvenido\n"
-		                    + "Has ingresado satisfactoriamente al sistema.\nBienvenido: "+tfusuario.getText());
+				String user = tfusuario.getText().toString();
+				Login log = new Login();
+				if (log.login(clavedef,user, restantes)){
 					Menu nuevo = new Menu();
 					nuevo.main(null);
 					frame.dispose();
 				}else{
-					if(restantes>1){
-						restantes--;
-						JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
-			                    + "Por favor ingrese un usuario y/o contraseña correctos \nIntentos Disponibles: "+restantes, "Acceso denegado",
-			                    JOptionPane.ERROR_MESSAGE);
-						tfpass.setText("");
-						tfusuario.setText("");
-					}
-					else{
-						JOptionPane.showMessageDialog(null, "Acceso denegado:\n"
-			                    + "Exceso de ingresos permitidos", "Acceso denegado",
-			                    JOptionPane.ERROR_MESSAGE);
-						System.exit(0);
-					}
+					restantes--;
+					tfpass.setText("");
+					tfusuario.setText("");
 				}
 			}
-		});
+            });
+
 		btnComprobar.setBounds(165, 386, 110, 23);
 		frame.getContentPane().add(btnComprobar);
 		
