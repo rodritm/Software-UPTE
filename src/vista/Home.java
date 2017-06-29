@@ -86,9 +86,6 @@ public class Home extends JFrame{
 		
 		tfpass.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-            	try {
-					
-				
             	char clave[]=tfpass.getPassword();
 				String clavedef=new String(clave);
 				String user = tfusuario.getText().toString();
@@ -104,9 +101,6 @@ public class Home extends JFrame{
 					tfusuario.setText("");
 					tfusuario.requestFocusInWindow();
 				}
-            	} catch (Exception e2) {
-					JOptionPane.showMessageDialog(null, "ERROR: \n"+e2);
-				}
 			}
             });
 				
@@ -116,8 +110,6 @@ public class Home extends JFrame{
 		btnComprobar.setIcon(icon);
 		btnComprobar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				try {
-					
             	char clave[]=tfpass.getPassword();
 				String clavedef=new String(clave);
 				String user = tfusuario.getText().toString();
@@ -132,25 +124,24 @@ public class Home extends JFrame{
 					tfpass.setText("");
 					tfusuario.setText("");
 				}
-				} catch (Exception e2) {
-					JOptionPane.showMessageDialog(null, "ERROR: \n"+e2);
-				}
 			}
             });
 
-		btnComprobar.setBounds(284, 351, 125, 30);
+		btnComprobar.setBounds(284, 351, 128, 38);
 		frame.getContentPane().add(btnComprobar);
+		btnComprobar.setBorder(null);
 		
 		btnSalir = new JButton("");
 		URL url2 = Home.class.getResource("/2.png");
 		ImageIcon icon2 = new ImageIcon(url2);
 		btnSalir.setIcon(icon2);
+		btnSalir.setBorder(null);
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
 			}
 		});
-		btnSalir.setBounds(432, 351, 88, 30);
+		btnSalir.setBounds(432, 351, 89, 38);
 		frame.getContentPane().add(btnSalir);
 		lblNewLabel = new JLabel("");
 		((JPanel)getContentPane()).setOpaque(false); 

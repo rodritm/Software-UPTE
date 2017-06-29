@@ -36,7 +36,7 @@ public class Login {
 				}
 			}
 		}catch (Exception ev) {
-			
+			JOptionPane.showMessageDialog(null, "ERROR\n"+ev,"ERROR",JOptionPane.ERROR_MESSAGE);
 		}
 		if(userbd.equals(user) && passbd.equals(pass)){
 			JOptionPane.showMessageDialog(null, "Bienvenido: "+name+"\n "
