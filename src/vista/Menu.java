@@ -3,15 +3,18 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.net.URL;
 import java.awt.event.ActionEvent;
 
-public class Menu {
+public class Menu extends JFrame{
 
 	private JFrame frame;
+	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -49,10 +52,19 @@ public class Menu {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel label = new JLabel("");
-		URL url = Menu.class.getResource("/logo_ucb_med.gif");
-		ImageIcon icon = new ImageIcon(url);
-		label.setIcon(icon);
-		label.setBounds(287, 117, 255, 293);
+		
+		/*//
+		((JPanel)getContentPane()).setOpaque(false); 
+		ImageIcon uno=new ImageIcon(this.getClass().getResource("/logopeque.jpg")); 
+		label.setIcon(uno); 
+		getLayeredPane().add(label,JLayeredPane.FRAME_CONTENT_LAYER); 
+		label.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
+		///*/
+		
+		//URL url = Menu.class.getResource("/logo_ucb_med.gif");
+		//ImageIcon icon = new ImageIcon(url);
+		//label.setIcon(icon);
+		//label.setBounds(287, 117, 255, 293);
 		frame.dispose();
 		frame.getContentPane().add(label);
 		

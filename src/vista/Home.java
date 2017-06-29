@@ -14,7 +14,9 @@ import modelo.DB_Connect;
 
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -23,7 +25,7 @@ import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
-public class Home {
+public class Home extends JFrame{
 
 	private JFrame frame;
 	private JTextField tfusuario;
@@ -60,7 +62,7 @@ public class Home {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(0, 0, 440, 460);
+		frame.setBounds(0, 0, 800, 500);
 		frame.setLocationRelativeTo(null);
 		frame.setTitle("Inicio de sesion");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,13 +73,15 @@ public class Home {
 		
 		
 		tfusuario = new JTextField();
-		tfusuario.setBounds(165, 278, 110, 20);
+		tfusuario.setBounds(296, 236, 180, 32);
 		frame.getContentPane().add(tfusuario);
 		tfusuario.setColumns(10);
+		//((JComponent) tfusuario.getContentPane()).setOpaque(false);
 		
 		tfpass = new JPasswordField();
-		tfpass.setBounds(165, 334, 110, 20);
+		tfpass.setBounds(296, 285, 180, 32);
 		frame.getContentPane().add(tfpass);		
+		
 		tfpass.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
             	char clave[]=tfpass.getPassword();
@@ -97,18 +101,11 @@ public class Home {
 				}
 			}
             });
-
-		JLabel lblUsuario = new JLabel("Usuario");
-		lblUsuario.setBounds(165, 252, 110, 14);
-		lblUsuario.setHorizontalAlignment(JTextField.CENTER);
-		frame.getContentPane().add(lblUsuario);
-		
-		JLabel lblContrasea = new JLabel("Password");
-		lblContrasea.setBounds(165, 309, 110, 14);
-		lblContrasea.setHorizontalAlignment(JTextField.CENTER);
-		frame.getContentPane().add(lblContrasea);
 				
-		JButton btnComprobar = new JButton("Ingresar");
+		JButton btnComprobar = new JButton("");
+		URL url = Home.class.getResource("/1.png");
+		ImageIcon icon = new ImageIcon(url);
+		btnComprobar.setIcon(icon);
 		btnComprobar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
             	char clave[]=tfpass.getPassword();
@@ -128,23 +125,31 @@ public class Home {
 			}
             });
 
-		btnComprobar.setBounds(165, 386, 110, 23);
+		btnComprobar.setBounds(284, 351, 125, 30);
 		frame.getContentPane().add(btnComprobar);
 		
-		btnSalir = new JButton("Salir");
+		btnSalir = new JButton("");
+		URL url2 = Home.class.getResource("/2.png");
+		ImageIcon icon2 = new ImageIcon(url2);
+		btnSalir.setIcon(icon2);
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
 			}
 		});
-		btnSalir.setBounds(165, 420, 110, 23);
+		btnSalir.setBounds(432, 351, 88, 30);
 		frame.getContentPane().add(btnSalir);
 		lblNewLabel = new JLabel("");
+		((JPanel)getContentPane()).setOpaque(false); 
+		ImageIcon uno=new ImageIcon(this.getClass().getResource("/fondo.png")); 
+		lblNewLabel.setIcon(uno); 
+		getLayeredPane().add(lblNewLabel,JLayeredPane.FRAME_CONTENT_LAYER); 
+		lblNewLabel.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
 		
-		URL url = Home.class.getResource("/logopeque.jpg");
+		/*URL url = Home.class.getResource("/logopeque.jpg");
 		ImageIcon icon = new ImageIcon(url);
-		lblNewLabel.setIcon(icon);
-		lblNewLabel.setBounds(130, 10, 180, 220);
+		lblNewLabel.setIcon(icon);*/
+		//lblNewLabel.setBounds(130, 10, 180, 220);
 		frame.getContentPane().add(lblNewLabel);
 	}
 }
