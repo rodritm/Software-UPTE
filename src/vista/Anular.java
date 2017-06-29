@@ -15,11 +15,11 @@ public class Anular {
 
 	private JFrame frame;
 	private JTextField tfRuta;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField tfNumero;
+	private JTextField tfGestion;
+	private JTextField tfCurso;
+	private JTextField tfParalelo;
+	private JTextField tfMonto;
 
 	/**
 	 * Launch the application.
@@ -98,38 +98,38 @@ public class Anular {
 		lblNumero.setBounds(80, 46, 55, 15);
 		frame.getContentPane().add(lblNumero);
 		
-		textField = new JTextField();
-		textField.setBounds(149, 44, 251, 19);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		tfNumero = new JTextField();
+		tfNumero.setBounds(149, 44, 251, 19);
+		frame.getContentPane().add(tfNumero);
+		tfNumero.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(149, 73, 251, 19);
-		textField_1.setEditable(false);
-		frame.getContentPane().add(textField_1);
+		tfGestion = new JTextField();
+		tfGestion.setColumns(10);
+		tfGestion.setBounds(149, 73, 251, 19);
+		tfGestion.setEditable(false);
+		frame.getContentPane().add(tfGestion);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(149, 100, 251, 19);
-		textField_2.setEditable(false);
-		frame.getContentPane().add(textField_2);
+		tfCurso = new JTextField();
+		tfCurso.setColumns(10);
+		tfCurso.setBounds(149, 100, 251, 19);
+		tfCurso.setEditable(false);
+		frame.getContentPane().add(tfCurso);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(170, 127, 65, 19);
-		textField_3.setEditable(false);
-		frame.getContentPane().add(textField_3);
+		tfParalelo = new JTextField();
+		tfParalelo.setColumns(10);
+		tfParalelo.setBounds(170, 127, 65, 19);
+		tfParalelo.setEditable(false);
+		frame.getContentPane().add(tfParalelo);
 		
 		JLabel lblMonto = new JLabel("MONTO:     bs.");
 		lblMonto.setBounds(80, 157, 79, 15);
 		frame.getContentPane().add(lblMonto);
 		
-		textField_4 = new JTextField();
-		textField_4.setEditable(false);
-		textField_4.setColumns(10);
-		textField_4.setBounds(170, 153, 65, 19);
-		frame.getContentPane().add(textField_4);
+		tfMonto = new JTextField();
+		tfMonto.setEditable(false);
+		tfMonto.setColumns(10);
+		tfMonto.setBounds(170, 153, 65, 19);
+		frame.getContentPane().add(tfMonto);
 	}
 
 }

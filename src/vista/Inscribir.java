@@ -388,17 +388,17 @@ public class Inscribir {
 		lblMateria_1.setBounds(12, 648, 55, 15);
 		frame.getContentPane().add(lblMateria_1);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(76, 643, 411, 24);
-		frame.getContentPane().add(comboBox);
+		JComboBox cbMateria = new JComboBox();
+		cbMateria.setBounds(76, 643, 411, 24);
+		frame.getContentPane().add(cbMateria);
 		
 		JLabel lblParalelo = new JLabel("Paralelo:");
 		lblParalelo.setBounds(523, 648, 55, 15);
 		frame.getContentPane().add(lblParalelo);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(596, 643, 64, 24);
-		frame.getContentPane().add(comboBox_1);
+		JComboBox cbParalelo = new JComboBox();
+		cbParalelo.setBounds(596, 643, 64, 24);
+		frame.getContentPane().add(cbParalelo);
 	}
 }
 
