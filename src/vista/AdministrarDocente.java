@@ -17,21 +17,21 @@ import com.toedter.calendar.JDateChooser;
 public class AdministrarDocente {
 
 	private JFrame frame;
-	private JTextField textField;
+	private JTextField tfNombre;
 	private JLabel lblApellidoPaterno;
-	private JTextField textField_1;
+	private JTextField tfApePat;
 	private JLabel lblApellidoMaterno;
-	private JTextField textField_2;
+	private JTextField tfApeMat;
 	private JLabel lblCarnet;
-	private JTextField textField_3;
+	private JTextField tfCI;
 	private JLabel lblFechaNacimiento;
-	private JTextField textField_4;
+	private JTextField tfDireccion;
 	private JLabel lblCelular;
-	private JTextField textField_5;
+	private JTextField tfCel;
 	private JLabel lblContrasea;
-	private JTextField textField_6;
+	private JTextField tfPass;
 	private JLabel lblTipo;
-	private JComboBox comboBox;
+	private JComboBox cbTipo;
 	private JButton btnCancelar;
 	private JButton btnOk;
 
@@ -76,80 +76,80 @@ public class AdministrarDocente {
 		lblNombre.setBounds(12, 12, 55, 15);
 		frame.getContentPane().add(lblNombre);
 		
-		textField = new JTextField();
-		textField.setBounds(69, 10, 369, 19);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		tfNombre = new JTextField();
+		tfNombre.setBounds(69, 10, 369, 19);
+		frame.getContentPane().add(tfNombre);
+		tfNombre.setColumns(10);
 		
 		lblApellidoPaterno = new JLabel("Apellido Paterno:");
 		lblApellidoPaterno.setBounds(12, 39, 96, 15);
 		frame.getContentPane().add(lblApellidoPaterno);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(126, 37, 312, 19);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		tfApePat = new JTextField();
+		tfApePat.setBounds(126, 37, 312, 19);
+		frame.getContentPane().add(tfApePat);
+		tfApePat.setColumns(10);
 		
 		lblApellidoMaterno = new JLabel("Apellido Materno:");
 		lblApellidoMaterno.setBounds(12, 66, 114, 15);
 		frame.getContentPane().add(lblApellidoMaterno);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(126, 64, 312, 19);
-		frame.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		tfApeMat = new JTextField();
+		tfApeMat.setBounds(126, 64, 312, 19);
+		frame.getContentPane().add(tfApeMat);
+		tfApeMat.setColumns(10);
 		
 		lblCarnet = new JLabel("Carnet:");
 		lblCarnet.setBounds(12, 93, 55, 15);
 		frame.getContentPane().add(lblCarnet);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(62, 91, 114, 19);
-		frame.getContentPane().add(textField_3);
-		textField_3.setColumns(10);
+		tfCI = new JTextField();
+		tfCI.setBounds(62, 91, 114, 19);
+		frame.getContentPane().add(tfCI);
+		tfCI.setColumns(10);
 		
 		lblFechaNacimiento = new JLabel("Fecha Nacimiento:");
 		lblFechaNacimiento.setBounds(194, 93, 104, 15);
 		frame.getContentPane().add(lblFechaNacimiento);
 		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(303, 93, 135, 19);
-		frame.getContentPane().add(dateChooser);
+		JDateChooser fechaNac = new JDateChooser();
+		fechaNac.setBounds(303, 93, 135, 19);
+		frame.getContentPane().add(fechaNac);
 		
 		JLabel lblDireccion = new JLabel("DIreccion:");
 		lblDireccion.setBounds(12, 122, 73, 15);
 		frame.getContentPane().add(lblDireccion);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(82, 120, 356, 19);
-		frame.getContentPane().add(textField_4);
-		textField_4.setColumns(10);
+		tfDireccion = new JTextField();
+		tfDireccion.setBounds(82, 120, 356, 19);
+		frame.getContentPane().add(tfDireccion);
+		tfDireccion.setColumns(10);
 		
 		lblCelular = new JLabel("Celular:");
 		lblCelular.setBounds(12, 149, 55, 15);
 		frame.getContentPane().add(lblCelular);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(62, 147, 135, 19);
-		frame.getContentPane().add(textField_5);
-		textField_5.setColumns(10);
+		tfCel = new JTextField();
+		tfCel.setBounds(62, 147, 135, 19);
+		frame.getContentPane().add(tfCel);
+		tfCel.setColumns(10);
 		
 		lblContrasea = new JLabel("Contraseña:");
 		lblContrasea.setBounds(12, 176, 83, 15);
 		frame.getContentPane().add(lblContrasea);
 		
-		textField_6 = new JTextField();
-		textField_6.setBounds(96, 174, 342, 19);
-		frame.getContentPane().add(textField_6);
-		textField_6.setColumns(10);
+		tfPass = new JTextField();
+		tfPass.setBounds(96, 174, 342, 19);
+		frame.getContentPane().add(tfPass);
+		tfPass.setColumns(10);
 		
 		lblTipo = new JLabel("Tipo:");
 		lblTipo.setBounds(215, 149, 38, 15);
 		frame.getContentPane().add(lblTipo);
 		
-		comboBox = new JComboBox();
-		comboBox.setBounds(271, 144, 167, 24);
-		frame.getContentPane().add(comboBox);
+		cbTipo = new JComboBox();
+		cbTipo.setBounds(271, 144, 167, 24);
+		frame.getContentPane().add(cbTipo);
 		
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {

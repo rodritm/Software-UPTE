@@ -15,19 +15,19 @@ import java.awt.event.ActionEvent;
 public class AdministrarMateria {
 
 	private JFrame frame;
-	private JTextField textField;
+	private JTextField tfSigla;
 	private JLabel lblNombre;
-	private JTextField textField_1;
+	private JTextField tfNombre;
 	private JLabel lblParalelo;
-	private JTextField textField_2;
+	private JTextField tfParalelo;
 	private JLabel lblDocente;
-	private JComboBox comboBox;
+	private JComboBox cbDocente;
 	private JLabel lblHora;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField tfHora;
+	private JTextField tfMin;
 	private JLabel label;
 	private JLabel lblAula;
-	private JTextField textField_5;
+	private JTextField tfAula;
 	private JButton btnCancelar;
 	private JButton btnOk;
 
@@ -73,50 +73,50 @@ public class AdministrarMateria {
 		lblSiglaDeLa.setBounds(12, 12, 108, 15);
 		frame.getContentPane().add(lblSiglaDeLa);
 		
-		textField = new JTextField();
-		textField.setBounds(128, 10, 63, 19);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		tfSigla = new JTextField();
+		tfSigla.setBounds(128, 10, 63, 19);
+		frame.getContentPane().add(tfSigla);
+		tfSigla.setColumns(10);
 		
 		lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(12, 39, 55, 15);
 		frame.getContentPane().add(lblNombre);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(71, 37, 367, 19);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		tfNombre = new JTextField();
+		tfNombre.setBounds(71, 37, 367, 19);
+		frame.getContentPane().add(tfNombre);
+		tfNombre.setColumns(10);
 		
 		lblParalelo = new JLabel("Paralelo:");
 		lblParalelo.setBounds(12, 66, 55, 15);
 		frame.getContentPane().add(lblParalelo);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(71, 62, 55, 19);
-		frame.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		tfParalelo = new JTextField();
+		tfParalelo.setBounds(71, 62, 55, 19);
+		frame.getContentPane().add(tfParalelo);
+		tfParalelo.setColumns(10);
 		
 		lblDocente = new JLabel("Docente:");
 		lblDocente.setBounds(12, 93, 55, 15);
 		frame.getContentPane().add(lblDocente);
 		
-		comboBox = new JComboBox();
-		comboBox.setBounds(71, 88, 367, 24);
-		frame.getContentPane().add(comboBox);
+		cbDocente = new JComboBox();
+		cbDocente.setBounds(71, 88, 367, 24);
+		frame.getContentPane().add(cbDocente);
 		
 		lblHora = new JLabel("Hora:");
 		lblHora.setBounds(150, 64, 55, 15);
 		frame.getContentPane().add(lblHora);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(187, 62, 35, 19);
-		frame.getContentPane().add(textField_3);
-		textField_3.setColumns(10);
+		tfHora = new JTextField();
+		tfHora.setBounds(187, 62, 35, 19);
+		frame.getContentPane().add(tfHora);
+		tfHora.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(238, 62, 35, 19);
-		frame.getContentPane().add(textField_4);
+		tfMin = new JTextField();
+		tfMin.setColumns(10);
+		tfMin.setBounds(238, 62, 35, 19);
+		frame.getContentPane().add(tfMin);
 		
 		label = new JLabel(":");
 		label.setBounds(228, 62, 20, 15);
@@ -126,10 +126,10 @@ public class AdministrarMateria {
 		lblAula.setBounds(305, 64, 55, 15);
 		frame.getContentPane().add(lblAula);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(341, 62, 97, 19);
-		frame.getContentPane().add(textField_5);
-		textField_5.setColumns(10);
+		tfAula = new JTextField();
+		tfAula.setBounds(341, 62, 97, 19);
+		frame.getContentPane().add(tfAula);
+		tfAula.setColumns(10);
 		
 		btnCancelar = new JButton("CANCELAR");
 		btnCancelar.addActionListener(new ActionListener() {
