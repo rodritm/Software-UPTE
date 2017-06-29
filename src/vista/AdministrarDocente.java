@@ -116,7 +116,7 @@ public class AdministrarDocente {
 		fechaNac.setBounds(303, 93, 135, 19);
 		frame.getContentPane().add(fechaNac);
 		
-		JLabel lblDireccion = new JLabel("DIreccion:");
+		JLabel lblDireccion = new JLabel("Direccion:");
 		lblDireccion.setBounds(12, 122, 73, 15);
 		frame.getContentPane().add(lblDireccion);
 		

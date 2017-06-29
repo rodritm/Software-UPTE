@@ -73,10 +73,6 @@ public class AcademicoCursos {
 		btnCarpeta.setBounds(302, 165, 98, 25);
 		frame.getContentPane().add(btnCarpeta);
 		
-		JButton btnOk = new JButton("OK");
-		btnOk.setBounds(302, 199, 98, 25);
-		frame.getContentPane().add(btnOk);
-		
 		JLabel lblGestion = new JLabel("GESTION:");
 		lblGestion.setBounds(80, 32, 55, 15);
 		frame.getContentPane().add(lblGestion);
@@ -99,6 +95,15 @@ public class AcademicoCursos {
 		});
 		btnAtras.setBounds(22, 199, 98, 25);
 		frame.getContentPane().add(btnAtras);
+		
+		JButton btnOk = new JButton("OK");
+		btnOk.setBounds(302, 199, 98, 25);
+		frame.getContentPane().add(btnOk);
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 	}
 
 }

@@ -4,12 +4,17 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import com.mxrck.autocompleter.TextAutoCompleter;
+
+import modelo.Querry;
 
 public class Anular {
 
@@ -102,6 +107,17 @@ public class Anular {
 		tfNumero.setBounds(149, 44, 251, 19);
 		frame.getContentPane().add(tfNumero);
 		tfNumero.setColumns(10);
+		TextAutoCompleter auto = new TextAutoCompleter(tfNumero);
+		Querry q = new Querry();
+		ResultSet rs;
+		String ids;
+		try{
+			rs = q.anulado();
+			while(rs.next()) {
+				ids = (rs.getString("idrecibo"));
+				auto.addItem(ids);
+			}
+		}catch(Exception e) {}
 		
 		tfGestion = new JTextField();
 		tfGestion.setColumns(10);

@@ -6,14 +6,24 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
+
+import com.mxrck.autocompleter.TextAutoCompleter;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JDayChooser;
 
+import controlador.Empleados;
+import controlador.Estudiante;
+import controlador.Login;
+import modelo.Querry;
+
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
 public class Inscribir {
@@ -139,7 +149,22 @@ public class Inscribir {
 		tfCI.setBounds(141, 28, 251, 19);
 		frame.getContentPane().add(tfCI);
 		tfCI.setColumns(10);
-		
+		TextAutoCompleter auto = new TextAutoCompleter(tfCI);
+		Querry q = new Querry();
+		ResultSet rs;
+		String ids;
+		try{
+			rs = q.ci();
+			while(rs.next()) {
+				ids = (rs.getString("idestudiante"));
+				auto.addItem(ids);
+			}
+		}catch(Exception e) {}
+		tfCI.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+            	
+			}
+            });
 		
 		JLabel lblExp = new JLabel("exp:");
 		lblExp.setBounds(434, 28, 70, 15);
@@ -160,7 +185,7 @@ public class Inscribir {
 		JDateChooser fechanc = new JDateChooser();
 		fechanc.getCalendarButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				////////////////////////////////////////////////////Aqui deberia estar el codigo para cargar los datos del estudiante a los boxs
 			}
 		});
 		fechanc.setBounds(174, 141, 175, 19);
@@ -377,6 +402,18 @@ public class Inscribir {
 		tfProblemas.setColumns(10);
 		
 		JButton btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int option = JOptionPane.showOptionDialog(null, "Esta segura/o?", "Confirmación",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, 
+						null, new Object[]{"SI","NO"},"SI");
+				if(option== 0){
+					//																Funcion para cargar a la base
+					Menu nuevo = new Menu();
+					nuevo.main(null);
+					frame.dispose();
+				}
+			}
+		});
 		btnOk.setBounds(543, 679, 117, 25);
 		frame.getContentPane().add(btnOk);
 		
@@ -400,5 +437,50 @@ public class Inscribir {
 		cbParalelo.setBounds(596, 643, 64, 24);
 		frame.getContentPane().add(cbParalelo);
 	}
+//	public void cargar(){
+//		String nombre, apePat, apeMat, ci, exp, fecha, genero, estado, dir, zona, ciudad, correo,
+//		instruccion, profesion, ocupacion, actividad, personas, ingreso, medio, problemas, percontactnombre,
+//		percontactapep, percontactcorreo, percontactapem, percontactcel, percontacttel;
+//		int edad, cel, tel;
+//		nombre = tfNombre.getText().toString();
+//		apePat = tfApePat.getText().toString();
+//		apeMat = tfApeMat.getText().toString();
+//		ci = tfCI.getText().toString();
+//		exp = 
+//		fecha = fechanc.getDateFormatString();
+//		edad = Integer.parseInt(tfEdad.getText().toString());
+//		genero = 
+//		estado = .getSelectedItem();
+//		dir = tfDireccion.getText().toString();
+//		zona = tfZona.getText().toString();
+//		ciudad = tfCiudad.getText().toString();
+//		correo  = tfCorreo.getText().toString();
+//		instruccion = (String) cbInstruccion.getSelectedItem();
+//		profesion = tfProfesion.getText().toString();
+//		ocupacion = tfOcupacion.getText().toString();
+//		actividad = tfActividad.getText().toString();
+//		personas = tfPersonaVive.getText().toString();
+//		ingreso = tfTipoIngreso.getText().toString();
+//		medio = tfMedio.getText().toString();
+//		problemas = tfProblemas.getText().toString();
+//		percontactnombre = tfPerContactoNombre.getText().toString();
+//		percontactapep = tfPerContactoApePat.getText().toString();
+//		percontactapem = tfPerContactoApeMat.getText().toString();
+//		percontactcorreo = tfPerContactoCorreo.getText().toString();
+//		percontactcel = tfPerContactoCel.getText().toString();
+//		percontacttel = tfPerContactoTel.getText().toString();
+//		cel = Integer.parseInt(tfCel.getText().toString());
+//		tel = Integer.parseInt(tfTel.getText().toString());
+//		
+//		Estudiante est = new Estudiante(nombre, apePat, apeMat, ci, exp, fecha, genero, 
+//				estado, dir, zona, ciudad, correo, instruccion, profesion, ocupacion,
+//				actividad, personas, ingreso, medio, problemas, percontactnombre, percontactapep,
+//				percontactcorreo, percontactapem, percontactcel, percontacttel, edad, cel, tel);
+//		JOptionPane.showMessageDialog(null, "Edad: "+edad);
+//		est.crear(est);
+//		Menu nuevo = new Menu();
+//		nuevo.main(null);
+//		frame.dispose();
+//	}
 }
 

@@ -13,7 +13,16 @@ import javax.swing.JComboBox;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JDayChooser;
 
+import controlador.Estudiante;
+
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class Ficha {
@@ -44,6 +53,7 @@ public class Ficha {
 	private JTextField tfTipoIngreso;
 	private JTextField tfMedio;
 	private JTextField tfProblemas;
+	private int edad;
 
 	/**
 	 * Launch the application.
@@ -158,11 +168,23 @@ public class Ficha {
 		frame.getContentPane().add(lblFechaDeNacimiento);
 		
 		JDateChooser fechanc = new JDateChooser();
-		fechanc.getCalendarButton().addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
+		fechanc.setDateFormatString("dd/MM/yyyy");
+		fechanc.getDateEditor().addPropertyChangeListener(
+				new PropertyChangeListener() {
+					
+					@Override
+					public void propertyChange(PropertyChangeEvent evt) {
+						String fecha = ((JTextField) fechanc.getDateEditor().getUiComponent()).getText();
+						if(!fecha.isEmpty()) {
+							DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+							LocalDate fechaNac = LocalDate.parse(fecha, fmt);
+							LocalDate ahora = LocalDate.now();
+							Period periodo = Period.between(fechaNac, ahora);
+							edad = periodo.getYears();
+							tfEdad.setText(edad+"");
+						}
+					}
+				});
 		fechanc.setBounds(174, 141, 175, 19);
 		frame.getContentPane().add(fechanc);
 		
@@ -377,6 +399,60 @@ public class Ficha {
 		tfProblemas.setColumns(10);
 		
 		JButton btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int option = JOptionPane.showOptionDialog(null, "Esta segura/o?", "Confirmación",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, 
+						null, new Object[]{"SI","NO"},"SI");
+						
+						if(option== 0){
+							String nombre, apePat, apeMat, ci, exp, fecha, genero, estado, dir, zona, ciudad, correo,
+							instruccion, profesion, ocupacion, actividad, personas, ingreso, medio, problemas, percontactnombre,
+							percontactapep, percontactcorreo, percontactapem, percontactcel, percontacttel;
+							int edad, cel, tel;
+							nombre = tfNombre.getText().toString();
+							apePat = tfApePat.getText().toString();
+							apeMat = tfApeMat.getText().toString();
+							ci = tfCI.getText().toString();
+							exp = (String) cbExp.getSelectedItem();
+							fecha = fechanc.getDateFormatString();
+							edad = Integer.parseInt(tfEdad.getText().toString());
+							genero = (String) cbGenero.getSelectedItem();
+							estado = (String) cbEstado_civil.getSelectedItem();
+							dir = tfDireccion.getText().toString();
+							zona = tfZona.getText().toString();
+							ciudad = tfCiudad.getText().toString();
+							correo  = tfCorreo.getText().toString();
+							instruccion = (String) cbInstruccion.getSelectedItem();
+							profesion = tfProfesion.getText().toString();
+							ocupacion = tfOcupacion.getText().toString();
+							actividad = tfActividad.getText().toString();
+							personas = tfPersonaVive.getText().toString();
+							ingreso = tfTipoIngreso.getText().toString();
+							medio = tfMedio.getText().toString();
+							problemas = tfProblemas.getText().toString();
+							percontactnombre = tfPerContactoNombre.getText().toString();
+							percontactapep = tfPerContactoApePat.getText().toString();
+							percontactapem = tfPerContactoApeMat.getText().toString();
+							percontactcorreo = tfPerContactoCorreo.getText().toString();
+							percontactcel = tfPerContactoCel.getText().toString();
+							percontacttel = tfPerContactoTel.getText().toString();
+							cel = Integer.parseInt(tfCel.getText().toString());
+							tel = Integer.parseInt(tfTel.getText().toString());
+							
+							Estudiante est = new Estudiante(nombre, apePat, apeMat, ci, exp, fecha, genero, 
+									estado, dir, zona, ciudad, correo, instruccion, profesion, ocupacion,
+									actividad, personas, ingreso, medio, problemas, percontactnombre, percontactapep,
+									percontactcorreo, percontactapem, percontactcel, percontacttel, edad, cel, tel);
+							JOptionPane.showMessageDialog(null, "Edad: "+edad);
+							est.crear(est);
+							Menu nuevo = new Menu();
+							nuevo.main(null);
+							frame.dispose();
+						}
+				
+			}
+		});
 		btnOk.setBounds(543, 632, 117, 25);
 		frame.getContentPane().add(btnOk);
 	}

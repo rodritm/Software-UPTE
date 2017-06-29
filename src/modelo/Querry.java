@@ -36,6 +36,26 @@ public class Querry {
 		rs = st.executeQuery(querry);
 		return rs;
 	}
+	public ResultSet ci() throws SQLException{
+		DB_Connect con = new DB_Connect();
+		Connection conn=con.conexion();
+		Statement st;
+		ResultSet rs = null;
+		st = (Statement)conn.createStatement();
+		String querry = "select idestudiante from estudiante";
+		rs = st.executeQuery(querry);
+		return rs;
+	}
+	public ResultSet anulado() throws SQLException{
+		DB_Connect con = new DB_Connect();
+		Connection conn=con.conexion();
+		Statement st;
+		ResultSet rs = null;
+		st = (Statement)conn.createStatement();
+		String querry = "select idrecibo from recibo where anulado = 1";
+		rs = st.executeQuery(querry);
+		return rs;
+	}
 	
 	
 	//							ANULAR
