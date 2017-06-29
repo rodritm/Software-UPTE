@@ -58,10 +58,24 @@ public class Administrar {
 		frame.getContentPane().add(btnUsuarios);
 		
 		JButton btnDocentes = new JButton("DOCENTES");
+		btnDocentes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AdministrarDocente nuevo = new AdministrarDocente();
+				nuevo.main(null);
+				frame.dispose();
+			}
+		});
 		btnDocentes.setBounds(147, 90, 124, 38);
 		frame.getContentPane().add(btnDocentes);
 		
 		JButton btnMaterias = new JButton("MATERIAS");
+		btnMaterias.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AdministrarMateria nuevo = new AdministrarMateria();
+				nuevo.main(null);
+				frame.dispose();
+			}
+		});
 		btnMaterias.setBounds(147, 140, 124, 38);
 		frame.getContentPane().add(btnMaterias);
 		
