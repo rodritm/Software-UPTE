@@ -86,6 +86,9 @@ public class Home extends JFrame{
 		
 		tfpass.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
+            	try {
+					
+				
             	char clave[]=tfpass.getPassword();
 				String clavedef=new String(clave);
 				String user = tfusuario.getText().toString();
@@ -101,6 +104,9 @@ public class Home extends JFrame{
 					tfusuario.setText("");
 					tfusuario.requestFocusInWindow();
 				}
+            	} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "ERROR: \n"+e2);
+				}
 			}
             });
 				
@@ -110,6 +116,8 @@ public class Home extends JFrame{
 		btnComprobar.setIcon(icon);
 		btnComprobar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
+				try {
+					
             	char clave[]=tfpass.getPassword();
 				String clavedef=new String(clave);
 				String user = tfusuario.getText().toString();
@@ -123,6 +131,9 @@ public class Home extends JFrame{
 					restantes--;
 					tfpass.setText("");
 					tfusuario.setText("");
+				}
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "ERROR: \n"+e2);
 				}
 			}
             });
