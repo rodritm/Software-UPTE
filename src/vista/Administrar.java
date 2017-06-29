@@ -46,6 +46,14 @@ public class Administrar {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnUsuarios = new JButton("USUARIOS ");
+		btnUsuarios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AdministrarUsuario nuevo = new AdministrarUsuario();
+				nuevo.main(null);
+				frame.dispose();
+				
+			}
+		});
 		btnUsuarios.setBounds(147, 40, 124, 38);
 		frame.getContentPane().add(btnUsuarios);
 		
