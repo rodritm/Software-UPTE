@@ -15,7 +15,7 @@ public class AcademicoGeneral {
 
 
 	private JFrame frame;
-	private JTextField textField;
+	private JTextField tfRuta;
 
 	/**
 	 * Launch the application.
@@ -53,15 +53,15 @@ public class AcademicoGeneral {
 		frame.setUndecorated(true);
 		frame.getContentPane().setBackground(Color.WHITE);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(176, 32, 224, 24);
-		frame.getContentPane().add(comboBox);
+		JComboBox cbGestion = new JComboBox();
+		cbGestion.setBounds(176, 32, 224, 24);
+		frame.getContentPane().add(cbGestion);
 		
-		textField = new JTextField();
-		textField.setBounds(12, 84, 255, 19);
-		frame.getContentPane().add(textField);
-		textField.setEditable(false);
-		textField.setColumns(10);
+		tfRuta = new JTextField();
+		tfRuta.setBounds(12, 84, 255, 19);
+		frame.getContentPane().add(tfRuta);
+		tfRuta.setEditable(false);
+		tfRuta.setColumns(10);
 		
 		JButton btnCarpeta = new JButton("CARPETA");
 		btnCarpeta.setBounds(302, 81, 98, 25);

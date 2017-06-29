@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 public class Anulados {
 
 	private JFrame frame;
-	private JTextField textField;
+	private JTextField tfRuta;
 
 	/**
 	 * Launch the application.
@@ -51,23 +51,23 @@ public class Anulados {
 		frame.setUndecorated(true);
 		frame.getContentPane().setBackground(Color.WHITE);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(176, 32, 224, 24);
-		frame.getContentPane().add(comboBox);
+		JComboBox cbGestion = new JComboBox();
+		cbGestion.setBounds(176, 32, 224, 24);
+		frame.getContentPane().add(cbGestion);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(176, 75, 224, 24);
-		frame.getContentPane().add(comboBox_1);
+		JComboBox cbCurso = new JComboBox();
+		cbCurso.setBounds(176, 75, 224, 24);
+		frame.getContentPane().add(cbCurso);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(176, 116, 224, 24);
-		frame.getContentPane().add(comboBox_2);
+		JComboBox cbParalelo = new JComboBox();
+		cbParalelo.setBounds(176, 116, 224, 24);
+		frame.getContentPane().add(cbParalelo);
 		
-		textField = new JTextField();
-		textField.setBounds(22, 168, 255, 19);
-		frame.getContentPane().add(textField);
-		textField.setEditable(false);
-		textField.setColumns(10);
+		tfRuta = new JTextField();
+		tfRuta.setBounds(22, 168, 255, 19);
+		frame.getContentPane().add(tfRuta);
+		tfRuta.setEditable(false);
+		tfRuta.setColumns(10);
 		
 		JButton btnCarpeta = new JButton("CARPETA ");
 		btnCarpeta.setBounds(302, 165, 98, 25);

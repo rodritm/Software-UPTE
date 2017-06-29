@@ -50,17 +50,17 @@ public class EstadisticoGenero {
 		frame.setUndecorated(true);
 		frame.getContentPane().setBackground(Color.WHITE);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(176, 32, 224, 24);
-		frame.getContentPane().add(comboBox);
+		JComboBox cbGestion = new JComboBox();
+		cbGestion.setBounds(176, 32, 224, 24);
+		frame.getContentPane().add(cbGestion);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(176, 75, 224, 24);
-		frame.getContentPane().add(comboBox_1);
+		JComboBox cbCurso = new JComboBox();
+		cbCurso.setBounds(176, 75, 224, 24);
+		frame.getContentPane().add(cbCurso);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(176, 116, 224, 24);
-		frame.getContentPane().add(comboBox_2);
+		JComboBox cbParalelo = new JComboBox();
+		cbParalelo.setBounds(176, 116, 224, 24);
+		frame.getContentPane().add(cbParalelo);
 		
 		JButton btnOk = new JButton("OK");
 		btnOk.setBounds(302, 217, 98, 25);
@@ -93,9 +93,9 @@ public class EstadisticoGenero {
 		lblGenero.setBounds(80, 168, 55, 15);
 		frame.getContentPane().add(lblGenero);
 		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(176, 163, 224, 24);
-		frame.getContentPane().add(comboBox_3);
+		JComboBox cbGenero = new JComboBox();
+		cbGenero.setBounds(176, 163, 224, 24);
+		frame.getContentPane().add(cbGenero);
 	}
 
 }
