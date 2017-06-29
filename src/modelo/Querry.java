@@ -85,4 +85,163 @@ public class Querry {
 		rs = st.executeQuery(querry);
 		return rs;
 	}
+	
+	
+	//						CONTABLES
+	
+	
+	public ResultSet ContRecibos(String gestion, String curso, int paralelo) throws SQLException{
+		DB_Connect con = new DB_Connect();
+		Connection conn=con.conexion();
+		Statement st;
+		ResultSet rs = null;
+		st = (Statement)conn.createStatement();
+		String querry = "SELECT a.nombres, c.idrecibo, c.codigo, c.fechan, d.gestion, e.nombres, f.idparalelo"
+				+ "FROM estudiante a, inscripcion b, recibo c, materia_has_paralelo d, materia e, paralelo f"
+				+ "WHERE a.idestudiante=b.estudiante_idestudiante"
+				+ "AND b.recibo_idrecibo = c.idrecibo"
+				+ "AND b.materia_has_paralelo_materia_idmateria=d.materia_idmateria"
+				+ "AND b.materia_has_paralelo_paralelo_idparalelo=f.idparalelo"
+				+ "AND d.gestion='"+gestion+"'"
+				+ "AND e.nombres='"+curso+"'"
+				+ "AND f.idparalelo='"+paralelo+"'";
+		rs = st.executeQuery(querry);
+		return rs;
+	}
+//	public ResultSet ContAnulados(String gestion, String Curso, int paralelo){
+//		DB_Connect con = new DB_Connect();
+//		Connection conn=con.conexion();
+//		Statement st;
+//		ResultSet rs = null;
+//		st = (Statement)conn.createStatement();
+//		String querry = "select idempleados, password,nombres from empleados where idempleados = '"+user+"' and password = '"+pass+"'";
+//		rs = st.executeQuery(querry);
+//		return rs;
+//	}
+	
+	
+	//							ADMIN
+	
+	
+	public void AdminUsersNew(String id, String nombre, String apellidoPat, String apellidoMat, String fecha, String dir, int cel, String pass, int tipo) {
+		try{
+			DB_Connect con = new DB_Connect();
+			Connection conn=con.conexion();
+			Statement st;
+			ResultSet rs = null;
+			st = (Statement)conn.createStatement();
+			String querry = "INSERT INTO empleados VALUES"
+					+ "('"+id+"', '"+nombre+"', '"+apellidoPat+"', '"+apellidoMat+"', '"+fecha+"', '"+dir+"', '"+cel+"', '"+pass+"', '"+tipo+"');";
+			rs = st.executeQuery(querry);
+			conn.close();
+		}catch(SQLException e) {
+			JOptionPane.showMessageDialog(null, "Error al crear el usuario","Error al crear",JOptionPane.ERROR_MESSAGE);
+		}
+	}
+//	public ResultSet AdminUsersUpdate() throws SQLException{
+//		DB_Connect con = new DB_Connect();
+//		Connection conn=con.conexion();
+//		Statement st;
+//		ResultSet rs = null;
+//		st = (Statement)conn.createStatement();
+//		String querry = "select idempleados, password,nombres from empleados where idempleados = '"+user+"' and password = '"+pass+"'";
+//		rs = st.executeQuery(querry);
+//		return rs;
+//	}	
+	public void AdminUsersRemove(String id) {
+		try{
+			DB_Connect con = new DB_Connect();
+			Connection conn=con.conexion();
+			Statement st;
+			ResultSet rs = null;
+			st = (Statement)conn.createStatement();
+			String querry = "DELETE FROM empleados WHERE idempleados='"+id+"'";
+			rs = st.executeQuery(querry);
+			conn.close();
+		}catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Error al eliminar el usuario","Error al eliminar",JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	
+	public void AdminDocNew(String id, String nombre, String apellidoPat, String apellidoMat, String fecha, String dir, int cel){
+		try{
+			DB_Connect con = new DB_Connect();
+			Connection conn=con.conexion();
+			Statement st;
+			ResultSet rs = null;
+			st = (Statement)conn.createStatement();
+			String querry = "INSERT INTO empleados VALUES"
+					+ "('"+id+"', '"+nombre+"', '"+apellidoPat+"', '"+apellidoMat+"', '"+fecha+"', '"+dir+"', '"+cel+"');";
+			rs = st.executeQuery(querry);
+			conn.close();
+		}catch(SQLException e) {
+			JOptionPane.showMessageDialog(null, "Error al crear el docente","Error al crear",JOptionPane.ERROR_MESSAGE);
+		}
+	}
+//	public ResultSet AdminDocUpdate() throws SQLException{
+//		DB_Connect con = new DB_Connect();
+//		Connection conn=con.conexion();
+//		Statement st;
+//		ResultSet rs = null;
+//		st = (Statement)conn.createStatement();
+//		String querry = "select idempleados, password,nombres from empleados where idempleados = '"+user+"' and password = '"+pass+"'";
+//		rs = st.executeQuery(querry);
+//		return rs;
+//	}
+	public void AdminDocRemove(String id) {
+		try{
+			DB_Connect con = new DB_Connect();
+			Connection conn=con.conexion();
+			Statement st;
+			ResultSet rs = null;
+			st = (Statement)conn.createStatement();
+			String querry = "DELETE FROM docente WHERE iddocente='"+id+"'";
+			rs = st.executeQuery(querry);
+			conn.close();
+		}catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Error al eliminar el docente","Error al eliminar",JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	
+	public void AdminMatNew(String id, String nombre) {
+		try{
+			DB_Connect con = new DB_Connect();
+			Connection conn=con.conexion();
+			Statement st;
+			ResultSet rs = null;
+			st = (Statement)conn.createStatement();
+			String querry = "INSERT INTO materia VALUES"
+					+ "('"+id+"', '"+nombre+"');";
+			rs = st.executeQuery(querry);
+			conn.close();
+		}catch(SQLException e) {
+			JOptionPane.showMessageDialog(null, "Error al crear la materia","Error al crear",JOptionPane.ERROR_MESSAGE);
+		}
+	}
+//	public ResultSet AdminMatUpdate() throws SQLException{
+//		DB_Connect con = new DB_Connect();
+//		Connection conn=con.conexion();
+//		Statement st;
+//		ResultSet rs = null;
+//		st = (Statement)conn.createStatement();
+//		String querry = "select idempleados, password,nombres from empleados where idempleados = '"+user+"' and password = '"+pass+"'";
+//		rs = st.executeQuery(querry);
+//		return rs;
+//	}
+	public void AdminMatRemove(String id) {
+		try{
+			DB_Connect con = new DB_Connect();
+			Connection conn=con.conexion();
+			Statement st;
+			ResultSet rs = null;
+			st = (Statement)conn.createStatement();
+			String querry = "DELETE FROM materia WHERE idmateria='"+id+"'";
+			rs = st.executeQuery(querry);
+			conn.close();
+		}catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "Error al eliminar la materia","Error al eliminar",JOptionPane.ERROR_MESSAGE);
+		}
+	}
 }
