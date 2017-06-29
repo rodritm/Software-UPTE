@@ -56,13 +56,18 @@ public class Querry {
 	//							REGISTRAR
 	
 	
-	public void Registrar() throws SQLException{
+	public void Registrar(String id, String exp, String nombres, String ape_paterno, String ape_materno,String genero, int edad,
+			String estado_civil, String foto, String fechanc, String direccion, String zona, String ciudad, String email, int celular, 
+			int telefono, String per_contact, int per_tel, String instruccion, String profesion, String ocupacion, String actividad, 
+			String per_vive, String ingreso, String info_upte, String motivo, String problemas, String obs, int per_cel, String per_ape_pat, 
+			String per_ape_mat, String per_correo) throws SQLException{
 		DB_Connect con = new DB_Connect();
 		Connection conn=con.conexion();
 		Statement st;
 		ResultSet rs;
 		st = (Statement)conn.createStatement();
-		String querry = "";
+		String querry = "INSERT INTO estudiante"
+				+ " VALUES ('"+id+"','"+exp+"','"+nombres+"','"+ape_paterno+"','"+ape_materno+"','"+genero+"','"+edad+"','"+estado_civil+"','"+foto+"','"+fechanc+"','"+direccion+"','"+zona+"','"+ciudad+"','"+email+"','"+celular+"','"+telefono+"','"+per_contact+"','"+per_tel+"','"+instruccion+"','"+profesion+"','"+ocupacion+"','"+actividad+"','"+per_vive+"','"+ingreso+"','"+info_upte+"','"+motivo+"','"+problemas+"','"+obs+"','"+per_cel+"','"+per_ape_pat+"','"+per_ape_mat+"','"+per_correo+"')";
 		rs = st.executeQuery(querry);
 		rs.close();
 		st.close();
