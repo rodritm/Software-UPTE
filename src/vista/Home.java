@@ -76,11 +76,13 @@ public class Home extends JFrame{
 		tfusuario.setBounds(296, 236, 180, 32);
 		frame.getContentPane().add(tfusuario);
 		tfusuario.setColumns(10);
+		tfusuario.setBorder(null);
 		//((JComponent) tfusuario.getContentPane()).setOpaque(false);
 		
 		tfpass = new JPasswordField();
 		tfpass.setBounds(296, 285, 180, 32);
-		frame.getContentPane().add(tfpass);		
+		frame.getContentPane().add(tfpass);
+		tfpass.setBorder(null);
 		
 		tfpass.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
