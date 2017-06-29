@@ -127,6 +127,9 @@ public class Menu extends JFrame{
 		JButton btnNewButton = new JButton("Anular");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Anular nuevo = new Anular();
+				nuevo.main(null);
+				frame.dispose();
 			}
 		});
 		btnNewButton.setBounds(613, 231, 134, 48);

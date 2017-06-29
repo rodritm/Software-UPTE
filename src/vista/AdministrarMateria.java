@@ -30,6 +30,10 @@ public class AdministrarMateria {
 	private JTextField tfAula;
 	private JButton btnCancelar;
 	private JButton btnOk;
+	private JLabel lblMonto;
+	private JTextField textField;
+	private JLabel lblTiempo;
+	private JComboBox comboBox;
 
 	/**
 	 * Launch the application.
@@ -61,7 +65,7 @@ public class AdministrarMateria {
 
 
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 167);
+		frame.setBounds(100, 100, 450, 206);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setLocationRelativeTo(null);
@@ -144,12 +148,29 @@ public class AdministrarMateria {
 						}
 			}
 		});
-		btnCancelar.setBounds(228, 124, 98, 25);
+		btnCancelar.setBounds(228, 169, 98, 25);
 		frame.getContentPane().add(btnCancelar);
 		
 		btnOk = new JButton("OK");
-		btnOk.setBounds(340, 124, 98, 25);
+		btnOk.setBounds(341, 169, 98, 25);
 		frame.getContentPane().add(btnOk);
+		
+		lblMonto = new JLabel("Monto:");
+		lblMonto.setBounds(12, 120, 55, 15);
+		frame.getContentPane().add(lblMonto);
+		
+		textField = new JTextField();
+		textField.setBounds(71, 118, 97, 19);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		lblTiempo = new JLabel("Tiempo:");
+		lblTiempo.setBounds(187, 120, 55, 15);
+		frame.getContentPane().add(lblTiempo);
+		
+		comboBox = new JComboBox();
+		comboBox.setBounds(260, 115, 178, 24);
+		frame.getContentPane().add(comboBox);
 	}
 
 }
