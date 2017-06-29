@@ -114,6 +114,13 @@ public class Menu extends JFrame{
 		frame.getContentPane().add(btnAdministrar);
 		
 		JButton btnInscribir = new JButton("Inscribir");
+		btnInscribir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Inscribir nuevo = new Inscribir();
+				nuevo.main(null);
+				frame.dispose();
+			}
+		});
 		btnInscribir.setBounds(560, 146, 134, 48);
 		frame.getContentPane().add(btnInscribir);
 		
