@@ -3,9 +3,13 @@ package modelo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.Statement;
 
 import javax.swing.JOptionPane;
+
+import com.mysql.jdbc.PreparedStatement;
 
 public class Querry {
 	//						LOGIN
@@ -314,16 +318,16 @@ public class Querry {
 	//							ADMIN
 	
 	
-	public void AdminUsersNew(String id, String nombre, String apellidoPat, String apellidoMat, String fecha, String dir, int cel, String pass, int tipo) {
+	public void AdminUsersNew(String ci, String nombre, String apellidoPat, String apellidoMat, String fecha, String dir, String cel, String pass, String tipo) throws ClassNotFoundException {
 		try{
 			DB_Connect con = new DB_Connect();
 			Connection conn=con.conexion();
 			Statement st;
 			ResultSet rs = null;
 			st = (Statement)conn.createStatement();
-			String querry = "INSERT INTO empleados VALUES"
-					+ "('"+id+"', '"+nombre+"', '"+apellidoPat+"', '"+apellidoMat+"',"
-					+ " '"+fecha+"', '"+dir+"', '"+cel+"', '"+pass+"', '"+tipo+"');";
+			String querry = "INSERT INTO empleados VALUES ('"+ci+"', '"+nombre+"', '"+apellidoPat+"', "
+					+ "'"+apellidoMat+"', '"+fecha+"', '"+dir+"', '"+cel+"', '"+pass+"', '"+tipo+"')";
+			JOptionPane.showMessageDialog(null, querry);
 			rs = st.executeQuery(querry);
 			rs.close();
 			st.close();

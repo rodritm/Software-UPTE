@@ -103,8 +103,6 @@ public class Administrar extends JFrame{
 		btnAtras.setBorder(null);
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Menu nuevo = new Menu();
-				nuevo.main(null);
 				frame.dispose();
 			}
 		});

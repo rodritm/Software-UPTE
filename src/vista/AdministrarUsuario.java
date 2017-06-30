@@ -8,9 +8,17 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
+
+import modelo.Querry;
+
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.awt.event.ActionEvent;
 
 public class AdministrarUsuario {
@@ -113,7 +121,7 @@ public class AdministrarUsuario {
 		JDateChooser FechaNac = new JDateChooser();
 		FechaNac.setBounds(303, 93, 135, 19);
 		frame.getContentPane().add(FechaNac);
-		FechaNac.setDateFormatString("dd/MM/yyyy");
+		FechaNac.setDateFormatString("yyyy-MM-dd");
 		
 		JLabel lblDireccion = new JLabel("Direccion:");
 		lblDireccion.setBounds(12, 122, 73, 15);
@@ -152,7 +160,6 @@ public class AdministrarUsuario {
 		frame.getContentPane().add(cbTipo);
 		cbTipo.addItem("Admin");
 		cbTipo.addItem("Empleado");
-		cbTipo.addItem("Docente");
 		
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
@@ -176,12 +183,25 @@ public class AdministrarUsuario {
 				String nombre = tfNombre.getText().toString();
 				String ApePat = tfApePat.getText().toString();
 				String ApeMat = tfApeMat.getText().toString();
-				int ci = Integer.parseInt(tfCI.getText().toString());
+				String ci = tfCI.getText().toString();
+				//Date f = (Date) FechaNac.getDate();
 				String fecha = ((JTextField) FechaNac.getDateEditor().getUiComponent()).getText();
 				String dir = tfDireccion.getText().toString();
-				int cel = Integer.parseInt(tfCel.getText().toString());
-				String tipo = (String) cbTipo.getSelectedItem();
+				String cel = tfCel.getText().toString();
+				String tipo1 = (String) cbTipo.getSelectedItem();
+				String tipo;
+				if(tipo1=="Admin")
+					tipo="1";
+				else 
+					tipo="2";
 				String pass = tfPass.getText().toString();
+				Querry q = new Querry();
+				try {
+					q.AdminUsersNew(ci, nombre, ApePat, ApeMat, fecha, dir, cel, pass, tipo);
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnOk.setBounds(340, 211, 98, 25);

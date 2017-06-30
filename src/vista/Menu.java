@@ -16,6 +16,7 @@ public class Menu extends JFrame{
 
 	private JFrame frame;
 	private JPanel contentPane;
+	private int restantes = 3;
 
 	/**
 	 * Launch the application.
@@ -108,9 +109,11 @@ public class Menu extends JFrame{
 		btnAdministrar.setBorder(null);
 		btnAdministrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Administrar nuevo = new Administrar();
-				frame.dispose();
-				nuevo.main(null);
+				LoginAdmin n = new LoginAdmin();
+				n.main(null);
+//				Administrar nuevo = new Administrar();
+//				frame.dispose();
+//				nuevo.main(null);
 			}
 		});
 		btnAdministrar.setBounds(12, 259, 217, 57);
