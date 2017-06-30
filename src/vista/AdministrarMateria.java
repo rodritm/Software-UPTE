@@ -7,9 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import modelo.Querry;
+
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
 public class AdministrarMateria {
@@ -107,6 +111,14 @@ public class AdministrarMateria {
 		cbDocente = new JComboBox();
 		cbDocente.setBounds(71, 88, 367, 24);
 		frame.getContentPane().add(cbDocente);
+		try{
+			Querry q = new Querry();
+			ResultSet rs = q.Gestiones();
+			while(rs.next()) {
+				cbDocente.addItem(rs.getString("nombres"));
+			}
+		}catch(Exception e) {
+		}
 		
 		lblHora = new JLabel("Hora:");
 		lblHora.setBounds(150, 64, 55, 15);

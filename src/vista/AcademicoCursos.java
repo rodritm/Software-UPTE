@@ -73,7 +73,7 @@ public class AcademicoCursos {
 			Querry q = new Querry();
 			ResultSet rs = q.Cursos();
 			while(rs.next()) {
-				cbGestion.addItem(rs.getString("nombres"));
+				cbCurso.addItem(rs.getString("nombres"));
 			}
 		}catch(Exception e) {
 		}
@@ -88,7 +88,7 @@ public class AcademicoCursos {
 		        	Querry q = new Querry();
 			        ResultSet rs = q.Paralelos(curso);
 			        while(rs.next()) {
-			        	cbParalelo.addItem(rs.getString(""));
+			        	cbParalelo.addItem(rs.getString("paralelo_idparalelo"));
 			        }
 		        }catch(Exception ev) {
 		        }

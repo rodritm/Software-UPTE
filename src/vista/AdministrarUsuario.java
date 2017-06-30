@@ -149,6 +149,9 @@ public class AdministrarUsuario {
 		cbTipo = new JComboBox();
 		cbTipo.setBounds(271, 144, 167, 24);
 		frame.getContentPane().add(cbTipo);
+		cbTipo.addItem("Admin");
+		cbTipo.addItem("Empleado");
+		cbTipo.addItem("Docente");
 		
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {

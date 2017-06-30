@@ -162,6 +162,11 @@ public class Ficha {
 		JComboBox cbEstado_civil = new JComboBox();
 		cbEstado_civil.setBounds(443, 166, 217, 24);
 		frame.getContentPane().add(cbEstado_civil);
+		cbEstado_civil.addItem("Casado/a");
+		cbEstado_civil.addItem("Viudo/a");
+		cbEstado_civil.addItem("Soltero/a");
+		cbEstado_civil.addItem("Divorciado/a");
+		cbEstado_civil.addItem("Otro");
 		
 		JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento:");
 		lblFechaDeNacimiento.setBounds(12, 144, 163, 15);
@@ -195,6 +200,16 @@ public class Ficha {
 		JComboBox cbExp = new JComboBox();
 		cbExp.setBounds(476, 107, 184, 24);
 		frame.getContentPane().add(cbExp);
+		cbExp.addItem("LP");
+		cbExp.addItem("OR");
+		cbExp.addItem("PT");
+		cbExp.addItem("CB");
+		cbExp.addItem("SC");
+		cbExp.addItem("BN");
+		cbExp.addItem("PA");
+		cbExp.addItem("TJ");
+		cbExp.addItem("CH");
+		cbExp.addItem("EX");
 		
 		JLabel lblGenero = new JLabel("Genero:");
 		lblGenero.setBounds(12, 171, 70, 15);
@@ -203,6 +218,8 @@ public class Ficha {
 		JComboBox cbGenero = new JComboBox();
 		cbGenero.setBounds(76, 166, 217, 24);
 		frame.getContentPane().add(cbGenero);
+		cbGenero.addItem("Masculino");
+		cbGenero.addItem("Femenino");
 		
 		JLabel lblEdad = new JLabel("Edad:");
 		lblEdad.setBounds(385, 144, 70, 15);
@@ -334,6 +351,13 @@ public class Ficha {
 		JComboBox cbInstruccion = new JComboBox();
 		cbInstruccion.setBounds(164, 276, 147, 24);
 		frame.getContentPane().add(cbInstruccion);
+		cbInstruccion.addItem("Primaria");
+		cbInstruccion.addItem("Secundaria");
+		cbInstruccion.addItem("Pregrado");
+		cbInstruccion.addItem("Postgrado");
+		cbInstruccion.addItem("Tecnico");
+		cbInstruccion.addItem("Nada");
+		cbInstruccion.addItem("Otro");
 		
 		JLabel lblProfesin = new JLabel("Profesión:");
 		lblProfesin.setBounds(330, 281, 73, 15);
@@ -439,13 +463,11 @@ public class Ficha {
 							percontacttel = tfPerContactoTel.getText().toString();
 							cel = Integer.parseInt(tfCel.getText().toString());
 							tel = Integer.parseInt(tfTel.getText().toString());
-							
 							Estudiante est = new Estudiante(nombre, apePat, apeMat, ci, exp, fecha, genero, 
 									estado, dir, zona, ciudad, correo, instruccion, profesion, ocupacion,
 									actividad, personas, ingreso, medio, problemas, percontactnombre, percontactapep,
 									percontactcorreo, percontactapem, percontactcel, percontacttel, edad, cel, tel);
-							JOptionPane.showMessageDialog(null, "Edad: "+edad);
-							est.crear(est);
+							//est.crear(est);
 							Menu nuevo = new Menu();
 							nuevo.main(null);
 							frame.dispose();

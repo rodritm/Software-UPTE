@@ -4,12 +4,15 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import modelo.Querry;
 
 public class AcademicoGeneral {
 
@@ -56,6 +59,14 @@ public class AcademicoGeneral {
 		JComboBox cbGestion = new JComboBox();
 		cbGestion.setBounds(176, 32, 224, 24);
 		frame.getContentPane().add(cbGestion);
+		try{
+			Querry q = new Querry();
+			ResultSet rs = q.Gestiones();
+			while(rs.next()) {
+				cbGestion.addItem(rs.getString("gestion"));
+			}
+		}catch(Exception e) {
+		}
 		
 		tfRuta = new JTextField();
 		tfRuta.setBounds(12, 84, 255, 19);

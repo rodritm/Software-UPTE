@@ -18,12 +18,11 @@ public class Menu extends JFrame{
 
 	private JFrame frame;
 	private JPanel contentPane;
-	private Empleados e;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args, Empleados e) {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

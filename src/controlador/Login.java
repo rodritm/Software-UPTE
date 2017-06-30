@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 import modelo.Querry;
 
 public class Login {
-	public static boolean login(Empleados emp, int restantes, Empleados e){
+	public boolean login(Empleados emp, int restantes){
 		String user = emp.user;
 		String pass = emp.pass;
 		
@@ -42,7 +42,7 @@ public class Login {
 		if(userbd.equals(user) && passbd.equals(pass)){
 			JOptionPane.showMessageDialog(null, "Bienvenido: "+name+"\n "
 					+ "Has ingresado satisfactoriamente al sistema.","Acceso Concedido",JOptionPane.INFORMATION_MESSAGE);
-			e = new Empleados(userbd, passbd, name, tipo);
+			Empleados em = new Empleados(userbd, passbd, name, tipo);
 			return true;
 		}
 		return false;

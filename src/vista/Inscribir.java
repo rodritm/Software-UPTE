@@ -178,6 +178,11 @@ public class Inscribir {
 		JComboBox cbEstado_civil = new JComboBox();
 		cbEstado_civil.setBounds(443, 166, 217, 24);
 		frame.getContentPane().add(cbEstado_civil);
+		cbEstado_civil.addItem("Casado/a");
+		cbEstado_civil.addItem("Viudo/a");
+		cbEstado_civil.addItem("Soltero/a");
+		cbEstado_civil.addItem("Divorciado/a");
+		cbEstado_civil.addItem("Otro");
 		
 		JLabel lblFechaDeNacimiento = new JLabel("Fecha de nacimiento:");
 		lblFechaDeNacimiento.setBounds(12, 144, 163, 15);
@@ -211,6 +216,16 @@ public class Inscribir {
 		JComboBox cbExp = new JComboBox();
 		cbExp.setBounds(474, 25, 49, 24);
 		frame.getContentPane().add(cbExp);
+		cbExp.addItem("LP");
+		cbExp.addItem("OR");
+		cbExp.addItem("PT");
+		cbExp.addItem("CB");
+		cbExp.addItem("SC");
+		cbExp.addItem("BN");
+		cbExp.addItem("PA");
+		cbExp.addItem("TJ");
+		cbExp.addItem("CH");
+		cbExp.addItem("EX");
 		
 		JLabel lblGenero = new JLabel("Genero:");
 		lblGenero.setBounds(12, 171, 70, 15);
@@ -219,6 +234,8 @@ public class Inscribir {
 		JComboBox cbGenero = new JComboBox();
 		cbGenero.setBounds(76, 166, 217, 24);
 		frame.getContentPane().add(cbGenero);
+		cbGenero.addItem("Masculino");
+		cbGenero.addItem("Femenino");
 		
 		JLabel lblEdad = new JLabel("Edad:");
 		lblEdad.setBounds(385, 144, 70, 15);
@@ -350,6 +367,13 @@ public class Inscribir {
 		JComboBox cbInstruccion = new JComboBox();
 		cbInstruccion.setBounds(164, 276, 147, 24);
 		frame.getContentPane().add(cbInstruccion);
+		cbInstruccion.addItem("Primaria");
+		cbInstruccion.addItem("Secundaria");
+		cbInstruccion.addItem("Pregrado");
+		cbInstruccion.addItem("Postgrado");
+		cbInstruccion.addItem("Tecnico");
+		cbInstruccion.addItem("Nada");
+		cbInstruccion.addItem("Otro");
 		
 		JLabel lblProfesin = new JLabel("Profesión:");
 		lblProfesin.setBounds(330, 281, 73, 15);
@@ -441,6 +465,14 @@ public class Inscribir {
 		JComboBox cbMateria = new JComboBox();
 		cbMateria.setBounds(76, 643, 411, 24);
 		frame.getContentPane().add(cbMateria);
+		try{
+			Querry qu = new Querry();
+			ResultSet rs1 = qu.Cursos();
+			while(rs1.next()) {
+				cbMateria.addItem(rs1.getString("nombres"));
+			}
+		}catch(Exception e) {
+		}
 		
 		JLabel lblParalelo = new JLabel("Paralelo:");
 		lblParalelo.setBounds(523, 648, 55, 15);
@@ -449,6 +481,19 @@ public class Inscribir {
 		JComboBox cbParalelo = new JComboBox();
 		cbParalelo.setBounds(596, 643, 64, 24);
 		frame.getContentPane().add(cbParalelo);
+		cbMateria.addActionListener (new ActionListener () {
+		    public void actionPerformed(ActionEvent e) {
+		        String curso = (String) cbMateria.getSelectedItem();
+		        try{
+		        	Querry q = new Querry();
+			        ResultSet rs = q.Paralelos(curso);
+			        while(rs.next()) {
+			        	cbParalelo.addItem(rs.getString("paralelo_idparalelo"));
+			        }
+		        }catch(Exception ev) {
+		        }
+		    }
+		});
 		
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
