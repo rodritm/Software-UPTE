@@ -20,7 +20,7 @@ public class Ruta {
 			}
 			ruta = f.toString();
 		} catch (Exception e) {
-			  JOptionPane.showMessageDialog(null,"Error:\n"+e);
+			  JOptionPane.showMessageDialog(null,"NO HAY DIRECCIÓN","",JOptionPane.ERROR_MESSAGE);
 		}
 		return ruta;
 		
