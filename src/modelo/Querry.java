@@ -318,6 +318,23 @@ public class Querry {
 	//							ADMIN
 	
 	
+	public void Prueba(String ci) throws ClassNotFoundException {
+		try{
+			DB_Connect con = new DB_Connect();
+			Connection conn=con.conexion();
+			Statement st;
+			ResultSet rs = null;
+			st = (Statement)conn.createStatement();
+			String querry = "INSERT INTO  `pueba`(`holas`) VALUES ('"+ci+"')";
+			JOptionPane.showMessageDialog(null, querry);
+			st.executeUpdate(querry);
+		}catch(SQLException e) {
+			JOptionPane.showMessageDialog(null, "Error al crear el usuario","Error al crear",JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	
+	
 	public void AdminUsersNew(String ci, String nombre, String apellidoPat, String apellidoMat, String fecha, String dir, String cel, String pass, String tipo) throws ClassNotFoundException {
 		try{
 			DB_Connect con = new DB_Connect();
@@ -328,7 +345,7 @@ public class Querry {
 			String querry = "INSERT INTO empleados VALUES ('"+ci+"', '"+nombre+"', '"+apellidoPat+"', "
 					+ "'"+apellidoMat+"', '"+fecha+"', '"+dir+"', '"+cel+"', '"+pass+"', '"+tipo+"')";
 			JOptionPane.showMessageDialog(null, querry);
-			rs = st.executeQuery(querry);
+			st.executeUpdate(querry);
 			rs.close();
 			st.close();
 			conn.close();

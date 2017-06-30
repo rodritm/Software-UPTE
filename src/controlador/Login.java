@@ -1,7 +1,10 @@
 package controlador;
 
+import java.net.ConnectException;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+
+import modelo.DB_Connect;
 import modelo.Querry;
 
 public class Login {
