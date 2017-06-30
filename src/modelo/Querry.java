@@ -271,7 +271,7 @@ public class Querry {
 	//						CONTABLES
 	
 	
-	public ResultSet ContRecibos(String gestion, String curso, int paralelo) throws SQLException{
+	public ResultSet ContRecibos(String gestion, String curso, String paralelo) throws SQLException{
 		DB_Connect con = new DB_Connect();
 		Connection conn=con.conexion();
 		Statement st;

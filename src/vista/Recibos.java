@@ -103,8 +103,10 @@ public class Recibos {
 				String curso = (String) cbCurso.getSelectedItem();
 				String paralelo = (String) cbParalelo.getSelectedItem();
 				String ruta = Ruta;
+				
 				if (ruta.compareTo("")==1){
 					RepRecibos recpdf = new RepRecibos();
+					recpdf.recibos(gestion, curso, paralelo, ruta);
 					
 				}else{
 					  JOptionPane.showMessageDialog(null,"NO HAY DIRECCIÓN","",JOptionPane.ERROR_MESSAGE);
