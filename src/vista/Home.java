@@ -6,22 +6,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-import com.mysql.jdbc.Statement;
-
 import controlador.Empleados;
 import controlador.Login;
-import modelo.DB_Connect;
 
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 

@@ -6,8 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-import controlador.Empleados;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -106,7 +104,7 @@ public class Menu extends JFrame{
 		JButton btnAdministrar = new JButton("");
 		URL url3 = Home.class.getResource("/ini/3.png");
 		ImageIcon icon3 = new ImageIcon(url3);
-		btnAdministrar.setIcon(icon4);
+		btnAdministrar.setIcon(icon3);
 		btnAdministrar.setBorder(null);
 		btnAdministrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

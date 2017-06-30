@@ -40,7 +40,7 @@ public class Login {
 		}
 		if(userbd.equals(user) && passbd.equals(pass)){
 			JOptionPane.showMessageDialog(null, "Bienvenido: "+name+"\n "
-					+ "Has ingresado satisfactoriamente al sistema.","Acceso Concedido",JOptionPane.INFORMATION_MESSAGE);
+					+ "Has ingresado satisfactoriamente al sistema.","Acceso Concedido",JOptionPane.PLAIN_MESSAGE);
 			return true;
 		}
 		return false;
