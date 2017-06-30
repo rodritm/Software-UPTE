@@ -17,7 +17,7 @@ public class Querry {
 		Statement st;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "select idempleados, password,nombres from empleados where idempleados = '"+user+"' and password = '"+pass+"'";
+		String querry = "select a.idempleados, a.password,a.nombres,b.idTipo_empleado from empleados a, tipo_empleado b where idempleados = '"+user+"' and password = '"+pass+"' and a.Tipo_empleado_idTipo_empleado=b.idTipo_empleado";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
@@ -53,6 +53,46 @@ public class Querry {
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
 		String querry = "select idrecibo from recibo where anulado = 1";
+		rs = st.executeQuery(querry);
+		return rs;
+	}
+	public ResultSet Gestiones() throws SQLException{
+		DB_Connect con = new DB_Connect();
+		Connection conn=con.conexion();
+		Statement st;
+		ResultSet rs = null;
+		st = (Statement)conn.createStatement();
+		String querry = "SELECT DISTINCT gestion FROM materia_has_paralelo";
+		rs = st.executeQuery(querry);
+		return rs;
+	}
+	public ResultSet Paralelos(String curso) throws SQLException{
+		DB_Connect con = new DB_Connect();
+		Connection conn=con.conexion();
+		Statement st;
+		ResultSet rs = null;
+		st = (Statement)conn.createStatement();
+		String querry = "SELECT DISTINCT b.paralelo_idparalelo FROM materia a, materia_has_paralelo b WHERE a.nombres='"+curso+"' AND a.idmateria=b.materia_idmateria";                               
+		rs = st.executeQuery(querry);
+		return rs;
+	}
+	public ResultSet Cursos() throws SQLException{
+		DB_Connect con = new DB_Connect();
+		Connection conn=con.conexion();
+		Statement st;
+		ResultSet rs = null;
+		st = (Statement)conn.createStatement();
+		String querry = "SELECT DISTINCT nombres FROM materia";
+		rs = st.executeQuery(querry);
+		return rs;
+	}
+	public ResultSet Docentes() throws SQLException{
+		DB_Connect con = new DB_Connect();
+		Connection conn=con.conexion();
+		Statement st;
+		ResultSet rs = null;
+		st = (Statement)conn.createStatement();
+		String querry = "SELECT DISTINCT nombres FROM docente";
 		rs = st.executeQuery(querry);
 		return rs;
 	}

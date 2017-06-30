@@ -114,10 +114,11 @@ public class Home extends JFrame{
 				String clavedef=new String(clave);
 				String user = tfusuario.getText().toString();
 				Empleados emp = new Empleados(user,clavedef);
+				Empleados e;
 				Login log = new Login();
-				if (log.login(emp, restantes)){
+				if (log.login(emp, restantes, e)){
 					Menu nuevo = new Menu();
-					nuevo.main(null);
+					nuevo.main(null, e);
 					frame.dispose();					
 				}else{
 					restantes--;

@@ -5,6 +5,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+
+import controlador.Empleados;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -15,11 +18,12 @@ public class Menu extends JFrame{
 
 	private JFrame frame;
 	private JPanel contentPane;
+	private Empleados e;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args, Empleados e) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -43,6 +47,7 @@ public class Menu extends JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 500);
 		frame.setLocationRelativeTo(null);

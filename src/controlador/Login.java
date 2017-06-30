@@ -5,11 +5,11 @@ import javax.swing.JOptionPane;
 import modelo.Querry;
 
 public class Login {
-	public static boolean login(Empleados emp, int restantes){
+	public static boolean login(Empleados emp, int restantes, Empleados e){
 		String user = emp.user;
 		String pass = emp.pass;
 		
-		String userbd = null, passbd = null,name = null;
+		String userbd = null, passbd = null,name = null, tipo = null;
 		ResultSet rs;
 		try{
 			Querry que = new Querry();
@@ -18,6 +18,7 @@ public class Login {
 				userbd = (rs.getString("idempleados"));
 				passbd = (rs.getString("password"));
 				name = (rs.getString("nombres"));
+				tipo = (rs.getString("idTipo_empleado"));
 			}
 			if((userbd == null) || (passbd == null)){
 				if(restantes>1){
@@ -41,6 +42,7 @@ public class Login {
 		if(userbd.equals(user) && passbd.equals(pass)){
 			JOptionPane.showMessageDialog(null, "Bienvenido: "+name+"\n "
 					+ "Has ingresado satisfactoriamente al sistema.","Acceso Concedido",JOptionPane.INFORMATION_MESSAGE);
+			e = new Empleados(userbd, passbd, name, tipo);
 			return true;
 		}
 		return false;
