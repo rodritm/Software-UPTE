@@ -281,7 +281,7 @@ public class Querry {
 		Statement st;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "SELECT a.nombres, c.idrecibo, c.fechan"
+		String querry = "SELECT a.nombres, c.idrecibo, c.fechan, c.monto, c.nit"
 				+ " FROM estudiante a, inscripcion b, recibo c, materia_has_paralelo d, materia e, paralelo f"
 				+ " WHERE a.idestudiante=b.estudiante_idestudiante"
 				+ " AND b.recibo_idrecibo = c.idrecibo"
