@@ -12,6 +12,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
+import controlador.Ruta;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -26,6 +28,7 @@ public class Recibos {
 
 	private JFrame frame;
 	private JTextField tfRuta;
+	private String Ruta = "";
 
 	/**
 	 * Launch the application.
@@ -80,7 +83,15 @@ public class Recibos {
 		tfRuta.setEditable(false);
 		tfRuta.setColumns(10);
 		
+		
 		JButton btnCarpeta = new JButton("CARPETA");
+		btnCarpeta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Ruta dic = new Ruta();
+				Ruta=dic.funcion();
+				tfRuta.setText(Ruta);
+			}
+		});
 		btnCarpeta.setBounds(302, 165, 98, 25);
 		frame.getContentPane().add(btnCarpeta);
 		
@@ -90,6 +101,8 @@ public class Recibos {
 				String gestion = (String) cbGestion.getSelectedItem();
 				String curso = (String) cbCurso.getSelectedItem();
 				String paralelo = (String) cbParalelo.getSelectedItem();
+				String ruta = Ruta;
+				
 			}
 		});
 		btnOk.setBounds(302, 199, 98, 25);
