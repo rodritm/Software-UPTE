@@ -76,6 +76,15 @@ public class Anular {
 		JButton btnOk = new JButton("OK");
 		btnOk.setBounds(302, 218, 98, 25);
 		frame.getContentPane().add(btnOk);
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int numero = Integer.parseInt(tfNumero.getText().toString());
+				String gestion = tfGestion.getText().toString();
+				String curso = tfCurso.getText().toString();
+				String paralelo = tfParalelo.getText().toString();
+				double monto = Double.parseDouble(tfMonto.getText().toString());
+			}
+		});
 		
 		JLabel lblGestion = new JLabel("GESTION:");
 		lblGestion.setBounds(80, 75, 55, 15);
@@ -152,6 +161,8 @@ public class Anular {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String id = tfNumero.getText().toString();
+				//Esto lo mandas a la querry
+				//Tambien pones los setText
 			}
 		});
 		btnBuscar.setBounds(311, 42, 89, 23);

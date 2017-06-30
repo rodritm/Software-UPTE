@@ -171,7 +171,20 @@ public class AdministrarDocente {
 		btnCancelar.setBounds(215, 211, 98, 25);
 		frame.getContentPane().add(btnCancelar);
 		
-		btnOk = new JButton("ok");
+		btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nombre = tfNombre.getText().toString();
+				String ApePat = tfApePat.getText().toString();
+				String ApeMat = tfApeMat.getText().toString();
+				int ci = Integer.parseInt(tfCI.getText().toString());
+				String fecha = ((JTextField) fechaNac.getDateEditor().getUiComponent()).getText();
+				String dir = tfDireccion.getText().toString();
+				int cel = Integer.parseInt(tfCel.getText().toString());
+				String tipo = (String) cbTipo.getSelectedItem();
+				String pass = tfPass.getText().toString();
+			}
+		});
 		btnOk.setBounds(340, 211, 98, 25);
 		frame.getContentPane().add(btnOk);
 	}

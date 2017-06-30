@@ -92,6 +92,11 @@ public class AcademicoGeneral {
 		frame.getContentPane().add(btnCarpeta);
 		
 		JButton btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String gestion = (String) cbGestion.getSelectedItem();
+			}
+		});
 		btnOk.setBounds(302, 118, 98, 25);
 		frame.getContentPane().add(btnOk);
 		

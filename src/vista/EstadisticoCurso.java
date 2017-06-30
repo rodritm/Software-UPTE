@@ -96,6 +96,13 @@ public class EstadisticoCurso {
 		
 		
 		JButton btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String gestion = (String) cbGeston.getSelectedItem();
+				String curso = (String) cbCurso.getSelectedItem();
+				String paralelo = (String) cbParalelo.getSelectedItem();
+			}
+		});
 		btnOk.setBounds(302, 166, 98, 25);
 		frame.getContentPane().add(btnOk);
 		

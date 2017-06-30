@@ -133,7 +133,9 @@ public class AcademicoCursos {
 		frame.getContentPane().add(btnOk);
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				String gestion = (String) cbGestion.getSelectedItem();
+				String curso = (String) cbCurso.getSelectedItem();
+				String paralelo = (String) cbParalelo.getSelectedItem();
 			}
 		});
 	}
