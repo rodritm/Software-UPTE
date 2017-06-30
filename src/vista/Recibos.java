@@ -12,6 +12,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
+import controlador.RepRecibos;
 import controlador.Ruta;
 
 import javax.swing.JButton;
@@ -102,6 +103,13 @@ public class Recibos {
 				String curso = (String) cbCurso.getSelectedItem();
 				String paralelo = (String) cbParalelo.getSelectedItem();
 				String ruta = Ruta;
+				if (ruta.compareTo("")==1){
+					RepRecibos recpdf = new RepRecibos();
+					
+				}else{
+					  JOptionPane.showMessageDialog(null,"NO HAY DIRECCIÓN","",JOptionPane.ERROR_MESSAGE);
+
+				}
 				
 			}
 		});
