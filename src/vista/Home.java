@@ -105,7 +105,7 @@ public class Home extends JFrame{
             });
 				
 		JButton btnComprobar = new JButton("");
-		URL url = Home.class.getResource("/1.png");
+		URL url = Home.class.getResource("/login/1.png");
 		ImageIcon icon = new ImageIcon(url);
 		btnComprobar.setIcon(icon);
 		btnComprobar.addActionListener(new ActionListener() {
@@ -132,7 +132,7 @@ public class Home extends JFrame{
 		btnComprobar.setBorder(null);
 		
 		btnSalir = new JButton("");
-		URL url2 = Home.class.getResource("/2.png");
+		URL url2 = Home.class.getResource("/login/2.png");
 		ImageIcon icon2 = new ImageIcon(url2);
 		btnSalir.setIcon(icon2);
 		btnSalir.setBorder(null);
@@ -145,7 +145,7 @@ public class Home extends JFrame{
 		frame.getContentPane().add(btnSalir);
 		lblNewLabel = new JLabel("");
 		((JPanel)getContentPane()).setOpaque(false); 
-		ImageIcon uno=new ImageIcon(this.getClass().getResource("/fondo.png")); 
+		ImageIcon uno=new ImageIcon(this.getClass().getResource("/login/fondo.png")); 
 		lblNewLabel.setIcon(uno); 
 		getLayeredPane().add(lblNewLabel,JLayeredPane.FRAME_CONTENT_LAYER); 
 		lblNewLabel.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
