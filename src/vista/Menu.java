@@ -55,24 +55,13 @@ public class Menu extends JFrame{
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel label = new JLabel("");
 		
-		/*//
-		((JPanel)getContentPane()).setOpaque(false); 
-		ImageIcon uno=new ImageIcon(this.getClass().getResource("/logopeque.jpg")); 
-		label.setIcon(uno); 
-		getLayeredPane().add(label,JLayeredPane.FRAME_CONTENT_LAYER); 
-		label.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
-		///*/
 		
-		//URL url = Menu.class.getResource("/logo_ucb_med.gif");
-		//ImageIcon icon = new ImageIcon(url);
-		//label.setIcon(icon);
-		//label.setBounds(287, 117, 255, 293);
-		frame.dispose();
-		frame.getContentPane().add(label);
-		
-		JButton Btinsc = new JButton("Registrar");
+		JButton Btinsc = new JButton("");
+		URL url4 = Home.class.getResource("/ini/4.png");
+		ImageIcon icon4 = new ImageIcon(url4);
+		Btinsc.setIcon(icon4);
+		Btinsc.setBorder(null);
 		Btinsc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Ficha nueva = new Ficha();
@@ -80,10 +69,14 @@ public class Menu extends JFrame{
 				nueva.main(null);
 			}
 		});
-		Btinsc.setBounds(345, 86, 134, 48);
+		Btinsc.setBounds(293, 38, 217, 57);
 		frame.getContentPane().add(Btinsc);
 		
-		JButton Btreport = new JButton("Reportes ");
+		JButton Btreport = new JButton("");
+		URL url2 = Home.class.getResource("/ini/2.png");
+		ImageIcon icon2 = new ImageIcon(url2);
+		Btreport.setIcon(icon2);
+		Btreport.setBorder(null);
 		Btreport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Reportes nueva = new Reportes();
@@ -91,11 +84,15 @@ public class Menu extends JFrame{
 				nueva.main(null);
 			}
 		});
-		Btreport.setBounds(135, 146, 134, 48);		
+		Btreport.setBounds(12, 146, 217, 57);		
 		frame.getContentPane().add(Btreport);
 		
 		
-		JButton btsalir = new JButton("Cerrar Sesion");
+		JButton btsalir = new JButton("");
+		URL url6 = Home.class.getResource("/ini/6.png");
+		ImageIcon icon6 = new ImageIcon(url6);
+		btsalir.setIcon(icon6);
+		btsalir.setBorder(null);
 		btsalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Home nuevo = new Home();
@@ -103,10 +100,14 @@ public class Menu extends JFrame{
 				frame.dispose();
 			}
 		});
-		btsalir.setBounds(638, 429, 134, 42);
+		btsalir.setBounds(700, 12, 88, 24);
 		frame.getContentPane().add(btsalir);
 		
-		JButton btnAdministrar = new JButton("Administrar");
+		JButton btnAdministrar = new JButton("");
+		URL url3 = Home.class.getResource("/ini/3.png");
+		ImageIcon icon3 = new ImageIcon(url3);
+		btnAdministrar.setIcon(icon4);
+		btnAdministrar.setBorder(null);
 		btnAdministrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Administrar nuevo = new Administrar();
@@ -114,10 +115,14 @@ public class Menu extends JFrame{
 				nuevo.main(null);
 			}
 		});
-		btnAdministrar.setBounds(69, 233, 134, 45);
+		btnAdministrar.setBounds(12, 259, 217, 57);
 		frame.getContentPane().add(btnAdministrar);
 		
-		JButton btnInscribir = new JButton("Inscribir");
+		JButton btnInscribir = new JButton("");
+		URL url1 = Home.class.getResource("/ini/1.png");
+		ImageIcon icon1 = new ImageIcon(url1);
+		btnInscribir.setIcon(icon1);
+		btnInscribir.setBorder(null);
 		btnInscribir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Inscribir nuevo = new Inscribir();
@@ -125,10 +130,14 @@ public class Menu extends JFrame{
 				frame.dispose();
 			}
 		});
-		btnInscribir.setBounds(560, 146, 134, 48);
+		btnInscribir.setBounds(571, 146, 217, 57);
 		frame.getContentPane().add(btnInscribir);
 		
-		JButton btnNewButton = new JButton("Anular");
+		JButton btnNewButton = new JButton("");
+		URL url5 = Home.class.getResource("/ini/5.png");
+		ImageIcon icon5 = new ImageIcon(url5);
+		btnNewButton.setIcon(icon5);
+		btnNewButton.setBorder(null);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Anular nuevo = new Anular();
@@ -136,8 +145,17 @@ public class Menu extends JFrame{
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(613, 231, 134, 48);
+		btnNewButton.setBounds(571, 259, 217, 57);
 		frame.getContentPane().add(btnNewButton);
+		
+		JLabel label = new JLabel("");
+		((JPanel)getContentPane()).setOpaque(false); 
+		ImageIcon uno=new ImageIcon(this.getClass().getResource("/ini/fondo.png")); 
+		label.setIcon(uno); 
+		getLayeredPane().add(label,JLayeredPane.FRAME_CONTENT_LAYER); 
+		label.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
+		
+		frame.getContentPane().add(label);
 	}
 
 }

@@ -143,6 +143,7 @@ public class Home extends JFrame{
 		});
 		btnSalir.setBounds(432, 351, 89, 38);
 		frame.getContentPane().add(btnSalir);
+		
 		lblNewLabel = new JLabel("");
 		((JPanel)getContentPane()).setOpaque(false); 
 		ImageIcon uno=new ImageIcon(this.getClass().getResource("/login/fondo.png")); 
