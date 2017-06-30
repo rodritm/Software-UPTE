@@ -27,14 +27,13 @@ import modelo.Querry;
 public class RepRecibos {
 	
 	private static Font title = new Font(Font.FontFamily.COURIER,20,Font.BOLD);
-	private static Font sub = new Font(Font.FontFamily.COURIER,12,Font.NORMAL);
-	private static Font body = new Font(Font.FontFamily.COURIER,12,Font.ITALIC);
+	private static Font sub = new Font(Font.FontFamily.COURIER,12,Font.BOLD);
+	private static Font body = new Font(Font.FontFamily.COURIER,12,Font.NORMAL);
 
 	
 
 	public static void recibos( String gestion,String curso,String paralelo,String ruta){
 		String id=null,cod=null,fec=null;
-	String contenido="hooooooooooooooolas";
 	try{
 		ResultSet rs = null;
 		Querry connec = new Querry();
@@ -42,28 +41,28 @@ public class RepRecibos {
 		
         if( rs!= null){
         	try {
-				FileOutputStream archivo = new FileOutputStream(ruta+".pdf");
-				Document doc =new Document(PageSize.A4,30,30,30,30);
+				FileOutputStream archivo = new FileOutputStream("/home/prime/Descargas/prueba/prueba8"+".pdf");
+				Document doc =new Document(PageSize.A4,30,30,30,30);;
 				PdfWriter.getInstance(doc,archivo);
 				
 				doc.open();
-				
-				//--------curso
+				 
 				Paragraph par1 = new Paragraph();
-				par1.add(new Phrase(curso,title));
+				par1.add(new Phrase(gestion,title));
 				par1.setAlignment(Element.ALIGN_CENTER);
 				par1.add(new Phrase(Chunk.NEWLINE));
 				par1.add(new Phrase(Chunk.NEWLINE));
 				doc.add(par1);
-				// -------echa y hora
+				// --------------------
 				Paragraph par2 = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
-				par2.add(new Phrase(contenido,sub));
+				par2.add(new Phrase(paralelo,sub));
 				par2.setAlignment(Element.ALIGN_LEFT);
 				doc.add(par2);
 			
-				// -------- paraleo
+				// ---------------  contenido = fecha y hora del dia-----
 				Paragraph par3 = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
-				par3.add(new Phrase(paralelo,sub));
+				Fecha fff = new Fecha();
+				par3.add(new Phrase(fff.sacarfecha(),sub));
 				par3.setAlignment(Element.ALIGN_RIGHT);
 				par3.add(new Phrase(Chunk.NEWLINE));
 				par3.add(new Phrase(Chunk.NEWLINE));
@@ -76,7 +75,11 @@ public class RepRecibos {
 				logo.scaleToFit(100, 100);
 				doc.add(logo);*/
 				//---------------------
-				PdfPTable tabla = new PdfPTable(7);
+				float[] columnWidths = {3,7,5,9,20,3,9};
+				PdfPTable tabla = new PdfPTable(columnWidths);
+				tabla.setTotalWidth(520);
+				tabla.setLockedWidth(true);
+				
 				PdfPCell c1 = new PdfPCell(new Paragraph("Nº",sub));
 				PdfPCell c2 = new PdfPCell(new Paragraph("Fecha",sub));
 				PdfPCell c3 = new PdfPCell(new Paragraph("Recibo",sub));
@@ -94,20 +97,21 @@ public class RepRecibos {
 				tabla.addCell(c7);
 				
 				//---------- aqui van los titulos de las columnas de la consulta------
-				 while(rs.next()){
-		                tabla.addCell(rs.getString("1"));
-		                tabla.addCell(rs.getString("2"));
-		                tabla.addCell(rs.getString("3"));
-		                tabla.addCell(rs.getString("4"));
-		                tabla.addCell(rs.getString("5"));
-		                tabla.addCell(rs.getString("6"));
-		                tabla.addCell(rs.getString("qwertyuiopqwertyuiop"));
+				String nombre = "";
+				 for(int i=1;rs.next();i++){
+		                tabla.addCell(i+"");
+		                tabla.addCell(rs.getString("fechan"));
+		                tabla.addCell(rs.getString("idrecibo"));
+		                tabla.addCell(rs.getString("idestudiante"));
+		                nombre = rs.getString("apellido_paterno")+" "+rs.getString("apellido_materno")+" "+rs.getString("nombres");
+		                tabla.addCell(nombre);
+		                tabla.addCell(rs.getString("monto"));
+		                tabla.addCell(rs.getString("nit"));
 		            }
 				
 				//---------------------
 				 //tabla.calculateHeights(true);
-				 tabla.setTotalWidth(500);
-				 tabla.setLockedWidth(true);
+				 
 				doc.add(tabla);
 				
 				doc.close();
