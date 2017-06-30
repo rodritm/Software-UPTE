@@ -498,7 +498,7 @@ public class Inscribir {
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				String ci = tfCI.getText().toString();
 			}
 		});
 		btnBuscar.setBounds(556, 26, 89, 23);

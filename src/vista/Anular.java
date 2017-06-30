@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import com.mxrck.autocompleter.TextAutoCompleter;
@@ -150,6 +151,7 @@ public class Anular {
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String id = tfNumero.getText().toString();
 			}
 		});
 		btnBuscar.setBounds(311, 42, 89, 23);

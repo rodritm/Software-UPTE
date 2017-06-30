@@ -115,6 +115,7 @@ public class AdministrarDocente {
 		JDateChooser fechaNac = new JDateChooser();
 		fechaNac.setBounds(303, 93, 135, 19);
 		frame.getContentPane().add(fechaNac);
+		fechaNac.setDateFormatString("dd/MM/yyyy");
 		
 		JLabel lblDireccion = new JLabel("Direccion:");
 		lblDireccion.setBounds(12, 122, 73, 15);

@@ -113,6 +113,7 @@ public class AdministrarUsuario {
 		JDateChooser FechaNac = new JDateChooser();
 		FechaNac.setBounds(303, 93, 135, 19);
 		frame.getContentPane().add(FechaNac);
+		FechaNac.setDateFormatString("dd/MM/yyyy");
 		
 		JLabel lblDireccion = new JLabel("Direccion:");
 		lblDireccion.setBounds(12, 122, 73, 15);
