@@ -104,7 +104,7 @@ public class Anular {
 		frame.getContentPane().add(lblNumero);
 		
 		tfNumero = new JTextField();
-		tfNumero.setBounds(149, 44, 251, 19);
+		tfNumero.setBounds(149, 44, 128, 19);
 		frame.getContentPane().add(tfNumero);
 		tfNumero.setColumns(10);
 		TextAutoCompleter auto = new TextAutoCompleter(tfNumero);
@@ -146,6 +146,14 @@ public class Anular {
 		tfMonto.setColumns(10);
 		tfMonto.setBounds(170, 153, 65, 19);
 		frame.getContentPane().add(tfMonto);
+		
+		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnBuscar.setBounds(311, 42, 89, 23);
+		frame.getContentPane().add(btnBuscar);
 	}
 
 }

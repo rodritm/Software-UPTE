@@ -113,7 +113,7 @@ public class AdministrarMateria {
 		frame.getContentPane().add(cbDocente);
 		try{
 			Querry q = new Querry();
-			ResultSet rs = q.Gestiones();
+			ResultSet rs = q.Docentes();
 			while(rs.next()) {
 				cbDocente.addItem(rs.getString("nombres"));
 			}
