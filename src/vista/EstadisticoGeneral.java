@@ -130,5 +130,14 @@ public class EstadisticoGeneral {
 		frame.getContentPane().add(cbGenero);
 		cbGenero.addItem("Masculino");
 		cbGenero.addItem("Femenino");
+		
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String gestion = (String) cbGestion.getSelectedItem();
+				String curso = (String) cbCurso.getSelectedItem();
+				String paralelo = (String) cbParalelo.getSelectedItem();
+				String genero = (String) cbGenero.getSelectedItem();
+			}
+		});
 	}
 }

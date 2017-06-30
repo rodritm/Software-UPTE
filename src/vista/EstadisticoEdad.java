@@ -101,6 +101,14 @@ public class EstadisticoEdad {
 		tfEdad.setColumns(10);
 		
 		JButton btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String gestion = (String) cbGestion.getSelectedItem();
+				String curso = (String) cbCurso.getSelectedItem();
+				String paralelo = (String) cbParalelo.getSelectedItem();
+				int edad = Integer.parseInt(tfEdad.getText().toString());
+			}
+		});
 		btnOk.setBounds(302, 199, 98, 25);
 		frame.getContentPane().add(btnOk);
 		

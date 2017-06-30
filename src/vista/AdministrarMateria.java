@@ -35,9 +35,9 @@ public class AdministrarMateria {
 	private JButton btnCancelar;
 	private JButton btnOk;
 	private JLabel lblMonto;
-	private JTextField textField;
+	private JTextField tfMonto;
 	private JLabel lblTiempo;
-	private JComboBox comboBox;
+	private JComboBox cbTiempo;
 
 	/**
 	 * Launch the application.
@@ -164,6 +164,18 @@ public class AdministrarMateria {
 		frame.getContentPane().add(btnCancelar);
 		
 		btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String sigla = tfSigla.getText().toString();
+				String nombre = tfNombre.getText().toString();
+				String paralelo = tfParalelo.getText().toString();
+				String hora = (tfHora.getText().toString())+":"+(tfMin.getText().toString());
+				String aulta = tfAula.getText().toString();
+				String docente = (String) cbDocente.getSelectedItem();
+				double monto = Double.parseDouble(tfMonto.getText().toString());
+				String tiempo = (String) cbTiempo.getSelectedItem();
+			}
+		});
 		btnOk.setBounds(341, 169, 98, 25);
 		frame.getContentPane().add(btnOk);
 		
@@ -171,18 +183,22 @@ public class AdministrarMateria {
 		lblMonto.setBounds(12, 120, 55, 15);
 		frame.getContentPane().add(lblMonto);
 		
-		textField = new JTextField();
-		textField.setBounds(71, 118, 97, 19);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		tfMonto = new JTextField();
+		tfMonto.setBounds(71, 118, 97, 19);
+		frame.getContentPane().add(tfMonto);
+		tfMonto.setColumns(10);
 		
 		lblTiempo = new JLabel("Tiempo:");
 		lblTiempo.setBounds(187, 120, 55, 15);
 		frame.getContentPane().add(lblTiempo);
 		
-		comboBox = new JComboBox();
-		comboBox.setBounds(260, 115, 178, 24);
-		frame.getContentPane().add(comboBox);
+		cbTiempo = new JComboBox();
+		cbTiempo.setBounds(260, 115, 178, 24);
+		frame.getContentPane().add(cbTiempo);
+		cbTiempo.addItem("Mensual");
+		cbTiempo.addItem("Trimestral");
+		cbTiempo.addItem("Semestral");
+		cbTiempo.addItem("Anual");
 	}
 
 }

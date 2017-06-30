@@ -439,18 +439,6 @@ public class Inscribir {
 		tfProblemas.setColumns(10);
 		
 		JButton btnOk = new JButton("OK");
-		btnOk.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int option = JOptionPane.showOptionDialog(null, "Esta segura/o?", "Confirmación",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, 
-						null, new Object[]{"SI","NO"},"SI");
-				if(option== 0){
-					//																Funcion para cargar a la base
-					Menu nuevo = new Menu();
-					nuevo.main(null);
-					frame.dispose();
-				}
-			}
-		});
 		btnOk.setBounds(543, 679, 117, 25);
 		frame.getContentPane().add(btnOk);
 		
@@ -499,10 +487,64 @@ public class Inscribir {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String ci = tfCI.getText().toString();
+				//Esto lo mandas a la querry
+				//Tambien pones los setText
 			}
 		});
 		btnBuscar.setBounds(556, 26, 89, 23);
 		frame.getContentPane().add(btnBuscar);
+		
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int option = JOptionPane.showOptionDialog(null, "Esta segura/o?", "Confirmación",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, 
+						null, new Object[]{"SI","NO"},"SI");
+				if(option== 0){
+					String nombre, apePat, apeMat, ci, exp, fecha, genero, estado, dir, zona, ciudad, correo,
+					instruccion, profesion, ocupacion, actividad, personas, ingreso, medio, problemas, percontactnombre,
+					percontactapep, percontactcorreo, percontactapem, percontactcel, percontacttel, materia ,paralelo;
+					int edad, cel, tel;
+					nombre = tfNombre.getText().toString();
+					apePat = tfApePat.getText().toString();
+					apeMat = tfApeMat.getText().toString();
+					ci = tfCI.getText().toString();
+					exp = (String) cbExp.getSelectedItem();
+					fecha = fechanc.getDateFormatString();
+					edad = Integer.parseInt(tfEdad.getText().toString());
+					genero = (String) cbGenero.getSelectedItem();
+					estado = (String) cbEstado_civil.getSelectedItem();
+					dir = tfDireccion.getText().toString();
+					zona = tfZona.getText().toString();
+					ciudad = tfCiudad.getText().toString();
+					correo  = tfCorreo.getText().toString();
+					instruccion = (String) cbInstruccion.getSelectedItem();
+					profesion = tfProfesion.getText().toString();
+					ocupacion = tfOcupacion.getText().toString();
+					actividad = tfActividad.getText().toString();
+					personas = tfPersonaVive.getText().toString();
+					ingreso = tfTipoIngreso.getText().toString();
+					medio = tfMedio.getText().toString();
+					problemas = tfProblemas.getText().toString();
+					percontactnombre = tfPerContactoNombre.getText().toString();
+					percontactapep = tfPerContactoApePat.getText().toString();
+					percontactapem = tfPerContactoApeMat.getText().toString();
+					percontactcorreo = tfPerContactoCorreo.getText().toString();
+					percontactcel = tfPerContactoCel.getText().toString();
+					percontacttel = tfPerContactoTel.getText().toString();
+					cel = Integer.parseInt(tfCel.getText().toString());
+					tel = Integer.parseInt(tfTel.getText().toString());
+					materia = (String) cbMateria.getSelectedItem();
+					paralelo = (String) cbParalelo.getSelectedItem();
+					Estudiante est = new Estudiante(nombre, apePat, apeMat, ci, exp, fecha, genero, 
+							estado, dir, zona, ciudad, correo, instruccion, profesion, ocupacion,
+							actividad, personas, ingreso, medio, problemas, percontactnombre, percontactapep,
+							percontactcorreo, percontactapem, percontactcel, percontacttel,materia, paralelo, edad, cel, tel);
+					Menu nuevo = new Menu();
+					nuevo.main(null);
+					frame.dispose();
+				}
+			}
+		});
+		
 	}
 }
 

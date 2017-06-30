@@ -85,6 +85,13 @@ public class Recibos {
 		frame.getContentPane().add(btnCarpeta);
 		
 		JButton btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String gestion = (String) cbGestion.getSelectedItem();
+				String curso = (String) cbCurso.getSelectedItem();
+				String paralelo = (String) cbParalelo.getSelectedItem();
+			}
+		});
 		btnOk.setBounds(302, 199, 98, 25);
 		frame.getContentPane().add(btnOk);
 		
