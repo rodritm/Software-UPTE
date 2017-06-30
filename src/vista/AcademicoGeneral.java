@@ -4,10 +4,12 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.ResultSet;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -75,6 +77,17 @@ public class AcademicoGeneral {
 		tfRuta.setColumns(10);
 		
 		JButton btnCarpeta = new JButton("CARPETA");
+		btnCarpeta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser dlg = new JFileChooser();
+				int option = 0;
+				option = dlg.showOpenDialog(null);
+				if (option == JFileChooser.APPROVE_OPTION){
+					File f= dlg.getSelectedFile();
+					tfRuta.setText(f.toString());
+				}
+			}
+		});
 		btnCarpeta.setBounds(302, 81, 98, 25);
 		frame.getContentPane().add(btnCarpeta);
 		
