@@ -281,7 +281,7 @@ public class Querry {
 		Statement st;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "SELECT a.nombres, c.idrecibo, c.fechan, c.monto, c.nit"
+		String querry = "SELECT a.ideestudiante, a.nombres, a.apellido_paterno, a.apellido_materno , c.idrecibo, c.fechan, c.monto, c.nit"
 				+ " FROM estudiante a, inscripcion b, recibo c, materia_has_paralelo d, materia e, paralelo f"
 				+ " WHERE a.idestudiante=b.estudiante_idestudiante"
 				+ " AND b.recibo_idrecibo = c.idrecibo"
@@ -289,7 +289,8 @@ public class Querry {
 				+ " AND b.materia_has_paralelo_paralelo_idparalelo=f.idparalelo"
 				+ " AND d.gestion='"+gestion+"'"
 				+ " AND e.nombres='"+curso+"'"
-				+ " AND f.idparalelo='"+paralelo+"'";
+				+ " AND f.idparalelo='"+paralelo+"'"
+				+ " ORDER BY c.iderecibo";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
