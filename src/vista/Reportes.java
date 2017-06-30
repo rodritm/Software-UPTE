@@ -65,11 +65,7 @@ public class Reportes {
 		frame.getContentPane().add(btnAtras);
 		
 		JLabel label = new JLabel("");
-		URL url = Reportes.class.getResource("/logopeque.jpg");
-		ImageIcon icon = new ImageIcon(url);
-		label.setIcon(icon);
-		label.setBounds(10, 11, 219, 278);
-		frame.getContentPane().add(label);
+		
 		
 		JButton btnContables = new JButton("Contables");
 		btnContables.addActionListener(new ActionListener() {
