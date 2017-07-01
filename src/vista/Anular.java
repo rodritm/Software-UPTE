@@ -122,7 +122,7 @@ public class Anular {
 		ResultSet rs;
 		String ids;
 		try{
-			rs = q.anulado();
+			rs = q.AutoReciboid();
 			while(rs.next()) {
 				ids = (rs.getString("idrecibo"));
 				auto.addItem(ids);

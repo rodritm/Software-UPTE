@@ -30,8 +30,6 @@ public class AdministrarMateria {
 	private JTextField tfHora;
 	private JTextField tfMin;
 	private JLabel label;
-	private JLabel lblAula;
-	private JTextField tfAula;
 	private JButton btnCancelar;
 	private JButton btnOk;
 	private JLabel lblMonto;
@@ -138,15 +136,6 @@ public class AdministrarMateria {
 		label.setBounds(228, 62, 20, 15);
 		frame.getContentPane().add(label);
 		
-		lblAula = new JLabel("Aula:");
-		lblAula.setBounds(305, 64, 55, 15);
-		frame.getContentPane().add(lblAula);
-		
-		tfAula = new JTextField();
-		tfAula.setBounds(341, 62, 97, 19);
-		frame.getContentPane().add(tfAula);
-		tfAula.setColumns(10);
-		
 		btnCancelar = new JButton("CANCELAR");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -170,10 +159,19 @@ public class AdministrarMateria {
 				String nombre = tfNombre.getText().toString();
 				String paralelo = tfParalelo.getText().toString();
 				String hora = (tfHora.getText().toString())+":"+(tfMin.getText().toString());
-				String aulta = tfAula.getText().toString();
 				String docente = (String) cbDocente.getSelectedItem();
-				double monto = Double.parseDouble(tfMonto.getText().toString());
+				float monto = Float.parseFloat(tfMonto.getText().toString());
 				String tiempo = (String) cbTiempo.getSelectedItem();
+				Querry q = new Querry();
+				try {
+					q.AdminMatNew(sigla, nombre, paralelo, hora, docente, monto, tiempo);
+					JOptionPane.showMessageDialog(null, "Materia creada correctamente.", "Creado", JOptionPane.INFORMATION_MESSAGE);
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+				}
+				Administrar a = new Administrar();
+				a.main(null);
+				frame.dispose();
 			}
 		});
 		btnOk.setBounds(341, 169, 98, 25);

@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
 
+import modelo.Querry;
+
 public class AdministrarDocente {
 
 	private JFrame frame;
@@ -28,8 +30,6 @@ public class AdministrarDocente {
 	private JTextField tfDireccion;
 	private JLabel lblCelular;
 	private JTextField tfCel;
-	private JLabel lblContrasea;
-	private JTextField tfPass;
 	private JLabel lblTipo;
 	private JComboBox cbTipo;
 	private JButton btnCancelar;
@@ -64,7 +64,7 @@ public class AdministrarDocente {
 	private void initialize() {
 
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 248);
+		frame.setBounds(100, 100, 450, 220);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setLocationRelativeTo(null);
@@ -115,7 +115,7 @@ public class AdministrarDocente {
 		JDateChooser fechaNac = new JDateChooser();
 		fechaNac.setBounds(303, 93, 135, 19);
 		frame.getContentPane().add(fechaNac);
-		fechaNac.setDateFormatString("dd/MM/yyyy");
+		fechaNac.setDateFormatString("yyyy-MM-dd");
 		
 		JLabel lblDireccion = new JLabel("Direccion:");
 		lblDireccion.setBounds(12, 122, 73, 15);
@@ -135,20 +135,12 @@ public class AdministrarDocente {
 		frame.getContentPane().add(tfCel);
 		tfCel.setColumns(10);
 		
-		lblContrasea = new JLabel("Contraseña:");
-		lblContrasea.setBounds(12, 176, 83, 15);
-		frame.getContentPane().add(lblContrasea);
-		
-		tfPass = new JTextField();
-		tfPass.setBounds(96, 174, 342, 19);
-		frame.getContentPane().add(tfPass);
-		tfPass.setColumns(10);
-		
 		lblTipo = new JLabel("Tipo:");
 		lblTipo.setBounds(215, 149, 38, 15);
 		frame.getContentPane().add(lblTipo);
 		
 		cbTipo = new JComboBox();
+		cbTipo.setEnabled(false);
 		cbTipo.setBounds(271, 144, 167, 24);
 		frame.getContentPane().add(cbTipo);
 		cbTipo.addItem("Docente");
@@ -166,7 +158,7 @@ public class AdministrarDocente {
 						}
 			}
 		});
-		btnCancelar.setBounds(215, 211, 98, 25);
+		btnCancelar.setBounds(215, 186, 98, 25);
 		frame.getContentPane().add(btnCancelar);
 		
 		btnOk = new JButton("OK");
@@ -175,15 +167,24 @@ public class AdministrarDocente {
 				String nombre = tfNombre.getText().toString();
 				String ApePat = tfApePat.getText().toString();
 				String ApeMat = tfApeMat.getText().toString();
-				int ci = Integer.parseInt(tfCI.getText().toString());
+				String ci = tfCI.getText().toString();
 				String fecha = ((JTextField) fechaNac.getDateEditor().getUiComponent()).getText();
 				String dir = tfDireccion.getText().toString();
-				int cel = Integer.parseInt(tfCel.getText().toString());
-				String tipo = (String) cbTipo.getSelectedItem();
-				String pass = tfPass.getText().toString();
+				String cel = tfCel.getText().toString();
+				Querry q = new Querry();
+				try {
+					q.AdminDocNew(ci, nombre, ApePat, ApeMat, fecha, dir, cel);
+					JOptionPane.showMessageDialog(null, "Docente creado Correctamente.", "Creado", JOptionPane.INFORMATION_MESSAGE);
+				}catch(ClassNotFoundException e1) {
+					e1.printStackTrace();
+				}
+				Administrar a = new Administrar();
+				a.main(null);
+				frame.dispose();
+				
 			}
 		});
-		btnOk.setBounds(340, 211, 98, 25);
+		btnOk.setBounds(340, 186, 98, 25);
 		frame.getContentPane().add(btnOk);
 	}
 
