@@ -309,7 +309,7 @@ public class Querry {
 			String actual=f.sacarfecha();
 			Connection con;
 			Class.forName("java.sql.Driver");
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:"+puerto+"/upte","root","");
 			String sql = "INSERT INTO recibo(inscripcion_idinscripcion,fechan, anulado, monto, nit) VALUES (?, ?, ?, ?, ?)";
 			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
 			pre.setString(1, id);
