@@ -193,7 +193,7 @@ public class Inscribir {
 		frame.getContentPane().add(lblFechaDeNacimiento);
 		
 		JDateChooser fechanc = new JDateChooser();
-		fechanc.setDateFormatString("dd/MM/yyyy");
+		fechanc.setDateFormatString("yyyy-MM-dd");
 		fechanc.getDateEditor().addPropertyChangeListener(
 				new PropertyChangeListener() {
 					
@@ -201,7 +201,7 @@ public class Inscribir {
 					public void propertyChange(PropertyChangeEvent evt) {
 						String fecha = ((JTextField) fechanc.getDateEditor().getUiComponent()).getText();
 						if(!fecha.isEmpty()) {
-							DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+							DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 							LocalDate fechaNac = LocalDate.parse(fecha, fmt);
 							LocalDate ahora = LocalDate.now();
 							Period periodo = Period.between(fechaNac, ahora);
@@ -480,7 +480,7 @@ public class Inscribir {
 		        	Querry q = new Querry();
 			        ResultSet rs = q.Paralelos(curso);
 			        while(rs.next()) {
-			        	cbParalelo.addItem(rs.getString("paralelo_idparalelo"));
+			        	cbParalelo.addItem(rs.getString("paralelo"));
 			        }
 		        }catch(Exception ev) {
 		        }
@@ -551,7 +551,7 @@ public class Inscribir {
 					apeMat = tfApeMat.getText().toString();
 					ci = tfCI.getText().toString();
 					exp = (String) cbExp.getSelectedItem();
-					fecha = fechanc.getDateFormatString();
+					fecha = ((JTextField) fechanc.getDateEditor().getUiComponent()).getText();
 					edad = tfEdad.getText().toString();
 					genero = (String) cbGenero.getSelectedItem();
 					estado = (String) cbEstado_civil.getSelectedItem();
@@ -581,6 +581,7 @@ public class Inscribir {
 					Querry q = new Querry();
 					try {
 						q.Inscribir(ci, exp, nombre, apePat, apeMat, genero, edad, estado, fecha, dir, zona, ciudad, correo, cel, tel, percontactnombre, percontacttel, instruccion, profesion, ocupacion, actividad, personas, ingreso, medio, problemas, percontactcel, percontactapep, percontactapem, percontactcorreo, materia, paralelo);
+						JOptionPane.showMessageDialog(null, "Alumno iscrito correctamente","Inscrito", JOptionPane.INFORMATION_MESSAGE);
 					} catch (ClassNotFoundException e1) {
 						e1.printStackTrace();
 						JOptionPane.showMessageDialog(null, "Alumno no inscrito","ERROR",JOptionPane.ERROR_MESSAGE);

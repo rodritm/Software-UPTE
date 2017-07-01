@@ -182,7 +182,7 @@ public class Ficha {
 					public void propertyChange(PropertyChangeEvent evt) {
 						String fecha = ((JTextField) fechanc.getDateEditor().getUiComponent()).getText();
 						if(!fecha.isEmpty()) {
-							DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+							DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 							LocalDate fechaNac = LocalDate.parse(fecha, fmt);
 							LocalDate ahora = LocalDate.now();
 							Period periodo = Period.between(fechaNac, ahora);

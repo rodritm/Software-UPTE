@@ -244,7 +244,7 @@ public class Querry {
 			Statement st;
 			ResultSet rs = null;
 			st = (Statement)conn.createStatement();
-			String querry = "select monto from materiawhere nombres = '"+materia+"'";
+			String querry = "select monto from materia where nombres = '"+materia+"'";
 			rs = st.executeQuery(querry);
 			while(rs.next()) {
 				monto = Float.parseFloat(rs.getString("monto"));
@@ -256,7 +256,7 @@ public class Querry {
 			DB_Connect con2 = new DB_Connect();
 			conn=con2.conexion();
 			st = (Statement)conn.createStatement();
-			querry = "SELECT b.idmateria, a.docente_iddocente FROM materia_materia_has_docente a, materia b WHERE b.nombres = '"+materia+"'";
+			querry = "SELECT b.idmateria, a.docente_iddocente FROM materia_has_docente a, materia b WHERE b.nombres = '"+materia+"'";
 			rs = st.executeQuery(querry);
 			while(rs.next()) {
 				idMateria = rs.getString("idmateria");
@@ -268,7 +268,7 @@ public class Querry {
 			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
 			sql = "INSERT INTO inscripcion(empleados_idempleados, estudiante_idestudiante, materia_has_docente_materia_idmateria, materia_has_docente_docente_iddocente, materia, paralelo) VALUES (?, ?, ?, ?, ?, ?)";
 			pre = (PreparedStatement) con.prepareStatement(sql);
-			pre.setString(1, "");
+			pre.setString(1, "9896776");
 			pre.setString(2, id);
 			pre.setString(3, idMateria);
 			pre.setString(4, idDocente);
@@ -289,17 +289,31 @@ public class Querry {
 	
 	public void ReciboAdd(Float monto) throws ClassNotFoundException{
 		try {
+			String id = "";
+			DB_Connect con1 = new DB_Connect();
+			Connection conn=con1.conexion();
+			Statement st;
+			ResultSet rs = null;
+			st = (Statement)conn.createStatement();
+			String querry = "select idinscripcion from inscripcion order by idinscripcion asc limit 1";
+			rs = st.executeQuery(querry);
+			while(rs.next()) {
+				id = rs.getString("idinscripcion");
+			}
+			con1.closecon();
+			
 			Fecha f = new Fecha();
 			String actual=f.sacarfecha();
 			Connection con;
 			Class.forName("java.sql.Driver");
 			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
-			String sql = "INSERT INTO recibo(fechan, anulado, monto, nit) VALUES (?, ?, ?, ?)";
+			String sql = "INSERT INTO recibo(inscripcion_idinscripcion,fechan, anulado, monto, nit) VALUES (?, ?, ?, ?, ?)";
 			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
-			pre.setString(1, actual);
-			pre.setString(2, "0");
-			pre.setFloat(3, monto);
-			pre.setString(4, "");
+			pre.setString(1, id);
+			pre.setString(2, actual);
+			pre.setString(3, "0");
+			pre.setFloat(4, monto);
+			pre.setString(5, "");
 			pre.executeUpdate();
 			
 			con.close();
