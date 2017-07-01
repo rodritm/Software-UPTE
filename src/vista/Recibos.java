@@ -14,6 +14,7 @@ import com.mysql.jdbc.Statement;
 
 import controlador.RepRecibos;
 import controlador.Ruta;
+import modelo.Querry;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -69,14 +70,44 @@ public class Recibos {
 		JComboBox cbGestion = new JComboBox();
 		cbGestion.setBounds(176, 32, 224, 24);
 		frame.getContentPane().add(cbGestion);
+		try{
+			Querry q = new Querry();
+			ResultSet rs = q.Gestiones();
+			while(rs.next()) {
+				cbGestion.addItem(rs.getString("gestion"));
+			}
+		}catch(Exception e) {
+		}
 		
 		JComboBox cbCurso = new JComboBox();
 		cbCurso.setBounds(176, 75, 224, 24);
 		frame.getContentPane().add(cbCurso);
+		try{
+			Querry q = new Querry();
+			ResultSet rs = q.Cursos();
+			while(rs.next()) {
+				cbCurso.addItem(rs.getString("nombres"));
+			}
+		}catch(Exception e) {
+		}
 		
 		JComboBox cbParalelo = new JComboBox();
 		cbParalelo.setBounds(176, 116, 224, 24);
 		frame.getContentPane().add(cbParalelo);
+		cbCurso.addActionListener (new ActionListener () {
+		    public void actionPerformed(ActionEvent e) {
+		        String curso = (String) cbCurso.getSelectedItem();
+		        cbParalelo.removeAllItems();
+		        try{
+		        	Querry q = new Querry();
+			        ResultSet rs = q.Paralelos(curso);
+			        while(rs.next()) {
+			        	cbParalelo.addItem(rs.getString("paralelo"));
+			        }
+		        }catch(Exception ev) {
+		        }
+		    }
+		});
 		
 		tfRuta = new JTextField();
 		tfRuta.setBounds(22, 168, 255, 19);
