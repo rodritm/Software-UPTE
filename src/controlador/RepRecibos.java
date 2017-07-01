@@ -41,7 +41,7 @@ public class RepRecibos {
 		
         if( rs!= null){
         	try {
-        		FileOutputStream archivo = new FileOutputStream("/home/prime/Descargas/prueba/prueba8"+".pdf");
+        		FileOutputStream archivo = new FileOutputStream(ruta+".pdf");
 				Document doc =new Document(PageSize.A4,30,30,30,30);;
 				PdfWriter.getInstance(doc,archivo);
 				
