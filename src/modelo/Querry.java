@@ -68,7 +68,7 @@ public class Querry {
 		Statement st;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "SELECT DISTINCT gestion FROM materia_has_paralelo";
+		String querry = "SELECT DISTINCT gestion FROM materia_has_docente";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
@@ -203,34 +203,31 @@ public class Querry {
 	//							ESTADISTICOS
 	
 	
-	public ResultSet EstGeneral(String gestion) throws SQLException{
+	public ResultSet EstGeneral(String gestion,String curso, String paralelo) throws SQLException{
 		DB_Connect con = new DB_Connect();
 		Connection conn=con.conexion();
 		Statement st = null;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "SELECT COUNT(b.estudiante_idestudiante) AS Total" + 
-				" FROM materia_has_paralelo a, inscripcion b" + 
-				" WHERE a.materia_idmateria=b.materia_has_paralelo_materia_idmateria" + 
-				" AND a.paralelo_idparalelo=b.materia_has_paralelo_paralelo_idparalelo" + 
-				" AND a.gestion='"+gestion+"'";
+		String querry = "SELECT COUNT(a.idinscripcion) AS Total FROM inscripcion a, materia_has_docente b, "
+				+ "materia c WHERE a.materia_has_docente_materia_idmateria=b.materia_idmateria AND "
+				+ "a.materia_has_docente_docente_iddocente=b.docente_iddocente AND b.gestion='"+gestion+"' "
+				+ "AND c.nombres='"+curso+"' AND c.paralelo='"+paralelo+"'";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
-	public ResultSet EstGenero(String curso, String gestion,String paralelo) throws SQLException{
+	public ResultSet EstGenero(String curso, String gestion,String paralelo, String genero) throws SQLException{
 		DB_Connect con = new DB_Connect();
 		Connection conn=con.conexion();
 		Statement st = null;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "SELECT COUNT(a.idestudiante) AS Total"
-				+ "FROM estudiante a, inscripcion b, materia_has_paralelo c, materia d, paralelo e"
-				+ " WHERE a.idestudiante=b.estudiante_idestudiante"
-				+ " AND b.materia_has_paralelo_materia_idmateria=c.materia_idmateria"
-				+ " AND b.materia_has_paralelo_paralelo_idparalelo=e.paralelo_idparalelo"
-				+ " AND c.gestion='"+gestion+"'"
-				+ " AND d.nombres='"+curso+"'"
-				+ " AND e.idparalelo='"+paralelo+"'";
+		String querry = "SELECT COUNT(a.genero) AS Total FROM estudiante a, inscripcion b, "
+				+ "materia_has_docente c, materia d WHERE a.idestudiante=b.estudiante_idestudiante AND  "
+				+ "b.materia_has_docente_materia_idmateria=c.materia_idmateria AND "
+				+ "b.materia_has_docente_docente_iddocente=c.docente_iddocente AND d.idmateria = c.materia_idmateria AND "
+				+ "d.nombres='"+curso+"' AND d.paralelo='"+paralelo+"' AND c.gestion='"+gestion+"' "
+				+ "AND a.genero='"+genero+"'";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
@@ -240,15 +237,10 @@ public class Querry {
 		Statement st = null;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "SELECT COUNT(a.nombres) AS Total"
-				+ " FROM estudiante a, inscripcion b, materia_has_paralelo c, materia d, paralelo e"
-				+ " WHERE a.idestudiante=b.estudiante_idestudiante"
-				+ " AND b.materia_has_paralelo_materia_idmateria=c.materia_idmateria"
-				+ " AND e.materia_has_paralelo_materia_idmateria=d.idmateria"
-				+ " AND c.materia_has_paralelo_idparalelo=e.idparalelo"
-				+ " AND c.gestion = '"+gestion+"'"
-				+ " AND d.nombres = '"+curso+"'"
-				+ " AND e.idParalelo = '"+paralelo+"'";
+		String querry = "SELECT COUNT(a.idinscripcion) AS Total FROM inscripcion a , materia_has_docente b , materia c "
+				+ "WHERE a.materia_has_docente_materia_idmateria=b.materia_idmateria AND "
+				+ "a.materia_has_docente_docente_iddocente=b.docente_iddocente AND b.materia_idmateria=c.idmateria AND "
+				+ "c.nombres='"+curso+"' AND c.paralelo='"+paralelo+"' AND b.gestion='"+gestion+"'";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
@@ -258,17 +250,11 @@ public class Querry {
 		Statement st;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "SELECT COUNT(a.nombres) AS Total" + 
-				" FROM estudiante a, inscripcion b, materia_has_paralelo c, materia d, paralelo e" + 
-				" WHERE a.idestudiante=b.estudiante_idestudiante" + 
-				" AND b.materia_has_paralelo_materia_idmateria=c.materia_idmateria1" + 
-				" AND b.materia_has_paralelo_paralelo_idparalelo=c.paralelo_idparalelo" + 
-				" AND c.materia_idmateria=d.idmateria" + 
-				" AND c.paralelo_idparalelo=e.idparalelo" + 
-				" AND e.idparalelo='"+paralelo+"'" + 
-				" AND c.gestion='"+gestion+"'" + 
-				" AND a.Edad='"+edad+"'" + 
-				" AND d.nombres='"+curso+"'";
+		String querry = "SELECT COUNT(a.idestudiante) AS Total FROM estudiante a, inscripcion b, "
+				+ "materia_has_docente c, materia d WHERE a.idestudiante=b.estudiante_idestudiante AND "
+				+ "b.materia_has_docente_materia_idmateria=c.materia_idmateria AND b.materia_has_docente_docente_iddocente=c.docente_iddocente "
+				+ "AND d.idmateria=c.materia_idmateria AND d.nombres='"+curso+"' AND d.paralelo='"+paralelo+"' AND c.gestion='"+gestion+"' "
+				+ "AND a.Edad='"+edad+"'";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
@@ -283,16 +269,12 @@ public class Querry {
 		Statement st;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "SELECT a.ideestudiante, a.nombres, a.apellido_paterno, a.apellido_materno , c.idrecibo, c.fechan, c.monto, c.nit"
-				+ " FROM estudiante a, inscripcion b, recibo c, materia_has_paralelo d, materia e, paralelo f"
-				+ " WHERE a.idestudiante=b.estudiante_idestudiante"
-				+ " AND b.recibo_idrecibo = c.idrecibo"
-				+ " AND b.materia_has_paralelo_materia_idmateria=d.materia_idmateria"
-				+ " AND b.materia_has_paralelo_paralelo_idparalelo=f.idparalelo"
-				+ " AND d.gestion='"+gestion+"'"
-				+ " AND e.nombres='"+curso+"'"
-				+ " AND f.idparalelo='"+paralelo+"'"
-				+ " ORDER BY c.iderecibo";
+		String querry = "SELECT a.idestudiante, a.nombres, a.apellido_paterno, a.apellido_materno, c.idrecibo, c.fechan, c.monto, c.nit "
+				+ "FROM estudiante a, inscripcion b, recibo c, materia_has_docente d, materia e " 
+				+ "WHERE a.idestudiante=b.estudiante_idestudiante AND b.recibo_idrecibo=c.idrecibo "
+				+ "AND b.materia_has_docente_materia_idmateria=d.materia_idmateria "
+				+ "AND b.materia_has_docente_docente_iddocente=d.docente_iddocente "
+				+ "AND e.idmateria=d.materia_idmateria AND d.gestion='"+gestion+"' AND e.nombres='"+curso+"' AND e.paralelo='"+paralelo+"'";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
@@ -302,17 +284,12 @@ public class Querry {
 		Statement st;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "SELECT c.idrecibo" + 
-				" FROM estudiante a, inscripcion b, recibo c, materia_has_paralelo d, materia e, paralelo f" + 
-				" WHERE a.idestudiante=b.estudiante_idestudiante" + 
-				" AND b.recibo_idrecibo=c.idrecibo" + 
-				" AND b.materia_has_paralelo_materia_idmateria=d.materia_idmateria" + 
-				" AND b.materia_has_paralelo_paralelo_idparalelo=d.paralelo_idparalelo" + 
-				" AND d.materia_idmateria=e.idmateria" + 
-				" AND d.paralelo_idparalelo=f.idparalelo" + 
-				" AND d.gestion='"+gestion+"'" + 
-				" AND e.nombres='"+curso+"'" + 
-				" AND f.idparalelo='"+paralelo+"'";
+		String querry = "SELECT a.idestudiante, a.nombres, a.apellido_paterno, a.apellido_materno, c.idrecibo, c.fechan, c.monto, c.nit "
+				+ "FROM estudiante a, inscripcion b, recibo c, materia_has_docente d, materia e "
+				+ "WHERE a.idestudiante=b.estudiante_idestudiante AND b.recibo_idrecibo=c.idrecibo "
+				+ "AND b.materia_has_docente_materia_idmateria=d.materia_idmateria "
+				+ "AND b.materia_has_docente_docente_iddocente=d.docente_iddocente "
+				+ "AND e.idmateria=d.materia_idmateria AND d.gestion='"+gestion+"' AND e.nombres='"+curso+"' AND e.paralelo='"+paralelo+"' AND c.anulado=1";
 		rs = st.executeQuery(querry);
 		return rs;
 	}

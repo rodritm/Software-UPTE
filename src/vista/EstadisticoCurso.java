@@ -83,11 +83,12 @@ public class EstadisticoCurso {
 		cbCurso.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
 		        String curso = (String) cbCurso.getSelectedItem();
+		        cbParalelo.removeAllItems();
 		        try{
 		        	Querry q = new Querry();
 			        ResultSet rs = q.Paralelos(curso);
 			        while(rs.next()) {
-			        	cbParalelo.addItem(rs.getString("paralelo_idparalelo"));
+			        	cbParalelo.addItem(rs.getString("paralelo"));
 			        }
 		        }catch(Exception ev) {
 		        }

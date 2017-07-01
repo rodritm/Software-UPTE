@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import modelo.Querry;
@@ -46,7 +47,7 @@ public class EstadisticoGeneral {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 421, 279);
+		frame.setBounds(100, 100, 421, 219);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setLocationRelativeTo(null);
@@ -83,11 +84,12 @@ public class EstadisticoGeneral {
 		cbCurso.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
 		        String curso = (String) cbCurso.getSelectedItem();
+		        cbParalelo.removeAllItems();
 		        try{
 		        	Querry q = new Querry();
 			        ResultSet rs = q.Paralelos(curso);
 			        while(rs.next()) {
-			        	cbParalelo.addItem(rs.getString("paralelo_idparalelo"));
+			        	cbParalelo.addItem(rs.getString("paralelo"));
 			        }
 		        }catch(Exception ev) {
 		        }
@@ -95,7 +97,7 @@ public class EstadisticoGeneral {
 		});
 		
 		JButton btnOk = new JButton("OK");
-		btnOk.setBounds(302, 212, 98, 25);
+		btnOk.setBounds(302, 168, 98, 25);
 		frame.getContentPane().add(btnOk);
 		
 		JLabel lblGestion = new JLabel("GESTION:");
@@ -118,25 +120,14 @@ public class EstadisticoGeneral {
 				frame.dispose();
 			}
 		});
-		btnAtras.setBounds(37, 212, 98, 25);
+		btnAtras.setBounds(37, 168, 98, 25);
 		frame.getContentPane().add(btnAtras);
-		
-		JLabel lblGenero = new JLabel("GENERO:");
-		lblGenero.setBounds(80, 165, 55, 15);
-		frame.getContentPane().add(lblGenero);
-		
-		JComboBox cbGenero = new JComboBox();
-		cbGenero.setBounds(176, 160, 224, 24);
-		frame.getContentPane().add(cbGenero);
-		cbGenero.addItem("Masculino");
-		cbGenero.addItem("Femenino");
 		
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String gestion = (String) cbGestion.getSelectedItem();
 				String curso = (String) cbCurso.getSelectedItem();
 				String paralelo = (String) cbParalelo.getSelectedItem();
-				String genero = (String) cbGenero.getSelectedItem();
 			}
 		});
 	}
