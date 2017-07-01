@@ -47,10 +47,10 @@ public class RepRecibos {
 				
 				doc.open();
 
-				/*Image logo = Image.getInstance("/logop.jpg");
+				Image logo = Image.getInstance("/adm/logop.jpg");
 				logo.setAlignment(Image.ALIGN_RIGHT | Image.UNDERLYING);
 				logo.scaleToFit(100, 100);
-				doc.add(logo);*/
+				doc.add(logo);
 				
 				//---------------------
 				Paragraph par = new Paragraph();
@@ -64,7 +64,6 @@ public class RepRecibos {
 				Paragraph par1 = new Paragraph();
 				par1.add(new Phrase(curso,title));
 				par1.setAlignment(Element.ALIGN_CENTER);
-				par1.add(new Phrase(Chunk.NEWLINE));
 				par1.add(new Phrase(Chunk.NEWLINE));
 				par1.add(new Phrase(Chunk.NEWLINE));
 				par1.add(new Phrase(Chunk.NEWLINE));
@@ -90,7 +89,7 @@ public class RepRecibos {
 				
 				float[] columnWidths = {3,7,6,8,20,3,11};
 				PdfPTable tabla = new PdfPTable(columnWidths);
-				tabla.setTotalWidth(520);
+				tabla.setTotalWidth(530);
 				tabla.setLockedWidth(true);
 				
 				PdfPCell c1 = new PdfPCell(new Paragraph("Nº",sub));
