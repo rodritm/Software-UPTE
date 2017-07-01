@@ -14,6 +14,7 @@ import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JDayChooser;
 
 import controlador.Estudiante;
+import modelo.Querry;
 
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -173,7 +174,7 @@ public class Ficha {
 		frame.getContentPane().add(lblFechaDeNacimiento);
 		
 		JDateChooser fechanc = new JDateChooser();
-		fechanc.setDateFormatString("dd/MM/yyyy");
+		fechanc.setDateFormatString("yyyy-MM-dd");
 		fechanc.getDateEditor().addPropertyChangeListener(
 				new PropertyChangeListener() {
 					
@@ -433,14 +434,14 @@ public class Ficha {
 							String nombre, apePat, apeMat, ci, exp, fecha, genero, estado, dir, zona, ciudad, correo,
 							instruccion, profesion, ocupacion, actividad, personas, ingreso, medio, problemas, percontactnombre,
 							percontactapep, percontactcorreo, percontactapem, percontactcel, percontacttel;
-							int edad, cel, tel;
+							String edad, cel, tel;
 							nombre = tfNombre.getText().toString();
 							apePat = tfApePat.getText().toString();
 							apeMat = tfApeMat.getText().toString();
 							ci = tfCI.getText().toString();
 							exp = (String) cbExp.getSelectedItem();
-							fecha = fechanc.getDateFormatString();
-							edad = Integer.parseInt(tfEdad.getText().toString());
+							fecha = ((JTextField) fechanc.getDateEditor().getUiComponent()).getText();
+							edad = tfEdad.getText().toString();
 							genero = (String) cbGenero.getSelectedItem();
 							estado = (String) cbEstado_civil.getSelectedItem();
 							dir = tfDireccion.getText().toString();
@@ -461,13 +462,15 @@ public class Ficha {
 							percontactcorreo = tfPerContactoCorreo.getText().toString();
 							percontactcel = tfPerContactoCel.getText().toString();
 							percontacttel = tfPerContactoTel.getText().toString();
-							cel = Integer.parseInt(tfCel.getText().toString());
-							tel = Integer.parseInt(tfTel.getText().toString());
-							Estudiante est = new Estudiante(nombre, apePat, apeMat, ci, exp, fecha, genero, 
-									estado, dir, zona, ciudad, correo, instruccion, profesion, ocupacion,
-									actividad, personas, ingreso, medio, problemas, percontactnombre, percontactapep,
-									percontactcorreo, percontactapem, percontactcel, percontacttel, edad, cel, tel);
-							//est.crear(est);
+							cel = tfCel.getText().toString();
+							tel = tfTel.getText().toString();
+							Querry q = new Querry();
+							try {
+								q.Registrar(ci, exp, nombre, apePat, apeMat, genero, edad, estado, fecha, dir, zona, ciudad, correo, cel, tel, percontactnombre, percontacttel, instruccion, profesion, ocupacion, actividad, personas, ingreso, medio, problemas, percontactcel, percontactapep, percontactapem, percontactcorreo);
+								JOptionPane.showMessageDialog(null, "Persona inscrita correctamente.", "Creado", JOptionPane.INFORMATION_MESSAGE);
+							} catch (ClassNotFoundException e) {
+								e.printStackTrace();
+							}
 							Menu nuevo = new Menu();
 							nuevo.main(null);
 							frame.dispose();

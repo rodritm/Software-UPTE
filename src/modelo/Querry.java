@@ -122,22 +122,58 @@ public class Querry {
 	//							REGISTRAR
 	
 	
-	public void Registrar(String id, String exp, String nombres, String ape_paterno, String ape_materno,String genero, int edad,
-			String estado_civil, String foto, String fechanc, String direccion, String zona, String ciudad, String email, int celular, 
-			int telefono, String per_contact, int per_tel, String instruccion, String profesion, String ocupacion, String actividad, 
-			String per_vive, String ingreso, String info_upte, String motivo, String problemas, String obs, int per_cel, String per_ape_pat, 
-			String per_ape_mat, String per_correo) throws SQLException{
-		DB_Connect con = new DB_Connect();
-		Connection conn=con.conexion();
-		Statement st;
-		ResultSet rs;
-		st = (Statement)conn.createStatement();
-		String querry = "INSERT INTO estudiante"
-				+ " VALUES ('"+id+"','"+exp+"','"+nombres+"','"+ape_paterno+"','"+ape_materno+"','"+genero+"','"+edad+"','"+estado_civil+"','"+foto+"','"+fechanc+"','"+direccion+"','"+zona+"','"+ciudad+"','"+email+"','"+celular+"','"+telefono+"','"+per_contact+"','"+per_tel+"','"+instruccion+"','"+profesion+"','"+ocupacion+"','"+actividad+"','"+per_vive+"','"+ingreso+"','"+info_upte+"','"+motivo+"','"+problemas+"','"+obs+"','"+per_cel+"','"+per_ape_pat+"','"+per_ape_mat+"','"+per_correo+"')";
-		rs = st.executeQuery(querry);
-		rs.close();
-		st.close();
-		conn.close();
+	public void Registrar(String id, String exp, String nombres, String ape_paterno, String ape_materno,String genero, String edad,
+			String estado_civil, String fechanc, String direccion, String zona, String ciudad, String email, String celular, 
+			String telefono, String per_contact, String per_tel, String instruccion, String profesion, String ocupacion, String actividad, 
+			String per_vive, String ingreso, String info_upte, String problemas, String per_cel, String per_ape_pat, 
+			String per_ape_mat, String per_correo) throws ClassNotFoundException{
+		try {
+			Connection con;
+			Class.forName("java.sql.Driver");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
+			String sql = "INSERT INTO estudiante(idestudiante, exp, nombres, apellido_paterno, apellido_materno, genero, Edad, estado_civil, fechanc, "
+					+ "direccion, zona, Ciudad, email, celular, telefono, per_contact, per_tel, instruccion, profesion, ocupacion, actividad, per_vive, "
+					+ "ingreso, info_upte, problemas, per_cel, per_ape_pat, per_ape_mat, per_correo) VALUES"
+					+ "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
+			pre.setString(1, id);
+			pre.setString(2, exp);
+			pre.setString(3, nombres);
+			pre.setString(4, ape_paterno);
+			pre.setString(5, ape_materno);
+			pre.setString(6, genero);
+			pre.setString(7, edad);
+			pre.setString(8, estado_civil);
+			pre.setString(9, fechanc);
+			pre.setString(10, direccion);
+			pre.setString(11, zona);
+			pre.setString(12, ciudad);
+			pre.setString(13, email);
+			pre.setString(14, celular);
+			pre.setString(15, telefono);
+			pre.setString(16, per_contact);
+			pre.setString(17, per_tel);
+			pre.setString(18, instruccion);
+			pre.setString(19, profesion);
+			pre.setString(20, ocupacion);
+			pre.setString(21, actividad);
+			pre.setString(22, per_vive);
+			pre.setString(23, ingreso);
+			pre.setString(24, info_upte);
+			pre.setString(25, problemas);
+			pre.setString(26, per_cel);
+			pre.setString(27, per_ape_pat);
+			pre.setString(28, per_ape_mat);
+			pre.setString(29, per_correo);
+			
+			
+			pre.executeUpdate();
+			con.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Error al crear la materia","Error al crear",JOptionPane.ERROR_MESSAGE);
+		}
 	}
 	
 	
@@ -167,17 +203,11 @@ public class Querry {
 		Statement st = null;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "SELECT a.nombres" + 
-				" FROM estudiante a, inscripcion b, materia_has_paralelo c , materia d, paralelo e " + 
-				" WHERE a.idestudiante=b.estudiante_idestudiante" + 
-				" AND b.materia_has_paralelo_materia_idmateria=c.materia_idmateria" + 
-				" AND b.materia_has_paralelo_paralelo_idparalelo=c.paralelo_idparalelo" + 
-				" AND c.materia_idmateria=d.idmateria" + 
-				" AND c.paralelo_idparalelo1=e.idparalelo" + 
-				" AND d.nombres='"+curso+"'" + 
-				" AND e.idparalelo='"+paralelo+"'" + 
-				" AND c.gestion='"+gestion+"'" + 
-				" ORDER BY a.nombres";
+		String querry = "SELECT a.apellido_paterno, a.apellido_materno, a.nombres, e.nombres, e.ape_pat, e.ape_mat FROM "
+				+ "estudiante a, inscripcion b, materia_has_docente c, materia d, docente e WHERE "
+				+ "a.idestudiante=b.estudiante_idestudiante AND b.materia_has_docente_materia_idmateria=c.materia_idmateria "
+				+ "AND b.materia_has_docente_docente_iddocente=c.docente_iddocente AND c.materia_idmateria=d.idmateria "
+				+ "AND c.docente_iddocente=e.iddocente AND c.gestion='"+gestion+"' AND d.nombres='"+curso+"' AND d.paralelo='"+paralelo+"'";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
@@ -187,14 +217,12 @@ public class Querry {
 		Statement st = null;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "SELECT a.nombres, c.idrecibo, c.fechan, e.nombres" + 
-				" FROM estudiante a, inscripcion b, recibo c, materia_has_paralelo d, materia e" + 
-				" WHERE a.idestudiante=b.estudiante_idestudiante" + 
-				" AND b.recibo_idrecibo=c.idrecibo" + 
-				" AND b.materia_has_paralelo_materia_idmateria=d.materia_idmateria" + 
-				" AND b.materia_has_paralelo_paralelo_idparalelo=d.paralelo_idparalelo" + 
-				" AND e.idmateria=d.materia_idmateria" + 
-				" AND d.gestion='"+gestion+"'";
+		String querry = "SELECT a.nombres,a.apellido_paterno,a.apellido_materno,a.idestudiante, c.fechan, c.idrecibo ,c.monto, c.nit"
+				+ " FROM estudiante a, inscripcion b, recibo c, materia_has_docente d, materia e"
+				+ " WHERE a.idestudiante=b.estudiante_idestudiante AND b.recibo_idrecibo=c.idrecibo"
+				+ " AND b.materia_has_docente_materia_idmateria=d.materia_idmateria"
+				+ " AND b.materia_has_docente_docente_iddocente=d.docente_iddocente"
+				+ " AND d.materia_idmateria=e.idmateria AND d.gestion='"+gestion+"'";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
