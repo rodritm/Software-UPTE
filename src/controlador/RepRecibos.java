@@ -41,40 +41,52 @@ public class RepRecibos {
 		
         if( rs!= null){
         	try {
-				FileOutputStream archivo = new FileOutputStream("/home/prime/Descargas/prueba/prueba8"+".pdf");
+        		FileOutputStream archivo = new FileOutputStream("/home/prime/Descargas/prueba/prueba8"+".pdf");
 				Document doc =new Document(PageSize.A4,30,30,30,30);;
 				PdfWriter.getInstance(doc,archivo);
 				
 				doc.open();
-				 
+
+				Image logo = Image.getInstance("/logop.jpg");
+				logo.setAlignment(Image.ALIGN_RIGHT | Image.UNDERLYING);
+				logo.scaleToFit(100, 100);
+				doc.add(logo);
+				
+				//---------------------
+				Paragraph par = new Paragraph();
+				par.add(new Phrase("",title));
+				par.add(new Phrase(Chunk.NEWLINE));
+				par.add(new Phrase(Chunk.NEWLINE));
+				doc.add(par);
+
+				
+				
 				Paragraph par1 = new Paragraph();
-				par1.add(new Phrase(gestion,title));
+				par1.add(new Phrase(curso,title));
 				par1.setAlignment(Element.ALIGN_CENTER);
+				par1.add(new Phrase(Chunk.NEWLINE));
+				par1.add(new Phrase(Chunk.NEWLINE));
 				par1.add(new Phrase(Chunk.NEWLINE));
 				par1.add(new Phrase(Chunk.NEWLINE));
 				doc.add(par1);
 				// --------------------
 				Paragraph par2 = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
-				par2.add(new Phrase(paralelo,sub));
+				par2.add(new Phrase(paralelo+" "+gestion,sub));
 				par2.setAlignment(Element.ALIGN_LEFT);
 				doc.add(par2);
 			
 				// ---------------  contenido = fecha y hora del dia-----
-				Paragraph par3 = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
 				Fecha fff = new Fecha();
+				Paragraph par3 = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
 				par3.add(new Phrase(fff.sacarfecha(),sub));
 				par3.setAlignment(Element.ALIGN_RIGHT);
 				par3.add(new Phrase(Chunk.NEWLINE));
 				par3.add(new Phrase(Chunk.NEWLINE));
 				doc.add(par3);
 			
+				
 				//---------------------
 				
-				/*Image logo = Image.getInstance("/logop.jpg");
-				logo.setAlignment(Image.ALIGN_RIGHT | Image.UNDERLYING);
-				logo.scaleToFit(100, 100);
-				doc.add(logo);*/
-				//---------------------
 				float[] columnWidths = {3,7,5,9,20,3,9};
 				PdfPTable tabla = new PdfPTable(columnWidths);
 				tabla.setTotalWidth(520);
