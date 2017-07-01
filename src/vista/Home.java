@@ -2,14 +2,11 @@ package vista;
 
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-
 import controlador.Empleados;
 import controlador.Login;
 import modelo.Querry;
-
 import javax.swing.JPasswordField;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -54,7 +51,7 @@ public class Home extends JFrame{
 
 	/**
 	 * Initialize the contents of the frame.
-	 */
+	 */ 
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(0, 0, 800, 500);
