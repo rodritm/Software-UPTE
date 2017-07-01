@@ -14,6 +14,9 @@ import com.mysql.jdbc.PreparedStatement;
 import controlador.Fecha;
 
 public class Querry {
+	
+	private static Puerto p = new Puerto();
+	private static String puerto=p.puerto();
 	//						LOGIN
 	
 	
@@ -130,7 +133,7 @@ public class Querry {
 		try {
 			Connection con;
 			Class.forName("java.sql.Driver");
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:"+puerto+"/upte","root","");
 			String sql = "INSERT INTO estudiante(idestudiante, exp, nombres, apellido_paterno, apellido_materno, genero, Edad, estado_civil, fechanc, "
 					+ "direccion, zona, Ciudad, email, celular, telefono, per_contact, per_tel, instruccion, profesion, ocupacion, actividad, per_vive, "
 					+ "ingreso, info_upte, problemas, per_cel, per_ape_pat, per_ape_mat, per_correo) VALUES"
@@ -198,7 +201,7 @@ public class Querry {
 		try {
 			Connection con;
 			Class.forName("java.sql.Driver");
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:"+puerto+"/upte","root","");
 			String sql = "UPDATE estudiante SET idestudiante = ? ,exp = ?,nombres = ?,apellido_paterno = ?,apellido_materno = ?,genero = ?,"
 					+ " Edad = ?,estado_civil = ?,fechanc = ?, direccion = ?, zona = ?, Ciudad = ?, email = ?, celular = ?, telefono = ?, "
 					+ "per_contact = ?, per_tel = ?, instruccion = ?, profesion = ?, ocupacion = ?, actividad = ?, per_vive = ?, ingreso = ?, "
@@ -265,7 +268,7 @@ public class Querry {
 			con2.closecon();
 			
 			Class.forName("java.sql.Driver");
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:"+puerto+"/upte","root","");
 			sql = "INSERT INTO inscripcion(empleados_idempleados, estudiante_idestudiante, materia_has_docente_materia_idmateria, materia_has_docente_docente_iddocente, materia, paralelo) VALUES (?, ?, ?, ?, ?, ?)";
 			pre = (PreparedStatement) con.prepareStatement(sql);
 			pre.setString(1, "9896776");
@@ -458,7 +461,7 @@ public class Querry {
 		try{
 			Connection con;
 			Class.forName("java.sql.Driver");
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:"+puerto+"/upte","root","");
 			String sql = "INSERT INTO empleados(idempleados, nombres, apellido_paterno, apellido_materno, fechanc, direccion, celular, password, Tipo_empleado_idTipo_empleado) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
 			pre.setString(1, ci);
@@ -482,7 +485,7 @@ public class Querry {
 		try {
 			Connection con;
 			Class.forName("java.sql.Driver");
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:"+puerto+"/upte","root","");
 			String sql = "INSERT INTO docente(iddocente, nombres, ape_pat, ape_mat, fechanac, direccion, celular) VALUES(?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
 			pre.setString(1, id);
@@ -504,7 +507,7 @@ public class Querry {
 		try {
 			Connection con;
 			Class.forName("java.sql.Driver");
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:"+puerto+"/upte","root","");
 			String sql = "INSERT INTO materia(idmateria, nombres, paralelo, hora, monto, tiempo) VALUES(?, ?, ?, ?, ?, ?)";
 			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
 			pre.setString(1, id);

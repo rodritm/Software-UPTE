@@ -12,10 +12,13 @@ import com.mysql.jdbc.Statement;
 public class DB_Connect {
 	public Connection con;
 	
+	private static Puerto p = new Puerto();
+	private static String puerto=p.puerto();
+	
 	public Connection conexion(){
 		try{
 			Class.forName("java.sql.Driver");
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:"+puerto+"/upte","root","");
 		}catch(Exception e){
 			System.out.println("");
 		}
