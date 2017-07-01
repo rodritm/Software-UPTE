@@ -179,21 +179,135 @@ public class Querry {
 	
 	//							INSCRIBIR
 	
-	
-	public void Inscribir() throws SQLException{
+	public ResultSet AutoIns(String id) throws SQLException{
 		DB_Connect con = new DB_Connect();
 		Connection conn=con.conexion();
-		Statement st;
-		ResultSet rs;
+		Statement st = null;
+		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "";
+		String querry = "SELECT * from estudiante WHERE idestudiante ='"+id+"'";
 		rs = st.executeQuery(querry);
-		rs.close();
-		st.close();
-		conn.close();
+		return rs;
 	}
 	
+	public void Inscribir(String id, String exp, String nombres, String ape_paterno, String ape_materno,String genero, String edad,
+			String estado_civil, String fechanc, String direccion, String zona, String ciudad, String email, String celular, 
+			String telefono, String per_contact, String per_tel, String instruccion, String profesion, String ocupacion, String actividad, 
+			String per_vive, String ingreso, String info_upte, String problemas, String per_cel, String per_ape_pat, 
+			String per_ape_mat, String per_correo, String materia, String paralelo) throws ClassNotFoundException{
+		try {
+			Connection con;
+			Class.forName("java.sql.Driver");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
+			String sql = "UPDATE estudiante SET idestudiante = ? ,exp = ?,nombres = ?,apellido_paterno = ?,apellido_materno = ?,genero = ?,"
+					+ " Edad = ?,estado_civil = ?,fechanc = ?, direccion = ?, zona = ?, Ciudad = ?, email = ?, celular = ?, telefono = ?, "
+					+ "per_contact = ?, per_tel = ?, instruccion = ?, profesion = ?, ocupacion = ?, actividad = ?, per_vive = ?, ingreso = ?, "
+					+ "info_upte = ?, problemas = ?, per_cel = ?, per_ape_pat = ?, per_ape_mat = ?, per_correo = ? WHERE idestudiante = ?";
+		
+			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
+			pre.setString(1, id);
+			pre.setString(2, exp);
+			pre.setString(3, nombres);
+			pre.setString(4, ape_paterno);
+			pre.setString(5, ape_materno);
+			pre.setString(6, genero);
+			pre.setString(7, edad);
+			pre.setString(8, estado_civil);
+			pre.setString(9, fechanc);
+			pre.setString(10, direccion);
+			pre.setString(11, zona);
+			pre.setString(12, ciudad);
+			pre.setString(13, email);
+			pre.setString(14, celular);
+			pre.setString(15, telefono);
+			pre.setString(16, per_contact);
+			pre.setString(17, per_tel);
+			pre.setString(18, instruccion);
+			pre.setString(19, profesion);
+			pre.setString(20, ocupacion);
+			pre.setString(21, actividad);
+			pre.setString(22, per_vive);
+			pre.setString(23, ingreso);
+			pre.setString(24, info_upte);
+			pre.setString(25, problemas);
+			pre.setString(26, per_cel);
+			pre.setString(27, per_ape_pat);
+			pre.setString(28, per_ape_mat);
+			pre.setString(29, per_correo);
+			pre.setString(30, id);
+			
+			pre.executeUpdate();
+			
+			Float monto = null;
+			DB_Connect con1 = new DB_Connect();
+			Connection conn=con1.conexion();
+			Statement st;
+			ResultSet rs = null;
+			st = (Statement)conn.createStatement();
+			String querry = "select monto from materiawhere nombres = '"+materia+"'";
+			rs = st.executeQuery(querry);
+			while(rs.next()) {
+				monto = Float.parseFloat(rs.getString("monto"));
+			}
+			con1.closecon();
+			
+			String idMateria = "";
+			String idDocente = "";
+			DB_Connect con2 = new DB_Connect();
+			conn=con2.conexion();
+			st = (Statement)conn.createStatement();
+			querry = "SELECT b.idmateria, a.docente_iddocente FROM materia_materia_has_docente a, materia b WHERE b.nombres = '"+materia+"'";
+			rs = st.executeQuery(querry);
+			while(rs.next()) {
+				idMateria = rs.getString("idmateria");
+				idDocente = rs.getString("docente_iddocente");
+			}
+			con2.closecon();
+			
+			Class.forName("java.sql.Driver");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
+			sql = "INSERT INTO inscripcion(empleados_idempleados, estudiante_idestudiante, materia_has_docente_materia_idmateria, materia_has_docente_docente_iddocente, materia, paralelo) VALUES (?, ?, ?, ?, ?, ?)";
+			pre = (PreparedStatement) con.prepareStatement(sql);
+			pre.setString(1, "");
+			pre.setString(2, id);
+			pre.setString(3, idMateria);
+			pre.setString(4, idDocente);
+			pre.setString(5, materia);
+			pre.setString(6, paralelo);
+			
+			pre.executeUpdate();
+			
+			ReciboAdd(monto);
+			
+			
+			con.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Alumnos no inscrito","ERROR",JOptionPane.ERROR_MESSAGE);
+		}
+	}
 	
+	public void ReciboAdd(Float monto) throws ClassNotFoundException{
+		try {
+			Fecha f = new Fecha();
+			String actual=f.sacarfecha();
+			Connection con;
+			Class.forName("java.sql.Driver");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
+			String sql = "INSERT INTO recibo(fechan, anulado, monto, nit) VALUES (?, ?, ?, ?)";
+			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
+			pre.setString(1, actual);
+			pre.setString(2, "0");
+			pre.setFloat(3, monto);
+			pre.setString(4, "");
+			pre.executeUpdate();
+			
+			con.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Error al crear la materia","Error al crear",JOptionPane.ERROR_MESSAGE);
+		}
+	}
 	//							ACADEMICOS
 	
 	
@@ -299,7 +413,7 @@ public class Querry {
 		st = (Statement)conn.createStatement();
 		String querry = "SELECT a.idestudiante, a.nombres, a.apellido_paterno, a.apellido_materno, c.idrecibo, c.fechan, c.monto, c.nit "
 				+ "FROM estudiante a, inscripcion b, recibo c, materia_has_docente d, materia e " 
-				+ "WHERE a.idestudiante=b.estudiante_idestudiante AND b.recibo_idrecibo=c.idrecibo "
+				+ "WHERE a.idestudiante=b.estudiante_idestudiante AND b.idinscripcion=c.inscripcion_idinscripcion "
 				+ "AND b.materia_has_docente_materia_idmateria=d.materia_idmateria "
 				+ "AND b.materia_has_docente_docente_iddocente=d.docente_iddocente "
 				+ "AND e.idmateria=d.materia_idmateria AND d.gestion='"+gestion+"' AND e.nombres='"+curso+"' AND e.paralelo='"+paralelo+"'";
@@ -314,7 +428,7 @@ public class Querry {
 		st = (Statement)conn.createStatement();
 		String querry = "SELECT a.idestudiante, a.nombres, a.apellido_paterno, a.apellido_materno, c.idrecibo, c.fechan, c.monto, c.nit "
 				+ "FROM estudiante a, inscripcion b, recibo c, materia_has_docente d, materia e "
-				+ "WHERE a.idestudiante=b.estudiante_idestudiante AND b.recibo_idrecibo=c.idrecibo "
+				+ "WHERE a.idestudiante=b.estudiante_idestudiante AND b.idinscripcion=c.inscripcion_idinscripcion "
 				+ "AND b.materia_has_docente_materia_idmateria=d.materia_idmateria "
 				+ "AND b.materia_has_docente_docente_iddocente=d.docente_iddocente "
 				+ "AND e.idmateria=d.materia_idmateria AND d.gestion='"+gestion+"' AND e.nombres='"+curso+"' AND e.paralelo='"+paralelo+"' AND c.anulado=1";
@@ -324,23 +438,6 @@ public class Querry {
 	
 	
 	//							ADMIN
-	
-	
-	public void Prueba(String ci) throws ClassNotFoundException {
-		try{
-			Connection con;
-			Class.forName("java.sql.Driver");
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
-			String sql = "INSERT INTO prueba (hola) VALUES(?)";
-			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
-			pre.setString(1, ci);
-			pre.executeUpdate();
-			con.close();
-		}catch(SQLException e) {
-			JOptionPane.showMessageDialog(null, "Error al crear el usuario","Error al crear",JOptionPane.ERROR_MESSAGE);
-		}
-	}
-	
 	
 	
 	public void AdminUsersNew(String ci, String nombre, String apellidoPat, String apellidoMat, String fecha, String dir, String cel, String pass, String tipo) throws ClassNotFoundException {

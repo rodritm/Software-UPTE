@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Fecha {
-	public static String sacarfecha() {
+	public String sacarfecha() {
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-mm-dd");
 		LocalDate ahora = LocalDate.now();
 		String fecha = ahora.format(fmt);

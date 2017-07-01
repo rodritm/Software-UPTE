@@ -26,9 +26,13 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class Inscribir {
@@ -487,8 +491,48 @@ public class Inscribir {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String ci = tfCI.getText().toString();
-				//Esto lo mandas a la querry
-				//Tambien pones los setText
+				Querry q = new Querry();
+				try {
+					ResultSet rs = q.AutoIns(ci);
+					while(rs.next()) {
+						tfNombre.setText(rs.getString("nombres"));
+						tfApePat.setText(rs.getString("apellido_paterno"));
+						tfApeMat.setText(rs.getString("apellido_materno"));
+						cbExp.setSelectedItem(rs.getString("exp"));
+						String f = rs.getString("fechanc");
+							Date fecha1 = new SimpleDateFormat("yyyy-MM-dd").parse(f);
+						fechanc.setDate(fecha1);
+						tfEdad.setText(rs.getString("Edad"));
+						cbGenero.setSelectedItem(rs.getString("genero"));
+						cbEstado_civil.setSelectedItem(rs.getString("estado_civil"));
+						tfDireccion.setText(rs.getString("direccion"));
+						tfZona.setText(rs.getString("zona"));
+						tfCiudad.setText(rs.getString("Ciudad"));
+						tfCorreo.setText(rs.getString("email"));
+						cbInstruccion.setSelectedItem(rs.getString("instruccion"));
+						tfProfesion.setText(rs.getString("profesion"));
+						tfOcupacion.setText(rs.getString("ocupacion"));
+						tfActividad.setText(rs.getString("actividad"));
+						tfPersonaVive.setText(rs.getString("per_vive"));
+						tfTipoIngreso.setText(rs.getString("ingreso"));
+						tfMedio.setText(rs.getString("info_upte"));
+						tfProblemas.setText(rs.getString("problemas"));
+						tfPerContactoNombre.setText(rs.getString("per_contact"));
+						tfPerContactoApePat.setText(rs.getString("per_ape_pat"));
+						tfPerContactoApeMat.setText(rs.getString("per_ape_mat"));
+						tfPerContactoCorreo.setText(rs.getString("per_correo"));
+						tfPerContactoCel.setText(rs.getString("per_cel"));
+						tfPerContactoTel.setText(rs.getString("per_tel"));
+						tfCel.setText(rs.getString("celular"));
+						tfTel.setText(rs.getString("telefono"));
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Alumno no encontrado","ERROR",JOptionPane.ERROR_MESSAGE);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				
 			}
 		});
 		btnBuscar.setBounds(556, 26, 89, 23);
@@ -501,15 +545,14 @@ public class Inscribir {
 				if(option== 0){
 					String nombre, apePat, apeMat, ci, exp, fecha, genero, estado, dir, zona, ciudad, correo,
 					instruccion, profesion, ocupacion, actividad, personas, ingreso, medio, problemas, percontactnombre,
-					percontactapep, percontactcorreo, percontactapem, percontactcel, percontacttel, materia ,paralelo;
-					int edad, cel, tel;
+					percontactapep, percontactcorreo, percontactapem, percontactcel, percontacttel, materia ,paralelo, edad, cel, tel;
 					nombre = tfNombre.getText().toString();
 					apePat = tfApePat.getText().toString();
 					apeMat = tfApeMat.getText().toString();
 					ci = tfCI.getText().toString();
 					exp = (String) cbExp.getSelectedItem();
 					fecha = fechanc.getDateFormatString();
-					edad = Integer.parseInt(tfEdad.getText().toString());
+					edad = tfEdad.getText().toString();
 					genero = (String) cbGenero.getSelectedItem();
 					estado = (String) cbEstado_civil.getSelectedItem();
 					dir = tfDireccion.getText().toString();
@@ -530,14 +573,20 @@ public class Inscribir {
 					percontactcorreo = tfPerContactoCorreo.getText().toString();
 					percontactcel = tfPerContactoCel.getText().toString();
 					percontacttel = tfPerContactoTel.getText().toString();
-					cel = Integer.parseInt(tfCel.getText().toString());
-					tel = Integer.parseInt(tfTel.getText().toString());
+					cel = tfCel.getText().toString();
+					tel = tfTel.getText().toString();
 					materia = (String) cbMateria.getSelectedItem();
 					paralelo = (String) cbParalelo.getSelectedItem();
-					Estudiante est = new Estudiante(nombre, apePat, apeMat, ci, exp, fecha, genero, 
-							estado, dir, zona, ciudad, correo, instruccion, profesion, ocupacion,
-							actividad, personas, ingreso, medio, problemas, percontactnombre, percontactapep,
-							percontactcorreo, percontactapem, percontactcel, percontacttel,materia, paralelo, edad, cel, tel);
+					
+					Querry q = new Querry();
+					try {
+						q.Inscribir(ci, exp, nombre, apePat, apeMat, genero, edad, estado, fecha, dir, zona, ciudad, correo, cel, tel, percontactnombre, percontacttel, instruccion, profesion, ocupacion, actividad, personas, ingreso, medio, problemas, percontactcel, percontactapep, percontactapem, percontactcorreo, materia, paralelo);
+					} catch (ClassNotFoundException e1) {
+						e1.printStackTrace();
+						JOptionPane.showMessageDialog(null, "Alumno no inscrito","ERROR",JOptionPane.ERROR_MESSAGE);
+					}
+					
+					
 					Menu nuevo = new Menu();
 					nuevo.main(null);
 					frame.dispose();
