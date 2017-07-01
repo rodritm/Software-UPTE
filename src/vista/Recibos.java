@@ -135,16 +135,20 @@ public class Recibos {
 				String paralelo = (String) cbParalelo.getSelectedItem();
 				String ruta = Ruta;
 				
-				JOptionPane.showMessageDialog(null, ruta);
 				
-				//if (!ruta.equals("")){
+				
+				if (!ruta.equals("")){
 					RepRecibos recpdf = new RepRecibos();
 					recpdf.recibos(gestion, curso, paralelo, ruta);
+					JOptionPane.showMessageDialog(null, "EXITO");
+					Reportes n = new Reportes();
+					frame.dispose();
+					n.main(null);
 					
-				//}else{
-				//	  JOptionPane.showMessageDialog(null,"NO HAY DIRECCIÓN","",JOptionPane.ERROR_MESSAGE);
+				}else{
+					  JOptionPane.showMessageDialog(null,"NO HAY DIRECCIÓN","",JOptionPane.ERROR_MESSAGE);
 
-				//}
+				}
 				
 			}
 		});

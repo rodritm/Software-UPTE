@@ -20,13 +20,10 @@ import com.itextpdf.text.pdf.PdfWriter;
 import modelo.Querry;
 
 public class RepAnulados {
-
 	
-	private static Font title = new Font(Font.FontFamily.COURIER,20,Font.BOLD);
-	private static Font sub = new Font(Font.FontFamily.COURIER,12,Font.BOLD);
-	private static Font body = new Font(Font.FontFamily.COURIER,12,Font.NORMAL);
-
-	
+	private static Font title = new Font(Font.FontFamily.TIMES_ROMAN,20,Font.BOLD);
+	private static Font sub = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.BOLD);
+	private static Font body = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL);
 
 	public static void anulados( String gestion,String curso,String paralelo,String ruta){
 		String id=null,cod=null,fec=null;
@@ -43,15 +40,14 @@ public class RepAnulados {
 				
 				doc.open();
 
-				//Image logo = Image.getInstance("/logop.jpg");
-				//logo.setAlignment(Image.ALIGN_RIGHT | Image.UNDERLYING);
-				//logo.scaleToFit(100, 100);
-				//doc.add(logo);
+				Image logo = Image.getInstance("images/logop.jpg");
+				logo.setAlignment(Image.ALIGN_RIGHT | Image.UNDERLYING);
+				logo.scaleToFit(100, 100);
+				doc.add(logo);
 				
 				//---------------------
 				Paragraph par = new Paragraph();
-				par.add(new Phrase("ANULADOS",title));
-				par.setAlignment(Element.ALIGN_CENTER);
+				par.add(new Phrase("ANULADO",title));
 				par.add(new Phrase(Chunk.NEWLINE));
 				par.add(new Phrase(Chunk.NEWLINE));
 				doc.add(par);
@@ -64,18 +60,18 @@ public class RepAnulados {
 				par1.add(new Phrase(Chunk.NEWLINE));
 				par1.add(new Phrase(Chunk.NEWLINE));
 				par1.add(new Phrase(Chunk.NEWLINE));
-				par1.add(new Phrase(Chunk.NEWLINE));
 				doc.add(par1);
 				// --------------------
 				Paragraph par2 = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
-				par2.add(new Phrase(paralelo+" "+gestion,sub));
+				par2.add(new Phrase("Paralelo: "+paralelo+"\nGestion: "+gestion,sub));
 				par2.setAlignment(Element.ALIGN_LEFT);
 				doc.add(par2);
 			
 				// ---------------  contenido = fecha y hora del dia-----
 				Fecha fff = new Fecha();
 				Paragraph par3 = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
-				par3.add(new Phrase(fff.sacarfecha(),sub));
+				par3.add(new Phrase("Fecha: "+fff.sacarfecha0(),sub));
+				//par3.add(new Phrase("fecha",sub));
 				par3.setAlignment(Element.ALIGN_RIGHT);
 				par3.add(new Phrase(Chunk.NEWLINE));
 				par3.add(new Phrase(Chunk.NEWLINE));
@@ -83,10 +79,10 @@ public class RepAnulados {
 			
 				
 				//---------------------
-				
-				float[] columnWidths = {3,7,6,8,20,3,11};
+
+				float[] columnWidths = {3,8,5,8,20,3,11};
 				PdfPTable tabla = new PdfPTable(columnWidths);
-				tabla.setTotalWidth(520);
+				tabla.setTotalWidth(535);
 				tabla.setLockedWidth(true);
 				
 				PdfPCell c1 = new PdfPCell(new Paragraph("Nº",sub));

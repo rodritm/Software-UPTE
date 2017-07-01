@@ -47,7 +47,7 @@ public class RepRecibos {
 				
 				doc.open();
 
-				Image logo = Image.getInstance("/adm/logop.jpg");
+				Image logo = Image.getInstance("images/logop.jpg");
 				logo.setAlignment(Image.ALIGN_RIGHT | Image.UNDERLYING);
 				logo.scaleToFit(100, 100);
 				doc.add(logo);
@@ -77,7 +77,7 @@ public class RepRecibos {
 				// ---------------  contenido = fecha y hora del dia-----
 				Fecha fff = new Fecha();
 				Paragraph par3 = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
-				par3.add(new Phrase(fff.sacarfecha(),sub));
+				par3.add(new Phrase("Fecha: "+fff.sacarfecha0(),sub));
 				//par3.add(new Phrase("fecha",sub));
 				par3.setAlignment(Element.ALIGN_RIGHT);
 				par3.add(new Phrase(Chunk.NEWLINE));
@@ -87,9 +87,9 @@ public class RepRecibos {
 				
 				//---------------------
 				
-				float[] columnWidths = {3,7,6,8,20,3,11};
+				float[] columnWidths = {3,8,5,8,20,3,11};
 				PdfPTable tabla = new PdfPTable(columnWidths);
-				tabla.setTotalWidth(530);
+				tabla.setTotalWidth(535);
 				tabla.setLockedWidth(true);
 				
 				PdfPCell c1 = new PdfPCell(new Paragraph("Nº",sub));

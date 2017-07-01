@@ -17,6 +17,17 @@ public class Fecha {
 		fecha = year+"-"+month+"-"+dia;
 		return fecha;
 	}
+	public String sacarfecha0() {
+		String fecha = "";
+		Date date= new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		int dia = cal.get(Calendar.DAY_OF_MONTH);
+		int month = cal.get(Calendar.MONTH);
+		int year = cal.get(Calendar.YEAR);
+		fecha = dia+"/"+month+"/"+year;
+		return fecha;
+	}
 	public String gestion() {
 		String fecha = "";
 		Date date= new Date();
