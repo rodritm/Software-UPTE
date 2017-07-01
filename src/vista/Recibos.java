@@ -135,7 +135,9 @@ public class Recibos {
 				String paralelo = (String) cbParalelo.getSelectedItem();
 				String ruta = Ruta;
 				
-				if (ruta.compareTo("")==1){
+				JOptionPane.showMessageDialog(null, ruta);
+				
+				if (!ruta.equals("")){
 					RepRecibos recpdf = new RepRecibos();
 					recpdf.recibos(gestion, curso, paralelo, ruta);
 					
