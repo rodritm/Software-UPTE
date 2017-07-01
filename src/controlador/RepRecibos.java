@@ -87,7 +87,7 @@ public class RepRecibos {
 				
 				//---------------------
 				
-				float[] columnWidths = {3,7,5,9,20,3,9};
+				float[] columnWidths = {3,7,6,8,20,3,11};
 				PdfPTable tabla = new PdfPTable(columnWidths);
 				tabla.setTotalWidth(520);
 				tabla.setLockedWidth(true);
