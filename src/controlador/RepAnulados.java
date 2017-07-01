@@ -33,7 +33,7 @@ public class RepAnulados {
 	try{
 		ResultSet rs = null;
 		Querry connec = new Querry();
-		rs = connec.ContRecibos(gestion, curso, paralelo);
+		rs = connec.ContAnulados(gestion, curso, paralelo);
 		
         if( rs!= null){
         	try {
