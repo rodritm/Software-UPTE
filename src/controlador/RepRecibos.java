@@ -26,9 +26,9 @@ import modelo.Querry;
 
 public class RepRecibos {
 	
-	private static Font title = new Font(Font.FontFamily.COURIER,20,Font.BOLD);
-	private static Font sub = new Font(Font.FontFamily.COURIER,12,Font.BOLD);
-	private static Font body = new Font(Font.FontFamily.COURIER,12,Font.NORMAL);
+	private static Font title = new Font(Font.FontFamily.TIMES_ROMAN,20,Font.BOLD);
+	private static Font sub = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.BOLD);
+	private static Font body = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL);
 
 	
 
@@ -47,10 +47,10 @@ public class RepRecibos {
 				
 				doc.open();
 
-				Image logo = Image.getInstance("/logop.jpg");
+				/*Image logo = Image.getInstance("/logop.jpg");
 				logo.setAlignment(Image.ALIGN_RIGHT | Image.UNDERLYING);
 				logo.scaleToFit(100, 100);
-				doc.add(logo);
+				doc.add(logo);*/
 				
 				//---------------------
 				Paragraph par = new Paragraph();
@@ -71,7 +71,7 @@ public class RepRecibos {
 				doc.add(par1);
 				// --------------------
 				Paragraph par2 = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
-				par2.add(new Phrase(paralelo+" "+gestion,sub));
+				par2.add(new Phrase("Paralelo: "+paralelo+"\nGestion: "+gestion,sub));
 				par2.setAlignment(Element.ALIGN_LEFT);
 				doc.add(par2);
 			
@@ -79,6 +79,7 @@ public class RepRecibos {
 				Fecha fff = new Fecha();
 				Paragraph par3 = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
 				par3.add(new Phrase(fff.sacarfecha(),sub));
+				//par3.add(new Phrase("fecha",sub));
 				par3.setAlignment(Element.ALIGN_RIGHT);
 				par3.add(new Phrase(Chunk.NEWLINE));
 				par3.add(new Phrase(Chunk.NEWLINE));
@@ -129,7 +130,7 @@ public class RepRecibos {
 				doc.close();
 				
 			} catch (Exception e2) { 
-				System.out.println("error"+e2);
+				 JOptionPane.showMessageDialog(null,"Error:\n"+e2);
 			}
         }
         

@@ -28,7 +28,7 @@ public class RepAnulados {
 
 	
 
-	public static void recibos( String gestion,String curso,String paralelo,String ruta){
+	public static void anulados( String gestion,String curso,String paralelo,String ruta){
 		String id=null,cod=null,fec=null;
 	try{
 		ResultSet rs = null;
@@ -43,10 +43,10 @@ public class RepAnulados {
 				
 				doc.open();
 
-				Image logo = Image.getInstance("/logop.jpg");
-				logo.setAlignment(Image.ALIGN_RIGHT | Image.UNDERLYING);
-				logo.scaleToFit(100, 100);
-				doc.add(logo);
+				//Image logo = Image.getInstance("/logop.jpg");
+				//logo.setAlignment(Image.ALIGN_RIGHT | Image.UNDERLYING);
+				//logo.scaleToFit(100, 100);
+				//doc.add(logo);
 				
 				//---------------------
 				Paragraph par = new Paragraph();

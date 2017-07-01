@@ -137,14 +137,14 @@ public class Recibos {
 				
 				JOptionPane.showMessageDialog(null, ruta);
 				
-				if (!ruta.equals("")){
+				//if (!ruta.equals("")){
 					RepRecibos recpdf = new RepRecibos();
 					recpdf.recibos(gestion, curso, paralelo, ruta);
 					
-				}else{
-					  JOptionPane.showMessageDialog(null,"NO HAY DIRECCIÓN","",JOptionPane.ERROR_MESSAGE);
+				//}else{
+				//	  JOptionPane.showMessageDialog(null,"NO HAY DIRECCIÓN","",JOptionPane.ERROR_MESSAGE);
 
-				}
+				//}
 				
 			}
 		});
