@@ -73,7 +73,7 @@ public class Anulados {
 			Querry q = new Querry();
 			ResultSet rs = q.Cursos();
 			while(rs.next()) {
-				cbGestion.addItem(rs.getString("nombres"));
+				cbCurso.addItem(rs.getString("nombres"));
 			}
 		}catch(Exception e) {
 		}
@@ -84,6 +84,7 @@ public class Anulados {
 		cbCurso.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
 		        String curso = (String) cbCurso.getSelectedItem();
+		        cbParalelo.removeAllItems();
 		        try{
 		        	Querry q = new Querry();
 			        ResultSet rs = q.Paralelos(curso);
