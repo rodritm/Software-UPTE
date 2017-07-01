@@ -64,6 +64,7 @@ public class Inscribir {
 	private JTextField tfMedio;
 	private JTextField tfProblemas;
 	private int edad;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -134,7 +135,7 @@ public class Inscribir {
 				
 			}
 		});
-		btnAtras.setBounds(406, 679, 117, 25);
+		btnAtras.setBounds(488, 679, 85, 25);
 		frame.getContentPane().add(btnAtras);
 		
 		tfApeMat = new JTextField();
@@ -442,8 +443,8 @@ public class Inscribir {
 		frame.getContentPane().add(tfProblemas);
 		tfProblemas.setColumns(10);
 		
-		JButton btnOk = new JButton("OK");
-		btnOk.setBounds(543, 679, 117, 25);
+		JButton btnOk = new JButton("Incribir");
+		btnOk.setBounds(575, 679, 85, 25);
 		frame.getContentPane().add(btnOk);
 		
 		JLabel lblMateria = new JLabel("Inscripcion");
@@ -537,6 +538,19 @@ public class Inscribir {
 		});
 		btnBuscar.setBounds(556, 26, 89, 23);
 		frame.getContentPane().add(btnBuscar);
+		
+		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.setBounds(385, 679, 98, 25);
+		frame.getContentPane().add(btnActualizar);
+		
+		JLabel lblNit = new JLabel("NIT:");
+		lblNit.setBounds(12, 675, 55, 15);
+		frame.getContentPane().add(lblNit);
+		
+		textField = new JTextField();
+		textField.setBounds(48, 673, 225, 19);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
 		
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
