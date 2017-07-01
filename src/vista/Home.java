@@ -113,12 +113,6 @@ public class Home extends JFrame{
 				if (log.login(emp, restantes)){
 					Menu nuevo = new Menu();
 					nuevo.main(null);
-					Querry q = new Querry();
-					try {
-						q.Prueba(user);
-					} catch (ClassNotFoundException e1) {
-						e1.printStackTrace();
-					}
 					frame.dispose();					
 				}else{
 					restantes--;

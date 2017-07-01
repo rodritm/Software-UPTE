@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.PreparedStatement;
 
+import controlador.Fecha;
+
 public class Querry {
 	//						LOGIN
 	
@@ -50,7 +52,7 @@ public class Querry {
 		rs = st.executeQuery(querry);
 		return rs;
 	}
-	public ResultSet anulado() throws SQLException{
+	public ResultSet AutoReciboid() throws SQLException{
 		DB_Connect con = new DB_Connect();
 		Connection conn=con.conexion();
 		Statement st;
@@ -76,7 +78,7 @@ public class Querry {
 		Statement st;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "SELECT DISTINCT b.paralelo_idparalelo FROM materia a, materia_has_paralelo b WHERE a.nombres='"+curso+"' AND a.idmateria=b.materia_idmateria";                               
+		String querry = "SELECT DISTINCT paralelo FROM materia WHERE nombres='"+curso+"'";                               
 		rs = st.executeQuery(querry);
 		return rs;
 	}
@@ -198,7 +200,7 @@ public class Querry {
 	}
 	
 	
-	//					ESTADISTICOS
+	//							ESTADISTICOS
 	
 	
 	public ResultSet EstGeneral(String gestion) throws SQLException{
@@ -321,14 +323,14 @@ public class Querry {
 	
 	public void Prueba(String ci) throws ClassNotFoundException {
 		try{
-			DB_Connect con = new DB_Connect();
-			Connection conn=con.conexion();
-			Statement st;
-			ResultSet rs = null;
-			st = (Statement)conn.createStatement();
-			String querry = "INSERT INTO  `pueba`(`holas`) VALUES ('"+ci+"')";
-			JOptionPane.showMessageDialog(null, querry);
-			st.executeUpdate(querry);
+			Connection con;
+			Class.forName("java.sql.Driver");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
+			String sql = "INSERT INTO prueba (hola) VALUES(?)";
+			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
+			pre.setString(1, ci);
+			pre.executeUpdate();
+			con.close();
 		}catch(SQLException e) {
 			JOptionPane.showMessageDialog(null, "Error al crear el usuario","Error al crear",JOptionPane.ERROR_MESSAGE);
 		}
@@ -338,136 +340,90 @@ public class Querry {
 	
 	public void AdminUsersNew(String ci, String nombre, String apellidoPat, String apellidoMat, String fecha, String dir, String cel, String pass, String tipo) throws ClassNotFoundException {
 		try{
-			DB_Connect con = new DB_Connect();
-			Connection conn=con.conexion();
-			Statement st;
-			ResultSet rs = null;
-			st = (Statement)conn.createStatement();
-			String querry = "INSERT INTO empleados VALUES ('"+ci+"', '"+nombre+"', '"+apellidoPat+"', "
-					+ "'"+apellidoMat+"', '"+fecha+"', '"+dir+"', '"+cel+"', '"+pass+"', '"+tipo+"')";
-			JOptionPane.showMessageDialog(null, querry);
-			st.executeUpdate(querry);
-			rs.close();
-			st.close();
-			conn.close();
+			Connection con;
+			Class.forName("java.sql.Driver");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
+			String sql = "INSERT INTO empleados(idempleados, nombres, apellido_paterno, apellido_materno, fechanc, direccion, celular, password, Tipo_empleado_idTipo_empleado) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
+			pre.setString(1, ci);
+			pre.setString(2, nombre);
+			pre.setString(3, apellidoPat);
+			pre.setString(4, apellidoMat);
+			pre.setString(5, fecha);
+			pre.setString(6, dir);
+			pre.setString(7, cel);
+			pre.setString(8, pass);
+			pre.setString(9, tipo);
+			
+			pre.executeUpdate();
+			con.close();
 		}catch(SQLException e) {
-			JOptionPane.showMessageDialog(null, "Error al crear el usuario","Error al crear",JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Error al crear el empleado","Error al crear",JOptionPane.ERROR_MESSAGE);
 		}
 	}
-//	public ResultSet AdminUsersUpdate() throws SQLException{
-//		DB_Connect con = new DB_Connect();
-//		Connection conn=con.conexion();
-//		Statement st;
-//		ResultSet rs = null;
-//		st = (Statement)conn.createStatement();
-//		String querry = "select idempleados, password,nombres from empleados where idempleados = '"+user+"' and password = '"+pass+"'";
-//		rs = st.executeQuery(querry);
-//		return rs;
-//	}	
-	public void AdminUsersRemove(String id) {
-		try{
-			DB_Connect con = new DB_Connect();
-			Connection conn=con.conexion();
-			Statement st;
-			ResultSet rs = null;
-			st = (Statement)conn.createStatement();
-			String querry = "DELETE FROM empleados WHERE idempleados='"+id+"'";
-			rs = st.executeQuery(querry);
-			rs.close();
-			st.close();
-			conn.close();
-		}catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "Error al eliminar el usuario","Error al eliminar",JOptionPane.ERROR_MESSAGE);
-		}
-	}
-	
-	
-	public void AdminDocNew(String id, String nombre, String apellidoPat, String apellidoMat, String fecha, String dir, int cel){
-		try{
-			DB_Connect con = new DB_Connect();
-			Connection conn=con.conexion();
-			Statement st;
-			ResultSet rs = null;
-			st = (Statement)conn.createStatement();
-			String querry = "INSERT INTO empleados VALUES"
-					+ "('"+id+"', '"+nombre+"', '"+apellidoPat+"', '"+apellidoMat+"', '"+fecha+"', '"+dir+"', '"+cel+"');";
-			rs = st.executeQuery(querry);
-			rs.close();
-			st.close();
-			conn.close();
+	public void AdminDocNew(String id, String nombre, String apellidoPat, String apellidoMat, String fecha, String dir, String cel) throws ClassNotFoundException{
+		try {
+			Connection con;
+			Class.forName("java.sql.Driver");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
+			String sql = "INSERT INTO docente(iddocente, nombres, ape_pat, ape_mat, fechanac, direccion, celular) VALUES(?, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
+			pre.setString(1, id);
+			pre.setString(2, nombre);
+			pre.setString(3, apellidoPat);
+			pre.setString(4, apellidoMat);
+			pre.setString(5, fecha);
+			pre.setString(6, dir);
+			pre.setString(7, cel);
+			
+			pre.executeUpdate();
+			con.close();
 		}catch(SQLException e) {
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Error al crear el docente","Error al crear",JOptionPane.ERROR_MESSAGE);
 		}
 	}
-//	public ResultSet AdminDocUpdate() throws SQLException{
-//		DB_Connect con = new DB_Connect();
-//		Connection conn=con.conexion();
-//		Statement st;
-//		ResultSet rs = null;
-//		st = (Statement)conn.createStatement();
-//		String querry = "select idempleados, password,nombres from empleados where idempleados = '"+user+"' and password = '"+pass+"'";
-//		rs = st.executeQuery(querry);
-//		return rs;
-//	}
-	public void AdminDocRemove(String id) {
-		try{
-			DB_Connect con = new DB_Connect();
-			Connection conn=con.conexion();
+	public void AdminMatNew(String id, String nombre, String paralelo, String hora, String docente, float monto, String tiempo) throws ClassNotFoundException{
+		try {
+			Connection con;
+			Class.forName("java.sql.Driver");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/upte","root","");
+			String sql = "INSERT INTO materia(idmateria, nombres, paralelo, hora, monto, tiempo) VALUES(?, ?, ?, ?, ?, ?)";
+			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
+			pre.setString(1, id);
+			pre.setString(2, nombre);
+			pre.setString(3, paralelo);
+			pre.setString(4, hora);
+			pre.setFloat(5, monto);
+			pre.setString(6, tiempo);
+			pre.executeUpdate();
+			
+			String idDocente = "";
+			DB_Connect con1 = new DB_Connect();
+			Connection conn=con1.conexion();
 			Statement st;
 			ResultSet rs = null;
 			st = (Statement)conn.createStatement();
-			String querry = "DELETE FROM docente WHERE iddocente='"+id+"'";
+			String querry = "select iddocente from docente where nombres = '"+docente+"'";
 			rs = st.executeQuery(querry);
-			rs.close();
-			st.close();
-			conn.close();
-		}catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "Error al eliminar el docente","Error al eliminar",JOptionPane.ERROR_MESSAGE);
-		}
-	}
-	
-	
-	public void AdminMatNew(String id, String nombre) {
-		try{
-			DB_Connect con = new DB_Connect();
-			Connection conn=con.conexion();
-			Statement st;
-			ResultSet rs = null;
-			st = (Statement)conn.createStatement();
-			String querry = "INSERT INTO materia VALUES"
-					+ "('"+id+"', '"+nombre+"');";
-			rs = st.executeQuery(querry);
-			rs.close();
-			st.close();
-			conn.close();
+			while(rs.next()) {
+				idDocente = rs.getString("iddocente");
+			}
+			con1.closecon();
+			Fecha f = new Fecha();
+			String gestion = f.gestion();
+			sql = "INSERT INTO materia_has_docente(materia_idmateria, docente_iddocente, gestion) VALUES(?, ?, ?)";
+			PreparedStatement pre1 = (PreparedStatement) con.prepareStatement(sql);
+			pre1.setString(1, id);
+			pre1.setString(2, idDocente);
+			pre1.setString(3, gestion);
+			pre1.executeUpdate();
+			
+			con.close();
 		}catch(SQLException e) {
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Error al crear la materia","Error al crear",JOptionPane.ERROR_MESSAGE);
-		}
-	}
-//	public ResultSet AdminMatUpdate() throws SQLException{
-//		DB_Connect con = new DB_Connect();
-//		Connection conn=con.conexion();
-//		Statement st;
-//		ResultSet rs = null;
-//		st = (Statement)conn.createStatement();
-//		String querry = "select idempleados, password,nombres from empleados where idempleados = '"+user+"' and password = '"+pass+"'";
-//		rs = st.executeQuery(querry);
-//		return rs;
-//	}
-	public void AdminMatRemove(String id) {
-		try{
-			DB_Connect con = new DB_Connect();
-			Connection conn=con.conexion();
-			Statement st;
-			ResultSet rs = null;
-			st = (Statement)conn.createStatement();
-			String querry = "DELETE FROM materia WHERE idmateria='"+id+"'";
-			rs = st.executeQuery(querry);
-			st.close();
-			rs.close();
-			conn.close();
-		}catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "Error al eliminar la materia","Error al eliminar",JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

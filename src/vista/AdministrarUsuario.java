@@ -184,7 +184,6 @@ public class AdministrarUsuario {
 				String ApePat = tfApePat.getText().toString();
 				String ApeMat = tfApeMat.getText().toString();
 				String ci = tfCI.getText().toString();
-				//Date f = (Date) FechaNac.getDate();
 				String fecha = ((JTextField) FechaNac.getDateEditor().getUiComponent()).getText();
 				String dir = tfDireccion.getText().toString();
 				String cel = tfCel.getText().toString();
@@ -198,10 +197,13 @@ public class AdministrarUsuario {
 				Querry q = new Querry();
 				try {
 					q.AdminUsersNew(ci, nombre, ApePat, ApeMat, fecha, dir, cel, pass, tipo);
+					JOptionPane.showMessageDialog(null, "Usuario creado Correctamente.", "Creado", JOptionPane.INFORMATION_MESSAGE);
 				} catch (ClassNotFoundException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				Administrar a = new Administrar();
+				a.main(null);
+				frame.dispose();
 			}
 		});
 		btnOk.setBounds(340, 211, 98, 25);
