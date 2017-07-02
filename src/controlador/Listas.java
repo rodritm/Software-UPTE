@@ -55,7 +55,7 @@ public class Listas {
 				Paragraph par = new Paragraph();
 				String head = "Universidad Católica Boliviana San Pablo\n"
 							+"Departamento de Pastoral Universitaria\n"
-							+"Universidad para la tercera Edad (UPTE)";
+							+"Universidad para la Tercera Edad (UPTE)";
 				par.add(new Phrase(head,sub));
 				par.setAlignment(Element.ALIGN_LEFT);
 				par.add(new Phrase(Chunk.NEWLINE));

@@ -12,8 +12,12 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import controlador.General;
+import controlador.Listas;
+import controlador.Ruta;
 import modelo.Querry;
 
 public class AcademicoGeneral {
@@ -21,6 +25,7 @@ public class AcademicoGeneral {
 
 	private JFrame frame;
 	private JTextField tfRuta;
+	private String Ruta = "";
 
 	/**
 	 * Launch the application.
@@ -79,13 +84,10 @@ public class AcademicoGeneral {
 		JButton btnCarpeta = new JButton("CARPETA");
 		btnCarpeta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser dlg = new JFileChooser();
-				int option = 0;
-				option = dlg.showOpenDialog(null);
-				if (option == JFileChooser.APPROVE_OPTION){
-					File f= dlg.getSelectedFile();
-					tfRuta.setText(f.toString());
-				}
+					Ruta dic = new Ruta();
+					Ruta=dic.funcion();
+					tfRuta.setText(Ruta);
+				
 			}
 		});
 		btnCarpeta.setBounds(302, 81, 98, 25);
@@ -95,6 +97,21 @@ public class AcademicoGeneral {
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String gestion = (String) cbGestion.getSelectedItem();
+				
+				String ruta = Ruta;
+				
+				if (!ruta.equals("")){
+					General ge = new General();
+					ge.general(gestion, ruta);
+					JOptionPane.showMessageDialog(null, "EXITO");
+					Reportes n = new Reportes();
+					frame.dispose();
+					n.main(null);
+					
+				}else{
+					  JOptionPane.showMessageDialog(null,"NO HAY DIRECCIÓN","",JOptionPane.ERROR_MESSAGE);
+
+				}
 			}
 		});
 		btnOk.setBounds(302, 118, 98, 25);

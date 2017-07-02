@@ -24,7 +24,7 @@ import com.mysql.jdbc.Statement;
 
 import modelo.Querry;
 
-public class RepRecibos {
+public class General {
 	
 	private static Font title = new Font(Font.FontFamily.TIMES_ROMAN,20,Font.BOLD);
 	private static Font sub = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.BOLD);
@@ -32,12 +32,12 @@ public class RepRecibos {
 
 	
 
-	public static void recibos( String gestion,String curso,String paralelo,String ruta){
+	public static void general( String gestion, String ruta){
 		String id=null,cod=null,fec=null;
 	try{
 		ResultSet rs = null;
 		Querry connec = new Querry();
-		rs = connec.ContRecibos(gestion, curso, paralelo);
+		rs = connec.AcadGeneral(gestion);
 		
         if( rs!= null){
         	try {
@@ -66,7 +66,7 @@ public class RepRecibos {
 				
 				
 				Paragraph par1 = new Paragraph();
-				par1.add(new Phrase(curso,title));
+				par1.add(new Phrase("GENERAL",title));
 				par1.setAlignment(Element.ALIGN_CENTER);
 				par1.add(new Phrase(Chunk.NEWLINE));
 				par1.add(new Phrase(Chunk.NEWLINE));
@@ -74,7 +74,7 @@ public class RepRecibos {
 				doc.add(par1);
 				// --------------------
 				Paragraph par2 = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
-				par2.add(new Phrase("Paralelo: "+paralelo+"\nGestion: "+gestion,sub));
+				par2.add(new Phrase("Gestion: "+gestion,sub));
 				par2.setAlignment(Element.ALIGN_LEFT);
 				doc.add(par2);
 			

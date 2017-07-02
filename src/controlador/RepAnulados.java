@@ -47,10 +47,20 @@ public class RepAnulados {
 				
 				//---------------------
 				Paragraph par = new Paragraph();
-				par.add(new Phrase("ANULADO",title));
+				String head = "Universidad Católica Boliviana San Pablo\n"
+							+"Departamento de Pastoral Universitaria\n"
+							+"Universidad para la Tercera Edad (UPTE)";
+				par.add(new Phrase(head,sub));
+				par.setAlignment(Element.ALIGN_LEFT);
 				par.add(new Phrase(Chunk.NEWLINE));
 				par.add(new Phrase(Chunk.NEWLINE));
-				doc.add(par);
+				doc.add(par); 
+				
+				Paragraph parp = new Paragraph();
+				parp.add(new Phrase("ANULADOS",title));
+				parp.add(new Phrase(Chunk.NEWLINE));
+				parp.add(new Phrase(Chunk.NEWLINE));
+				doc.add(parp);
 
 				
 				
