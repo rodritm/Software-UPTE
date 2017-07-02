@@ -262,50 +262,9 @@ public class Querry {
 			JOptionPane.showMessageDialog(null, "Error al cambiar datos del estudiante", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	public void Inscribir(String id, String materia, String paralelo) throws ClassNotFoundException{
-		try {
-//			Connection con;
-//			Class.forName("java.sql.Driver");
-//			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:"+puerto+"/upte","root","");
-//			String sql = "UPDATE estudiante SET idestudiante = ? ,exp = ?,nombres = ?,apellido_paterno = ?,apellido_materno = ?,genero = ?,"
-//					+ " Edad = ?,estado_civil = ?,fechanc = ?, direccion = ?, zona = ?, Ciudad = ?, email = ?, celular = ?, telefono = ?, "
-//					+ "per_contact = ?, per_tel = ?, instruccion = ?, profesion = ?, ocupacion = ?, actividad = ?, per_vive = ?, ingreso = ?, "
-//					+ "info_upte = ?, problemas = ?, per_cel = ?, per_ape_pat = ?, per_ape_mat = ?, per_correo = ? WHERE idestudiante = ?";
-//		
-//			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
-//			pre.setString(1, id);
-//			pre.setString(2, exp);
-//			pre.setString(3, nombres);
-//			pre.setString(4, ape_paterno);
-//			pre.setString(5, ape_materno);
-//			pre.setString(6, genero);
-//			pre.setString(7, edad);
-//			pre.setString(8, estado_civil);
-//			pre.setString(9, fechanc);
-//			pre.setString(10, direccion);
-//			pre.setString(11, zona);
-//			pre.setString(12, ciudad);
-//			pre.setString(13, email);
-//			pre.setString(14, celular);
-//			pre.setString(15, telefono);
-//			pre.setString(16, per_contact);
-//			pre.setString(17, per_tel);
-//			pre.setString(18, instruccion);
-//			pre.setString(19, profesion);
-//			pre.setString(20, ocupacion);
-//			pre.setString(21, actividad);
-//			pre.setString(22, per_vive);
-//			pre.setString(23, ingreso);
-//			pre.setString(24, info_upte);
-//			pre.setString(25, problemas);
-//			pre.setString(26, per_cel);
-//			pre.setString(27, per_ape_pat);
-//			pre.setString(28, per_ape_mat);
-//			pre.setString(29, per_correo);
-//			pre.setString(30, id);
-//			
-//			pre.executeUpdate();
-			
+	public void Inscribir(String id, String materia, String paralelo, String nit) throws ClassNotFoundException{
+		try {	
+			JOptionPane.showMessageDialog(null, "Nit llego a inscribir querry: "+nit);
 			Float monto = null;
 			DB_Connect con1 = new DB_Connect();
 			Connection conn=con1.conexion();
@@ -347,7 +306,7 @@ public class Querry {
 			
 			pre.executeUpdate();
 			
-			ReciboAdd(monto);
+			ReciboAdd(monto,nit);
 			
 			
 			con.close();
@@ -357,8 +316,9 @@ public class Querry {
 		}
 	}
 	
-	public void ReciboAdd(Float monto) throws ClassNotFoundException{
+	public void ReciboAdd(Float monto, String nit) throws ClassNotFoundException{
 		try {
+			JOptionPane.showMessageDialog(null, "Nit para el recibo: "+nit);
 			String id = "";
 			DB_Connect con1 = new DB_Connect();
 			Connection conn=con1.conexion();
@@ -383,7 +343,7 @@ public class Querry {
 			pre.setString(2, actual);
 			pre.setString(3, "0");
 			pre.setFloat(4, monto);
-			pre.setString(5, "");
+			pre.setString(5, nit);
 			pre.executeUpdate();
 			
 			con.close();
