@@ -611,6 +611,7 @@ public class Inscribir {
 					//JOptionPane.showMessageDialog(null, "Nit sacado del textfield: "+nit);
 					Querry q = new Querry();
 					try {
+						if(paralelo!=null){
 						q.Inscribir(ci, materia, paralelo, nit);
 						ResultSet rs=q.SacarRecibo();
 						while(rs.next()) {
@@ -624,6 +625,9 @@ public class Inscribir {
 							String mate = rs.getString("nmateria");
 						}
 						JOptionPane.showMessageDialog(null, "Alumno iscrito correctamente","Inscrito", JOptionPane.INFORMATION_MESSAGE);
+						}else{
+							JOptionPane.showMessageDialog(null, "Alumno no inscrito","ERROR",JOptionPane.ERROR_MESSAGE);
+						}
 					} catch (ClassNotFoundException e1) {
 						e1.printStackTrace();
 						JOptionPane.showMessageDialog(null, "Alumno no inscrito","ERROR",JOptionPane.ERROR_MESSAGE);
