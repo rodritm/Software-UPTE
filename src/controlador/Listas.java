@@ -96,7 +96,7 @@ public class Listas {
 				//---------------------
 				
 				//---------------------
-				float[] columnWidths = {2,25,8,6};
+				float[] columnWidths = {2,25,9,6};
 				PdfPTable tabla = new PdfPTable(columnWidths);
 				tabla.setTotalWidth(520);
 				tabla.setLockedWidth(true);
@@ -120,7 +120,7 @@ public class Listas {
 		                nombre = rs.getString("apellido_paterno")+" "+rs.getString("apellido_materno")+" "+rs.getString("nombres");
 		                
 		                tabla.addCell(nombre);
-		                tabla.addCell("");
+		                tabla.addCell("\n");
 		                tabla.addCell("");
 		            }
 				doc.add(tabla);
@@ -148,7 +148,7 @@ public class Listas {
 	                doc.add(tabla1);
 				//---------------------
 	                Paragraph par444 = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
-					par444.add(new Phrase("_____________",sub));
+					par444.add(new Phrase("___________",sub));
 					par444.setAlignment(Element.ALIGN_LEFT);
 					doc.add(par444);
 	                
