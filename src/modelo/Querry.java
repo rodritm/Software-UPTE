@@ -127,7 +127,7 @@ public class Querry {
 			Connection con;
 			Class.forName("java.sql.Driver");
 			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:"+puerto+"/upte","root","");
-			String sql = "UPDATE recibos SET anulado=1 WHERE idrecibo = ? ";
+			String sql = "UPDATE recibo SET anulado=1 WHERE idrecibo = ? ";
 			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
 			pre.setString(1, id);
 			pre.executeUpdate();
