@@ -357,6 +357,31 @@ public class Querry {
 			JOptionPane.showMessageDialog(null, "Error al crear la materia","Error al crear",JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	public ResultSet SacarRecibo() throws SQLException{
+		String idrecibo = "";
+		DB_Connect con1 = new DB_Connect();
+		Connection conn=con1.conexion();
+		Statement st;
+		ResultSet rs = null;
+		st = (Statement)conn.createStatement();
+		String querry = "select idrecibo from recibo order by idrecibo desc limit 1";
+		rs = st.executeQuery(querry);
+		while(rs.next()) {
+			idrecibo = rs.getString("idrecibo");
+		}
+		con1.closecon();
+		
+		DB_Connect con = new DB_Connect();
+		conn=con.conexion();
+		st = (Statement)conn.createStatement();
+		querry = "SELECT a.nombres,a.apellido_paterno,a.apellido_materno, c.idrecibo, c.monto, c.fechan, c.nit, e.nombres AS nmateria"
+				+ " FROM estudiante a, inscripcion b, recibo c, materia_has_docente d, materia e WHERE a.idestudiante=b.estudiante_idestudiante"
+				+ " AND b.idinscripcion=c.inscripcion_idinscripcion AND b.materia_has_docente_materia_idmateria=d.materia_idmateria"
+				+ " AND b.materia_has_docente_docente_iddocente=d.docente_iddocente AND d.materia_idmateria=e.idmateria"
+				+ " AND c.idrecibo='"+idrecibo+"'";
+		ResultSet rs1 = st.executeQuery(querry);
+		return rs1;
+	}
 	//							ACADEMICOS
 	
 	

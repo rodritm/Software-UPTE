@@ -612,10 +612,24 @@ public class Inscribir {
 					Querry q = new Querry();
 					try {
 						q.Inscribir(ci, materia, paralelo, nit);
+						ResultSet rs=q.SacarRecibo();
+						while(rs.next()) {
+							String nombre = rs.getString("nombres");
+							String apePa = rs.getString("apellido_paterno");
+							String apeMa = rs.getString("apellido_materno");
+							String idRecibo = rs.getString("idrecibo");
+							String monto = rs.getString("monto");
+							String fecha = rs.getString("fechan");
+							String nit1 = rs.getString("nit");
+							String mate = rs.getString("nmateria");
+						}
 						JOptionPane.showMessageDialog(null, "Alumno iscrito correctamente","Inscrito", JOptionPane.INFORMATION_MESSAGE);
 					} catch (ClassNotFoundException e1) {
 						e1.printStackTrace();
 						JOptionPane.showMessageDialog(null, "Alumno no inscrito","ERROR",JOptionPane.ERROR_MESSAGE);
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+						JOptionPane.showMessageDialog(null, "Error al generar el recibo", "ERRRO", JOptionPane.ERROR_MESSAGE);
 					}
 					
 					
