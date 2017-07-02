@@ -361,7 +361,7 @@ public class Querry {
 		Statement st = null;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "SELECT a.apellido_paterno, a.apellido_materno, a.nombres, e.nombres, e.ape_pat, e.ape_mat FROM "
+		String querry = "SELECT a.apellido_paterno, a.apellido_materno, a.nombres, e.nombres as nombred, e.ape_pat, e.ape_mat FROM "
 				+ "estudiante a, inscripcion b, materia_has_docente c, materia d, docente e WHERE "
 				+ "a.idestudiante=b.estudiante_idestudiante AND b.materia_has_docente_materia_idmateria=c.materia_idmateria "
 				+ "AND b.materia_has_docente_docente_iddocente=c.docente_iddocente AND c.materia_idmateria=d.idmateria "

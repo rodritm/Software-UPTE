@@ -10,15 +10,19 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import controlador.Listas;
+import controlador.RepRecibos;
+import controlador.Ruta;
 import modelo.Querry;
 
 public class AcademicoCursos {
 
 	private JFrame frame;
 	private JTextField tfRuta;
-
+	private String Ruta = "";
 	/**
 	 * Launch the application.
 	 */
@@ -102,6 +106,13 @@ public class AcademicoCursos {
 		tfRuta.setColumns(10);
 		
 		JButton btnCarpeta = new JButton("CARPETA");
+		btnCarpeta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Ruta dic = new Ruta();
+				Ruta=dic.funcion();
+				tfRuta.setText(Ruta);
+			}
+		});
 		btnCarpeta.setBounds(302, 165, 98, 25);
 		frame.getContentPane().add(btnCarpeta);
 		
@@ -136,6 +147,20 @@ public class AcademicoCursos {
 				String gestion = (String) cbGestion.getSelectedItem();
 				String curso = (String) cbCurso.getSelectedItem();
 				String paralelo = (String) cbParalelo.getSelectedItem();
+				String ruta = Ruta;
+				
+				if (!ruta.equals("")){
+					Listas lll = new Listas();
+					lll.listas(gestion, curso, paralelo, ruta);
+					JOptionPane.showMessageDialog(null, "EXITO");
+					Reportes n = new Reportes();
+					frame.dispose();
+					n.main(null);
+					
+				}else{
+					  JOptionPane.showMessageDialog(null,"NO HAY DIRECCIÓN","",JOptionPane.ERROR_MESSAGE);
+
+				}
 			}
 		});
 	}
