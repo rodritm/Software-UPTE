@@ -264,7 +264,7 @@ public class Querry {
 	}
 	public void Inscribir(String id, String materia, String paralelo, String nit) throws ClassNotFoundException{
 		try {	
-			JOptionPane.showMessageDialog(null, "Nit llego a inscribir querry: "+nit);
+			//JOptionPane.showMessageDialog(null, "Nit llego a inscribir querry: "+nit);
 			Float monto = null;
 			DB_Connect con1 = new DB_Connect();
 			Connection conn=con1.conexion();
@@ -318,7 +318,7 @@ public class Querry {
 	
 	public void ReciboAdd(Float monto, String nit) throws ClassNotFoundException{
 		try {
-			JOptionPane.showMessageDialog(null, "Nit para el recibo: "+nit);
+			//JOptionPane.showMessageDialog(null, "Nit para el recibo: "+nit);
 			String id = "";
 			DB_Connect con1 = new DB_Connect();
 			Connection conn=con1.conexion();
