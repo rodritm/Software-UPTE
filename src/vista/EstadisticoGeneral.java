@@ -100,7 +100,7 @@ public class EstadisticoGeneral {
 						 for(;rs.next();){
 							 num=rs.getString("Total");
 				               
-				    }
+						 }
 						 JOptionPane.showMessageDialog(null, "Estadistico general: "+num);
 			        	
 			        }

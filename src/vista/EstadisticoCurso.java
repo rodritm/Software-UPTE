@@ -5,11 +5,13 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import modelo.Querry;
@@ -102,6 +104,22 @@ public class EstadisticoCurso {
 				String gestion = (String) cbGeston.getSelectedItem();
 				String curso = (String) cbCurso.getSelectedItem();
 				String paralelo = (String) cbParalelo.getSelectedItem();
+				String num = "";
+				try {
+					ResultSet rs = null;
+					Querry qqq = new Querry();
+					rs = qqq.EstCurso(curso, gestion, paralelo);
+					if( rs!= null){
+						 for(;rs.next();){
+							 num=rs.getString("Total");
+				               
+						 }
+						 JOptionPane.showMessageDialog(null, "Estadistico curso: "+num);
+			        	
+			        }
+				} catch (SQLException e1) {
+					JOptionPane.showMessageDialog(null, "error: "+e1);
+				}
 			}
 		});
 		btnOk.setBounds(302, 166, 98, 25);
