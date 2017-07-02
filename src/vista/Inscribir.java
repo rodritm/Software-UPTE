@@ -478,6 +478,7 @@ public class Inscribir {
 		    public void actionPerformed(ActionEvent e) {
 		        String curso = (String) cbMateria.getSelectedItem();
 		        try{
+		        	cbParalelo.removeAllItems();
 		        	Querry q = new Querry();
 			        ResultSet rs = q.Paralelos(curso);
 			        while(rs.next()) {

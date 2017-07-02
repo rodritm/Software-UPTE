@@ -74,6 +74,7 @@ public class AcademicoCursos {
 		cbCurso.setBounds(176, 75, 224, 24);
 		frame.getContentPane().add(cbCurso);
 		try{
+			cbCurso.removeAllItems();
 			Querry q = new Querry();
 			ResultSet rs = q.Cursos();
 			while(rs.next()) {
@@ -88,6 +89,7 @@ public class AcademicoCursos {
 		cbCurso.addActionListener (new ActionListener () {
 		    public void actionPerformed(ActionEvent e) {
 		        String curso = (String) cbCurso.getSelectedItem();
+		        cbParalelo.removeAllItems();
 		        try{
 		        	Querry q = new Querry();
 			        ResultSet rs = q.Paralelos(curso);

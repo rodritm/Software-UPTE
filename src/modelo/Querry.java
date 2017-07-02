@@ -131,6 +131,11 @@ public class Querry {
 			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
 			pre.setString(1, id);
 			pre.executeUpdate();
+			
+			sql = "DELETE FROM inscripcion WHERE idinscripcion =?";
+			pre.setString(1, id);
+			pre.executeUpdate();
+			
 			con.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
