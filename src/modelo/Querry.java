@@ -262,7 +262,7 @@ public class Querry {
 			JOptionPane.showMessageDialog(null, "Error al cambiar datos del estudiante", "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	public void Inscribir(String id, String materia, String paralelo) throws ClassNotFoundException{
+	public void Inscribir(String id, String materia, String paralelo, String nit) throws ClassNotFoundException{
 		try {
 //			Connection con;
 //			Class.forName("java.sql.Driver");
@@ -347,7 +347,7 @@ public class Querry {
 			
 			pre.executeUpdate();
 			
-			ReciboAdd(monto);
+			ReciboAdd(monto,nit);
 			
 			
 			con.close();
@@ -357,7 +357,7 @@ public class Querry {
 		}
 	}
 	
-	public void ReciboAdd(Float monto) throws ClassNotFoundException{
+	public void ReciboAdd(Float monto, String nit) throws ClassNotFoundException{
 		try {
 			String id = "";
 			DB_Connect con1 = new DB_Connect();
@@ -383,7 +383,7 @@ public class Querry {
 			pre.setString(2, actual);
 			pre.setString(3, "0");
 			pre.setFloat(4, monto);
-			pre.setString(5, "");
+			pre.setString(5, nit);
 			pre.executeUpdate();
 			
 			con.close();

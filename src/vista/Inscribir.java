@@ -602,14 +602,14 @@ public class Inscribir {
 				int option = JOptionPane.showOptionDialog(null, "Esta segura/o?", "Confirmación",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, 
 						null, new Object[]{"SI","NO"},"SI");
 				if(option== 0){
-					String ci, materia ,paralelo;
+					String ci, materia ,paralelo, nit;
 					ci = tfCI.getText().toString();
 					materia = (String) cbMateria.getSelectedItem();
 					paralelo = (String) cbParalelo.getSelectedItem();
-					
+					nit = textField.getText().toString();
 					Querry q = new Querry();
 					try {
-						q.Inscribir(ci, materia, paralelo);
+						q.Inscribir(ci, materia, paralelo, nit);
 						JOptionPane.showMessageDialog(null, "Alumno iscrito correctamente","Inscrito", JOptionPane.INFORMATION_MESSAGE);
 					} catch (ClassNotFoundException e1) {
 						e1.printStackTrace();
