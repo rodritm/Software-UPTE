@@ -67,35 +67,6 @@ public class EstadisticoGeneral {
 		}catch(Exception e) {
 		}
 		
-		JComboBox cbCurso = new JComboBox();
-		cbCurso.setBounds(176, 75, 224, 24);
-		frame.getContentPane().add(cbCurso);
-		try{
-			Querry q = new Querry();
-			ResultSet rs = q.Cursos();
-			while(rs.next()) {
-				cbCurso.addItem(rs.getString("nombres"));
-			}
-		}catch(Exception e) {
-		}
-		
-		JComboBox cbParalelo = new JComboBox();
-		cbParalelo.setBounds(176, 116, 224, 24);
-		frame.getContentPane().add(cbParalelo);
-		cbCurso.addActionListener (new ActionListener () {
-		    public void actionPerformed(ActionEvent e) {
-		        String curso = (String) cbCurso.getSelectedItem();
-		        cbParalelo.removeAllItems();
-		        try{
-		        	Querry q = new Querry();
-			        ResultSet rs = q.Paralelos(curso);
-			        while(rs.next()) {
-			        	cbParalelo.addItem(rs.getString("paralelo"));
-			        }
-		        }catch(Exception ev) {
-		        }
-		    }
-		});
 		
 		JButton btnOk = new JButton("OK");
 		btnOk.setBounds(302, 168, 98, 25);
@@ -104,14 +75,6 @@ public class EstadisticoGeneral {
 		JLabel lblGestion = new JLabel("GESTION:");
 		lblGestion.setBounds(80, 32, 55, 15);
 		frame.getContentPane().add(lblGestion);
-		
-		JLabel lblCurso = new JLabel("CURSO:");
-		lblCurso.setBounds(80, 75, 55, 15);
-		frame.getContentPane().add(lblCurso);
-		
-		JLabel lblParalelo = new JLabel("PARALELO: ");
-		lblParalelo.setBounds(80, 121, 78, 15);
-		frame.getContentPane().add(lblParalelo);
 		
 		JButton btnAtras = new JButton("ATRAS");
 		btnAtras.addActionListener(new ActionListener() {
@@ -127,15 +90,12 @@ public class EstadisticoGeneral {
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String gestion = (String) cbGestion.getSelectedItem();
-				String curso = (String) cbCurso.getSelectedItem();
-				String paralelo = (String) cbParalelo.getSelectedItem();
-				
 				
 				String num = "";
 				try {
 					ResultSet rs = null;
 					Querry qqq = new Querry();
-					rs = qqq.EstGeneral(gestion, curso, paralelo);
+					rs = qqq.EstGeneral(gestion);
 					if( rs!= null){
 						 for(;rs.next();){
 							 num=rs.getString("Total");

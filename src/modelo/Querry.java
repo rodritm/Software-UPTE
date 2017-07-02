@@ -429,16 +429,15 @@ public class Querry {
 	//							ESTADISTICOS
 	
 	
-	public ResultSet EstGeneral(String gestion,String curso, String paralelo) throws SQLException{
+	public ResultSet EstGeneral(String gestion) throws SQLException{
 		DB_Connect con = new DB_Connect();
 		Connection conn=con.conexion();
 		Statement st = null;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "SELECT COUNT(a.idinscripcion) AS Total FROM inscripcion a, materia_has_docente b, "
-				+ "materia c WHERE a.materia_has_docente_materia_idmateria=b.materia_idmateria AND "
-				+ "a.materia_has_docente_docente_iddocente=b.docente_iddocente AND b.gestion='"+gestion+"' "
-				+ "AND c.nombres='"+curso+"' AND c.paralelo='"+paralelo+"'";
+		String querry = "SELECT COUNT(a.idinscripcion) AS Total FROM inscripcion a, materia_has_docente b "
+				+ "WHERE a.materia_has_docente_materia_idmateria=b.materia_idmateria AND "
+				+ "a.materia_has_docente_docente_iddocente=b.docente_iddocente AND b.gestion='"+gestion+"'";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
