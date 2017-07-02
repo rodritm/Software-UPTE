@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -78,11 +79,14 @@ public class Anular {
 		frame.getContentPane().add(btnOk);
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int numero = Integer.parseInt(tfNumero.getText().toString());
-				String gestion = tfGestion.getText().toString();
-				String curso = tfCurso.getText().toString();
-				String paralelo = tfParalelo.getText().toString();
-				double monto = Double.parseDouble(tfMonto.getText().toString());
+				String id = tfNumero.getText().toString();
+				Querry q = new Querry();
+				try {
+					q.Anular(id);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		
@@ -161,8 +165,21 @@ public class Anular {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String id = tfNumero.getText().toString();
-				//Esto lo mandas a la querry
-				//Tambien pones los setText
+				Querry q = new Querry();
+				try {
+					ResultSet rs = q.AutoCompl(id);
+					String gestion, paralelo, curso, monto;
+					while(rs.next()) {
+						tfCurso.setText(rs.getString("nombres"));
+						tfGestion.setText(rs.getString("gestion"));
+						tfParalelo.setText(rs.getString("paralelo"));
+						tfMonto.setText(rs.getString("monto"));
+					}
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnBuscar.setBounds(311, 42, 89, 23);

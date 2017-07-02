@@ -109,7 +109,19 @@ public class Querry {
 	
 	//							ANULAR
 	
-	
+	public ResultSet AutoCompl(String id) throws SQLException{
+		DB_Connect con = new DB_Connect();
+		Connection conn=con.conexion();
+		Statement st = null;
+		ResultSet rs = null;
+		st = (Statement)conn.createStatement();
+		String querry = "SELECT a.monto, d.nombres ,c.gestion, d.paralelo  FROM recibo a, inscripcion b, materia_has_docente c, materia d"
+				+ " WHERE a.inscripcion_idinscripcion=b.idinscripcion AND b.materia_has_docente_materia_idmateria=c.materia_idmateria"
+				+ " AND b.materia_has_docente_docente_iddocente=c.docente_iddocente AND c.materia_idmateria=d.idmateria"
+				+ " AND a.idrecibo='"+id+"'";
+		rs = st.executeQuery(querry);
+		return rs;
+	}
 	public ResultSet Anular(String id) throws SQLException{
 		DB_Connect con = new DB_Connect();
 		Connection conn=con.conexion();
