@@ -88,6 +88,7 @@ public class Anular {
 		frame.getContentPane().add(btnOk);
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 				String ruta = Ruta;
 				if (!ruta.equals("")){
 					String id = tfNumero.getText().toString();
@@ -101,6 +102,15 @@ public class Anular {
 				}else{
 					  JOptionPane.showMessageDialog(null,"NO HAY DIRECCIÓN","",JOptionPane.ERROR_MESSAGE);
 
+=======
+				String id = tfNumero.getText().toString();
+				Querry q = new Querry();
+				try {
+					q.Anular(id);
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+>>>>>>> refs/remotes/origin/master
 				}
 			}
 		});
