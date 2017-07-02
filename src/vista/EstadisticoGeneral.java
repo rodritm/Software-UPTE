@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -128,6 +129,26 @@ public class EstadisticoGeneral {
 				String gestion = (String) cbGestion.getSelectedItem();
 				String curso = (String) cbCurso.getSelectedItem();
 				String paralelo = (String) cbParalelo.getSelectedItem();
+				
+				
+				String num = "";
+				try {
+					ResultSet rs = null;
+					Querry qqq = new Querry();
+					rs = qqq.EstGeneral(gestion, curso, paralelo);
+					if( rs!= null){
+						 for(;rs.next();){
+							 num=rs.getString("Total");
+				               
+				    }
+						 JOptionPane.showMessageDialog(null, "Estadistico general: "+num);
+			        	
+			        }
+				} catch (SQLException e1) {
+					JOptionPane.showMessageDialog(null, "error: "+e1);
+				}
+				
+		        
 			}
 		});
 	}
