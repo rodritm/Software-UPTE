@@ -607,6 +607,7 @@ public class Inscribir {
 					materia = (String) cbMateria.getSelectedItem();
 					paralelo = (String) cbParalelo.getSelectedItem();
 					nit = textField.getText().toString();
+					JOptionPane.showMessageDialog(null, "Nit sacado del textfield: "+nit);
 					Querry q = new Querry();
 					try {
 						q.Inscribir(ci, materia, paralelo, nit);
