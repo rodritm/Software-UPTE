@@ -72,6 +72,7 @@ public class EstadisticoEdad {
 		cbCurso.setBounds(176, 75, 224, 24);
 		frame.getContentPane().add(cbCurso);
 		try{
+			cbCurso.removeAllItems();
 			Querry q = new Querry();
 			ResultSet rs = q.Cursos();
 			while(rs.next()) {
