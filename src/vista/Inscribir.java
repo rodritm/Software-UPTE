@@ -540,6 +540,51 @@ public class Inscribir {
 		frame.getContentPane().add(btnBuscar);
 		
 		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String nombre, apePat, apeMat, ci, exp, fecha, genero, estado, dir, zona, ciudad, correo,
+				instruccion, profesion, ocupacion, actividad, personas, ingreso, medio, problemas, percontactnombre,
+				percontactapep, percontactcorreo, percontactapem, percontactcel, percontacttel, materia ,paralelo, edad, cel, tel;
+				nombre = tfNombre.getText().toString();
+				apePat = tfApePat.getText().toString();
+				apeMat = tfApeMat.getText().toString();
+				ci = tfCI.getText().toString();
+				exp = (String) cbExp.getSelectedItem();
+				fecha = ((JTextField) fechanc.getDateEditor().getUiComponent()).getText();
+				edad = tfEdad.getText().toString();
+				genero = (String) cbGenero.getSelectedItem();
+				estado = (String) cbEstado_civil.getSelectedItem();
+				dir = tfDireccion.getText().toString();
+				zona = tfZona.getText().toString();
+				ciudad = tfCiudad.getText().toString();
+				correo  = tfCorreo.getText().toString();
+				instruccion = (String) cbInstruccion.getSelectedItem();
+				profesion = tfProfesion.getText().toString();
+				ocupacion = tfOcupacion.getText().toString();
+				actividad = tfActividad.getText().toString();
+				personas = tfPersonaVive.getText().toString();
+				ingreso = tfTipoIngreso.getText().toString();
+				medio = tfMedio.getText().toString();
+				problemas = tfProblemas.getText().toString();
+				percontactnombre = tfPerContactoNombre.getText().toString();
+				percontactapep = tfPerContactoApePat.getText().toString();
+				percontactapem = tfPerContactoApeMat.getText().toString();
+				percontactcorreo = tfPerContactoCorreo.getText().toString();
+				percontactcel = tfPerContactoCel.getText().toString();
+				percontacttel = tfPerContactoTel.getText().toString();
+				cel = tfCel.getText().toString();
+				tel = tfTel.getText().toString();
+				
+				Querry q = new Querry();
+				try {
+					q.Update(ci, exp, nombre, apePat, apeMat, genero, edad, estado, fecha, dir, zona, ciudad, correo, cel, tel, percontactnombre, percontacttel, instruccion, profesion, ocupacion, actividad, personas, ingreso, medio, problemas, percontactcel, percontactapep, percontactapem, percontactcorreo);
+					JOptionPane.showMessageDialog(null, "Alumno iscrito correctamente","Inscrito", JOptionPane.INFORMATION_MESSAGE);
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Alumno no inscrito","ERROR",JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btnActualizar.setBounds(385, 679, 98, 25);
 		frame.getContentPane().add(btnActualizar);
 		
@@ -557,44 +602,14 @@ public class Inscribir {
 				int option = JOptionPane.showOptionDialog(null, "Esta segura/o?", "Confirmación",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, 
 						null, new Object[]{"SI","NO"},"SI");
 				if(option== 0){
-					String nombre, apePat, apeMat, ci, exp, fecha, genero, estado, dir, zona, ciudad, correo,
-					instruccion, profesion, ocupacion, actividad, personas, ingreso, medio, problemas, percontactnombre,
-					percontactapep, percontactcorreo, percontactapem, percontactcel, percontacttel, materia ,paralelo, edad, cel, tel;
-					nombre = tfNombre.getText().toString();
-					apePat = tfApePat.getText().toString();
-					apeMat = tfApeMat.getText().toString();
+					String ci, materia ,paralelo;
 					ci = tfCI.getText().toString();
-					exp = (String) cbExp.getSelectedItem();
-					fecha = ((JTextField) fechanc.getDateEditor().getUiComponent()).getText();
-					edad = tfEdad.getText().toString();
-					genero = (String) cbGenero.getSelectedItem();
-					estado = (String) cbEstado_civil.getSelectedItem();
-					dir = tfDireccion.getText().toString();
-					zona = tfZona.getText().toString();
-					ciudad = tfCiudad.getText().toString();
-					correo  = tfCorreo.getText().toString();
-					instruccion = (String) cbInstruccion.getSelectedItem();
-					profesion = tfProfesion.getText().toString();
-					ocupacion = tfOcupacion.getText().toString();
-					actividad = tfActividad.getText().toString();
-					personas = tfPersonaVive.getText().toString();
-					ingreso = tfTipoIngreso.getText().toString();
-					medio = tfMedio.getText().toString();
-					problemas = tfProblemas.getText().toString();
-					percontactnombre = tfPerContactoNombre.getText().toString();
-					percontactapep = tfPerContactoApePat.getText().toString();
-					percontactapem = tfPerContactoApeMat.getText().toString();
-					percontactcorreo = tfPerContactoCorreo.getText().toString();
-					percontactcel = tfPerContactoCel.getText().toString();
-					percontacttel = tfPerContactoTel.getText().toString();
-					cel = tfCel.getText().toString();
-					tel = tfTel.getText().toString();
 					materia = (String) cbMateria.getSelectedItem();
 					paralelo = (String) cbParalelo.getSelectedItem();
 					
 					Querry q = new Querry();
 					try {
-						q.Inscribir(ci, exp, nombre, apePat, apeMat, genero, edad, estado, fecha, dir, zona, ciudad, correo, cel, tel, percontactnombre, percontacttel, instruccion, profesion, ocupacion, actividad, personas, ingreso, medio, problemas, percontactcel, percontactapep, percontactapem, percontactcorreo, materia, paralelo);
+						q.Inscribir(ci, materia, paralelo);
 						JOptionPane.showMessageDialog(null, "Alumno iscrito correctamente","Inscrito", JOptionPane.INFORMATION_MESSAGE);
 					} catch (ClassNotFoundException e1) {
 						e1.printStackTrace();

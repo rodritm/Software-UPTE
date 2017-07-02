@@ -193,11 +193,11 @@ public class Querry {
 		return rs;
 	}
 	
-	public void Inscribir(String id, String exp, String nombres, String ape_paterno, String ape_materno,String genero, String edad,
+	public void Update(String id, String exp, String nombres, String ape_paterno, String ape_materno,String genero, String edad,
 			String estado_civil, String fechanc, String direccion, String zona, String ciudad, String email, String celular, 
 			String telefono, String per_contact, String per_tel, String instruccion, String profesion, String ocupacion, String actividad, 
 			String per_vive, String ingreso, String info_upte, String problemas, String per_cel, String per_ape_pat, 
-			String per_ape_mat, String per_correo, String materia, String paralelo) throws ClassNotFoundException{
+			String per_ape_mat, String per_correo) throws ClassNotFoundException{
 		try {
 			Connection con;
 			Class.forName("java.sql.Driver");
@@ -240,6 +240,54 @@ public class Querry {
 			pre.setString(30, id);
 			
 			pre.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Error al cambiar datos del estudiante", "ERROR", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	public void Inscribir(String id, String materia, String paralelo) throws ClassNotFoundException{
+		try {
+//			Connection con;
+//			Class.forName("java.sql.Driver");
+//			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:"+puerto+"/upte","root","");
+//			String sql = "UPDATE estudiante SET idestudiante = ? ,exp = ?,nombres = ?,apellido_paterno = ?,apellido_materno = ?,genero = ?,"
+//					+ " Edad = ?,estado_civil = ?,fechanc = ?, direccion = ?, zona = ?, Ciudad = ?, email = ?, celular = ?, telefono = ?, "
+//					+ "per_contact = ?, per_tel = ?, instruccion = ?, profesion = ?, ocupacion = ?, actividad = ?, per_vive = ?, ingreso = ?, "
+//					+ "info_upte = ?, problemas = ?, per_cel = ?, per_ape_pat = ?, per_ape_mat = ?, per_correo = ? WHERE idestudiante = ?";
+//		
+//			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
+//			pre.setString(1, id);
+//			pre.setString(2, exp);
+//			pre.setString(3, nombres);
+//			pre.setString(4, ape_paterno);
+//			pre.setString(5, ape_materno);
+//			pre.setString(6, genero);
+//			pre.setString(7, edad);
+//			pre.setString(8, estado_civil);
+//			pre.setString(9, fechanc);
+//			pre.setString(10, direccion);
+//			pre.setString(11, zona);
+//			pre.setString(12, ciudad);
+//			pre.setString(13, email);
+//			pre.setString(14, celular);
+//			pre.setString(15, telefono);
+//			pre.setString(16, per_contact);
+//			pre.setString(17, per_tel);
+//			pre.setString(18, instruccion);
+//			pre.setString(19, profesion);
+//			pre.setString(20, ocupacion);
+//			pre.setString(21, actividad);
+//			pre.setString(22, per_vive);
+//			pre.setString(23, ingreso);
+//			pre.setString(24, info_upte);
+//			pre.setString(25, problemas);
+//			pre.setString(26, per_cel);
+//			pre.setString(27, per_ape_pat);
+//			pre.setString(28, per_ape_mat);
+//			pre.setString(29, per_correo);
+//			pre.setString(30, id);
+//			
+//			pre.executeUpdate();
 			
 			Float monto = null;
 			DB_Connect con1 = new DB_Connect();
@@ -267,9 +315,11 @@ public class Querry {
 			}
 			con2.closecon();
 			
+			Connection con;
 			Class.forName("java.sql.Driver");
 			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:"+puerto+"/upte","root","");
-			sql = "INSERT INTO inscripcion(empleados_idempleados, estudiante_idestudiante, materia_has_docente_materia_idmateria, materia_has_docente_docente_iddocente, materia, paralelo) VALUES (?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO inscripcion(empleados_idempleados, estudiante_idestudiante, materia_has_docente_materia_idmateria, materia_has_docente_docente_iddocente, materia, paralelo) VALUES (?, ?, ?, ?, ?, ?)";
+			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
 			pre = (PreparedStatement) con.prepareStatement(sql);
 			pre.setString(1, "9896776");
 			pre.setString(2, id);
