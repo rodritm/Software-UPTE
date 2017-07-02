@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import com.mxrck.autocompleter.TextAutoCompleter;
 
+import controlador.Ruta;
 import modelo.Querry;
 
 public class Anular {
@@ -27,6 +28,7 @@ public class Anular {
 	private JTextField tfCurso;
 	private JTextField tfParalelo;
 	private JTextField tfMonto;
+	private String Ruta = "";
 
 	/**
 	 * Launch the application.
@@ -71,6 +73,13 @@ public class Anular {
 		tfRuta.setColumns(10);
 		
 		JButton btnCarpeta = new JButton("CARPETA");
+		btnCarpeta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Ruta dic = new Ruta();
+				Ruta=dic.funcion();
+				tfRuta.setText(Ruta);
+			}
+		});
 		btnCarpeta.setBounds(302, 181, 98, 25);
 		frame.getContentPane().add(btnCarpeta);
 		
@@ -79,13 +88,19 @@ public class Anular {
 		frame.getContentPane().add(btnOk);
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String id = tfNumero.getText().toString();
-				Querry q = new Querry();
-				try {
-					q.Anular(id);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				String ruta = Ruta;
+				if (!ruta.equals("")){
+					String id = tfNumero.getText().toString();
+					Querry q = new Querry();
+					try {
+						q.Anular(id);
+					} catch (SQLException e1) {
+				
+						e1.printStackTrace();
+					}
+				}else{
+					  JOptionPane.showMessageDialog(null,"NO HAY DIRECCIÓN","",JOptionPane.ERROR_MESSAGE);
+
 				}
 			}
 		});
