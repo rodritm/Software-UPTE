@@ -122,15 +122,19 @@ public class Querry {
 		rs = st.executeQuery(querry);
 		return rs;
 	}
-	public ResultSet Anular(String id) throws SQLException{
-		DB_Connect con = new DB_Connect();
-		Connection conn=con.conexion();
-		Statement st = null;
-		ResultSet rs = null;
-		st = (Statement)conn.createStatement();
-		String querry = "UPDATE recibos SET anulado=1 WHERE idrecibo ='"+id+"'";
-		rs = st.executeQuery(querry);
-		return rs;
+	public void Anular(String id) throws ClassNotFoundException{
+		try{
+			Connection con;
+			Class.forName("java.sql.Driver");
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:"+puerto+"/upte","root","");
+			String sql = "UPDATE recibos SET anulado=1 WHERE idrecibo = ? ";
+			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
+			pre.setString(1, id);
+			pre.executeUpdate();
+			con.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -252,6 +256,7 @@ public class Querry {
 			pre.setString(30, id);
 			
 			pre.executeUpdate();
+			con.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, "Error al cambiar datos del estudiante", "ERROR", JOptionPane.ERROR_MESSAGE);

@@ -83,7 +83,7 @@ public class Anular {
 				Querry q = new Querry();
 				try {
 					q.Anular(id);
-				} catch (SQLException e1) {
+				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
