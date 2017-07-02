@@ -348,7 +348,7 @@ public class Querry {
 			Statement st;
 			ResultSet rs = null;
 			st = (Statement)conn.createStatement();
-			String querry = "select idinscripcion from inscripcion order by idinscripcion dsc limit 1";
+			String querry = "select idinscripcion from inscripcion order by idinscripcion desc limit 1";
 			rs = st.executeQuery(querry);
 			while(rs.next()) {
 				id = rs.getString("idinscripcion");
