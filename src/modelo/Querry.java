@@ -394,7 +394,7 @@ public class Querry {
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
 		String querry = "SELECT a.apellido_paterno, a.apellido_materno, a.nombres, e.nombres as nombred, e.ape_pat, e.ape_mat FROM "
-				+ "estudiante a, inscripcion b, materia_has_docente c, materia d, docente e, recibos f WHERE "
+				+ "estudiante a, inscripcion b, materia_has_docente c, materia d, docente e, recibo f WHERE "
 				+ "a.idestudiante=b.estudiante_idestudiante AND b.materia_has_docente_materia_idmateria=c.materia_idmateria "
 				+ "AND b.materia_has_docente_docente_iddocente=c.docente_iddocente AND c.materia_idmateria=d.idmateria "
 				+ "AND c.docente_iddocente=e.iddocente AND c.gestion='"+gestion+"' AND d.nombres='"+curso+"' AND d.paralelo='"+paralelo+"'"
@@ -514,7 +514,7 @@ public class Querry {
 				+ "AND b.materia_has_docente_materia_idmateria=d.materia_idmateria "
 				+ "AND b.materia_has_docente_docente_iddocente=d.docente_iddocente "
 				+ "AND e.idmateria=d.materia_idmateria AND d.gestion='"+gestion+"' AND e.nombres='"+curso+"' AND e.paralelo='"+paralelo+"'"
-				+ " AND c.anulado=1 AND b.idinscripcion=c.inscripcion_idinscripcion AND c.anulado = 0";
+				+ " AND c.anulado=1";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
