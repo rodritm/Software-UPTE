@@ -468,7 +468,7 @@ public class Ficha {
 							tel = tfTel.getText().toString();
 							Querry q = new Querry();
 							try {
-								if(nombre!=null){
+								if(!nombre.isEmpty()){
 									Formulario ff = new Formulario();
 									ff.form(apePat, apeMat, nombre, ci, exp, fecha, edad, genero, estado, dir, zona, ciudad, correo, instruccion, profesion, ocupacion, actividad, personas, ingreso, medio, problemas, percontactnombre, percontactapep, percontactapem, percontactcorreo, percontactcel, percontacttel, cel, tel);
 									q.Registrar(ci, exp, nombre, apePat, apeMat, genero, edad, estado, fecha, dir, zona, ciudad, correo, cel, tel, percontactnombre, percontacttel, instruccion, profesion, ocupacion, actividad, personas, ingreso, medio, problemas, percontactcel, percontactapep, percontactapem, percontactcorreo);
