@@ -83,7 +83,7 @@ public class Recibo {
 			Paragraph par5 = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
 			par5.add(new Phrase("Recibi de: "+apePa+" "+apeMa+" "+nombre+"\n"
 					+ "La suma de "+mmm+"\n"
-					+ "Por concepto de: Inscripción al curso de "+mate+"\n"
+					+ "Por concepto de: Pago del curso de "+mate+"\n"
 					+ "NIT: "+nit1,body));
 			par5.setAlignment(Element.ALIGN_CENTER);
 			par5.add(new Phrase(Chunk.NEWLINE));
@@ -197,7 +197,7 @@ public class Recibo {
 			Paragraph par5C = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
 			par5C.add(new Phrase("Recibi de: "+apePa+" "+apeMa+" "+nombre+"\n"
 					+ "La suma de "+mmmC+"\n"
-					+ "Por concepto de: Inscripción al curso de "+mate+"\n"
+					+ "Por concepto de: Pago del curso de "+mate+"\n"
 					+ "NIT: "+nit1,body));
 			par5C.setAlignment(Element.ALIGN_CENTER);
 			par5C.add(new Phrase(Chunk.NEWLINE));
