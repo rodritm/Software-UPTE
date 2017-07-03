@@ -175,6 +175,7 @@ public class Ficha {
 		
 		JDateChooser fechanc = new JDateChooser();
 		fechanc.setDateFormatString("yyyy-MM-dd");
+		((JTextField) fechanc.getDateEditor().getUiComponent()).setEditable(false);
 		fechanc.getDateEditor().addPropertyChangeListener(
 				new PropertyChangeListener() {
 					
