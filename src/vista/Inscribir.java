@@ -20,6 +20,7 @@ import com.toedter.calendar.JDayChooser;
 import controlador.Empleados;
 import controlador.Estudiante;
 import controlador.Login;
+import controlador.Recibo;
 import modelo.Querry;
 
 import java.awt.event.ActionListener;
@@ -611,19 +612,25 @@ public class Inscribir {
 					//JOptionPane.showMessageDialog(null, "Nit sacado del textfield: "+nit);
 					Querry q = new Querry();
 					try {
+						String nombre="",apePa="", apeMa="", idRecibo="", monto="", fecha="",nit1="", mate="";
 						if(paralelo!=null){
 						q.Inscribir(ci, materia, paralelo, nit);
 						ResultSet rs=q.SacarRecibo();
 						while(rs.next()) {
-							String nombre = rs.getString("nombres");
-							String apePa = rs.getString("apellido_paterno");
-							String apeMa = rs.getString("apellido_materno");
-							String idRecibo = rs.getString("idrecibo");
-							String monto = rs.getString("monto");
-							String fecha = rs.getString("fechan");
-							String nit1 = rs.getString("nit");
-							String mate = rs.getString("nmateria");
+							nombre = rs.getString("nombres");
+							apePa = rs.getString("apellido_paterno");
+							apeMa = rs.getString("apellido_materno");
+							idRecibo = rs.getString("idrecibo");
+							monto = rs.getString("monto");
+							fecha = rs.getString("fechan");
+							nit1 = rs.getString("nit");
+							mate = rs.getString("nmateria");
+							
 						}
+						
+						Recibo ee= new Recibo();
+						ee.reciboC(nombre, apePa, apeMa, idRecibo, monto, fecha, nit1, mate);
+						
 						JOptionPane.showMessageDialog(null, "Alumno iscrito correctamente","Inscrito", JOptionPane.INFORMATION_MESSAGE);
 						}else{
 							JOptionPane.showMessageDialog(null, "Alumno no inscrito","ERROR",JOptionPane.ERROR_MESSAGE);
