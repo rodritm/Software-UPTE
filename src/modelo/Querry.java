@@ -132,12 +132,12 @@ public class Querry {
 			pre.setString(1, id);
 			pre.executeUpdate();
 			
-			pre.executeUpdate("SET FOREIGN_KEY_CHECKS=0");
+			pre.execute("SET FOREIGN_KEY_CHECKS=0");
 			sql = "DELETE FROM inscripcion WHERE idinscripcion = ?";
 			JOptionPane.showMessageDialog(null, "DELETE FROM inscripcion WHERE idinscripcion = '"+id+"'");
 			pre.setString(1, id);
 			pre.executeUpdate();
-			pre.executeUpdate("SET FOREIGN_KEY_CHECKS=1");
+			pre.execute("SET FOREIGN_KEY_CHECKS=1");
 			con.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -394,10 +394,11 @@ public class Querry {
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
 		String querry = "SELECT a.apellido_paterno, a.apellido_materno, a.nombres, e.nombres as nombred, e.ape_pat, e.ape_mat FROM "
-				+ "estudiante a, inscripcion b, materia_has_docente c, materia d, docente e WHERE "
+				+ "estudiante a, inscripcion b, materia_has_docente c, materia d, docente e, recibos f WHERE "
 				+ "a.idestudiante=b.estudiante_idestudiante AND b.materia_has_docente_materia_idmateria=c.materia_idmateria "
 				+ "AND b.materia_has_docente_docente_iddocente=c.docente_iddocente AND c.materia_idmateria=d.idmateria "
-				+ "AND c.docente_iddocente=e.iddocente AND c.gestion='"+gestion+"' AND d.nombres='"+curso+"' AND d.paralelo='"+paralelo+"'";
+				+ "AND c.docente_iddocente=e.iddocente AND c.gestion='"+gestion+"' AND d.nombres='"+curso+"' AND d.paralelo='"+paralelo+"'"
+				+ " AND b.idinscripcion=f.inscripcion_idinscripcion AND f.anulado = 0";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
@@ -412,7 +413,8 @@ public class Querry {
 				+ " WHERE a.idestudiante=b.estudiante_idestudiante AND  b.idinscripcion=c.inscripcion_idinscripcion"
 				+ " AND b.materia_has_docente_materia_idmateria=d.materia_idmateria"
 				+ " AND b.materia_has_docente_docente_iddocente=d.docente_iddocente"
-				+ " AND d.materia_idmateria=e.idmateria AND d.gestion='"+gestion+"'";
+				+ " AND d.materia_idmateria=e.idmateria AND d.gestion='"+gestion+"' "
+				+ "AND b.idinscripcion=c.inscripcion_idinscripcion AND c.anulado = 0 ";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
@@ -427,9 +429,10 @@ public class Querry {
 		Statement st = null;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "SELECT COUNT(a.idinscripcion) AS Total FROM inscripcion a, materia_has_docente b "
+		String querry = "SELECT COUNT(a.idinscripcion) AS Total FROM inscripcion a, materia_has_docente b, recibo c "
 				+ "WHERE a.materia_has_docente_materia_idmateria=b.materia_idmateria AND "
-				+ "a.materia_has_docente_docente_iddocente=b.docente_iddocente AND b.gestion='"+gestion+"'";
+				+ "a.materia_has_docente_docente_iddocente=b.docente_iddocente AND b.gestion='"+gestion+"'"
+				+ " AND a.idinscripcion=c.inscripcion_idinscripcion AND c.anulado = 0";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
@@ -440,11 +443,12 @@ public class Querry {
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
 		String querry = "SELECT COUNT(a.genero) AS Total FROM estudiante a, inscripcion b, "
-				+ "materia_has_docente c, materia d WHERE a.idestudiante=b.estudiante_idestudiante AND  "
+				+ "materia_has_docente c, materia d, recibo e WHERE a.idestudiante=b.estudiante_idestudiante AND  "
 				+ "b.materia_has_docente_materia_idmateria=c.materia_idmateria AND "
 				+ "b.materia_has_docente_docente_iddocente=c.docente_iddocente AND d.idmateria = c.materia_idmateria AND "
 				+ "d.nombres='"+curso+"' AND d.paralelo='"+paralelo+"' AND c.gestion='"+gestion+"' "
-				+ "AND a.genero='"+genero+"'";
+				+ "AND a.genero='"+genero+"'"
+				+ " AND b.idinscripcion=e.inscripcion_idinscripcion AND e.anulado = 0";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
@@ -454,10 +458,11 @@ public class Querry {
 		Statement st = null;
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
-		String querry = "SELECT COUNT(a.idinscripcion) AS Total FROM inscripcion a , materia_has_docente b , materia c "
+		String querry = "SELECT COUNT(a.idinscripcion) AS Total FROM inscripcion a , materia_has_docente b , materia c, recibo d "
 				+ "WHERE a.materia_has_docente_materia_idmateria=b.materia_idmateria AND "
 				+ "a.materia_has_docente_docente_iddocente=b.docente_iddocente AND b.materia_idmateria=c.idmateria AND "
-				+ "c.nombres='"+curso+"' AND c.paralelo='"+paralelo+"' AND b.gestion='"+gestion+"'";
+				+ "c.nombres='"+curso+"' AND c.paralelo='"+paralelo+"' AND b.gestion='"+gestion+"'"
+				+ " AND a.idinscripcion=d.inscripcion_idinscripcion AND d.anulado = 0";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
@@ -468,10 +473,11 @@ public class Querry {
 		ResultSet rs = null;
 		st = (Statement)conn.createStatement();
 		String querry = "SELECT COUNT(a.idestudiante) AS Total FROM estudiante a, inscripcion b, "
-				+ "materia_has_docente c, materia d WHERE a.idestudiante=b.estudiante_idestudiante AND "
+				+ "materia_has_docente c, materia d, recibo e WHERE a.idestudiante=b.estudiante_idestudiante AND "
 				+ "b.materia_has_docente_materia_idmateria=c.materia_idmateria AND b.materia_has_docente_docente_iddocente=c.docente_iddocente "
 				+ "AND d.idmateria=c.materia_idmateria AND d.nombres='"+curso+"' AND d.paralelo='"+paralelo+"' AND c.gestion='"+gestion+"' "
-				+ "AND a.Edad='"+edad+"'";
+				+ "AND a.Edad='"+edad+"'"
+				+ " AND b.idinscripcion=e.inscripcion_idinscripcion AND e.anulado = 0";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
@@ -491,7 +497,8 @@ public class Querry {
 				+ "WHERE a.idestudiante=b.estudiante_idestudiante AND b.idinscripcion=c.inscripcion_idinscripcion "
 				+ "AND b.materia_has_docente_materia_idmateria=d.materia_idmateria "
 				+ "AND b.materia_has_docente_docente_iddocente=d.docente_iddocente "
-				+ "AND e.idmateria=d.materia_idmateria AND d.gestion='"+gestion+"' AND e.nombres='"+curso+"' AND e.paralelo='"+paralelo+"'";
+				+ "AND e.idmateria=d.materia_idmateria AND d.gestion='"+gestion+"' AND e.nombres='"+curso+"' AND e.paralelo='"+paralelo+"'"
+				+ " AND b.idinscripcion=c.inscripcion_idinscripcion AND c.anulado = 0";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
@@ -506,7 +513,8 @@ public class Querry {
 				+ "WHERE a.idestudiante=b.estudiante_idestudiante AND b.idinscripcion=c.inscripcion_idinscripcion "
 				+ "AND b.materia_has_docente_materia_idmateria=d.materia_idmateria "
 				+ "AND b.materia_has_docente_docente_iddocente=d.docente_iddocente "
-				+ "AND e.idmateria=d.materia_idmateria AND d.gestion='"+gestion+"' AND e.nombres='"+curso+"' AND e.paralelo='"+paralelo+"' AND c.anulado=1";
+				+ "AND e.idmateria=d.materia_idmateria AND d.gestion='"+gestion+"' AND e.nombres='"+curso+"' AND e.paralelo='"+paralelo+"'"
+				+ " AND c.anulado=1 AND b.idinscripcion=c.inscripcion_idinscripcion AND c.anulado = 0";
 		rs = st.executeQuery(querry);
 		return rs;
 	}
