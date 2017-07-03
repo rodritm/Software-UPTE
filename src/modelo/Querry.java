@@ -133,7 +133,7 @@ public class Querry {
 			pre.executeUpdate();
 			
 			pre.execute("SET FOREIGN_KEY_CHECKS=0");
-			sql = "DELETE FROM inscripcion WHERE idinscripcion =?";
+			sql = "DELETE FROM inscripcion WHERE idinscripcion = ?";
 			pre.setString(1, id);
 			pre.executeUpdate();
 			pre.execute("SET FOREIGN_KEY_CHECKS=1");

@@ -21,6 +21,7 @@ import modelo.Querry;
 public class Anular {
 
 	private JFrame frame;
+	private JTextField tfRuta;
 	private JTextField tfNumero;
 	private JTextField tfGestion;
 	private JTextField tfCurso;
@@ -63,8 +64,18 @@ public class Anular {
 		frame.setUndecorated(true);
 		frame.getContentPane().setBackground(Color.WHITE);
 		
+		tfRuta = new JTextField();
+		tfRuta.setBounds(22, 184, 255, 19);
+		frame.getContentPane().add(tfRuta);
+		tfRuta.setEditable(false);
+		tfRuta.setColumns(10);
+		
+		JButton btnCarpeta = new JButton("CARPETA");
+		btnCarpeta.setBounds(302, 181, 98, 25);
+		frame.getContentPane().add(btnCarpeta);
+		
 		JButton btnOk = new JButton("OK");
-		btnOk.setBounds(302, 205, 98, 25);
+		btnOk.setBounds(302, 218, 98, 25);
 		frame.getContentPane().add(btnOk);
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -72,9 +83,9 @@ public class Anular {
 				Querry q = new Querry();
 				try {
 					q.Anular(id);
-					JOptionPane.showMessageDialog(null, "Exito");
 				} catch (ClassNotFoundException e1) {
-					JOptionPane.showMessageDialog(null, "error: "+e1);
+					JOptionPane.showMessageDialog(null, "Error al borrar", "ERROR", JOptionPane.ERROR_MESSAGE);
+					e1.printStackTrace();
 				}
 			}
 		});
@@ -99,7 +110,7 @@ public class Anular {
 				frame.dispose();
 			}
 		});
-		btnAtras.setBounds(23, 205, 98, 25);
+		btnAtras.setBounds(22, 218, 98, 25);
 		frame.getContentPane().add(btnAtras);
 		
 		JLabel lblNumero = new JLabel("NUMERO:");

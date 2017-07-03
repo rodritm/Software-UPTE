@@ -71,7 +71,7 @@ public class Recibo {
 			doc.add(par3);
 			
 			Paragraph par4 = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
-			par4.add(new Phrase("Monto: Bs. "+monto,body));
+			par4.add(new Phrase("Monto: bs. "+monto,body));
 			par4.setAlignment(Element.ALIGN_RIGHT);
 			par4.add(new Phrase(Chunk.NEWLINE));
 			par4.add(new Phrase(Chunk.NEWLINE));
@@ -100,7 +100,7 @@ public class Recibo {
 			tabla1.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			PdfPCell c1 = new PdfPCell(new Paragraph("__________________________",body));
 			PdfPCell c2 = new PdfPCell(new Paragraph("__________________________",body));
-			PdfPCell c11 = new PdfPCell(new Paragraph("Entregué",body));
+			PdfPCell c11 = new PdfPCell(new Paragraph("Entregé",body));
 			PdfPCell c22 = new PdfPCell(new Paragraph("Recibí",body));
 			PdfPCell c33 = new PdfPCell(new Paragraph("Nombre:__________________",body));
 			PdfPCell c44 = new PdfPCell(new Paragraph("Nombre:__________________",body));
@@ -133,6 +133,7 @@ public class Recibo {
 			p.add(new Phrase(Chunk.NEWLINE));
 			p.add(new Phrase(Chunk.NEWLINE));
 			p.add(new Phrase(Chunk.NEWLINE));
+			p.add(new Phrase(Chunk.NEWLINE));
 			doc.add(p);
             
             Paragraph p1 = new Paragraph();
@@ -145,9 +146,8 @@ public class Recibo {
 			doc.add(p1);
             
 		//---------------------- COPIA
-
-
-			Image logoC = Image.getInstance("images/logop.jpg");
+            
+            Image logoC = Image.getInstance("images/logop.jpg");
 			logoC.setAlignment(Image.ALIGN_LEFT | Image.UNDERLYING);
 			logoC.scaleToFit(100, 100);
 			doc.add(logoC);
@@ -155,7 +155,7 @@ public class Recibo {
 			//---------------------
 			Paragraph parC = new Paragraph();
 			String headC = "UNIVERSIDAD PARA LA TERCERA EDAD";
-			parC.add(new Phrase(headC,sub));
+			parC.add(new Phrase(head,sub));
 			parC.setAlignment(Element.ALIGN_RIGHT);
 			parC.add(new Phrase(Chunk.NEWLINE));
 			parC.add(new Phrase(Chunk.NEWLINE));
@@ -171,35 +171,30 @@ public class Recibo {
 			doc.add(par1C);
 			// --------------------
 			Paragraph par2C = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
-			par2C.add(new Phrase("Nº: "+idRecibo,body));
+			par2C.add(new Phrase("idrecibo",body));
 			par2C.setAlignment(Element.ALIGN_CENTER);
 			par2C.add(new Phrase(Chunk.NEWLINE));
 			doc.add(par2C);
 		
 			// ---------------  contenido = fecha y hora del dia-----
-			Fecha fffC = new Fecha();
 			Paragraph par3C = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
-			par3C.add(new Phrase("Fecha: "+fffC.sacarfecha0(),body));
+			par3C.add(new Phrase("fecha",body));
 			par3C.setAlignment(Element.ALIGN_RIGHT);
 			par3C.add(new Phrase(Chunk.NEWLINE));
 			doc.add(par3C);
 			
 			Paragraph par4C = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
-			par4C.add(new Phrase("Monto: Bs. "+monto,body));
+			par4C.add(new Phrase("monto",body));
 			par4C.setAlignment(Element.ALIGN_RIGHT);
 			par4C.add(new Phrase(Chunk.NEWLINE));
 			par4C.add(new Phrase(Chunk.NEWLINE));
 			doc.add(par4C);
 			
-			Numero_a_Letra NumLetraC = new Numero_a_Letra();
-			String mmmC=NumLetra.Convertir(monto,true);
-			
 			Paragraph par5C = new Paragraph();//Font tipo2 = new Font(Font.FontFamily.TIMES_ROMAN,12,Font.NORMAL, BaseColor.BLACK);
-			par5C.add(new Phrase("Recibi de: "+apePa+" "+apeMa+" "+nombre+"\n"
-					+ "La suma de "+mmmC+"\n"
-					+ "Por concepto de: Inscripción al curso de "+mate+"\n"
-					+ "NIT: "+nit1,body));
-			par5C.setAlignment(Element.ALIGN_CENTER);
+			par5C.add(new Phrase("Recibi de: Ronald Andrew Aparicio Yañez\n"
+					+ "La suma de docientos boliianos 00/100.BOlivianos\n"
+					+ "POr concepto de: CUrso de bailoterapia paralelo 1",body));
+			par5C.setAlignment(Element.ALIGN_JUSTIFIED_ALL);
 			par5C.add(new Phrase(Chunk.NEWLINE));
 			par5C.add(new Phrase(Chunk.NEWLINE));
 			par5C.add(new Phrase(Chunk.NEWLINE));
@@ -207,19 +202,18 @@ public class Recibo {
 			par5C.add(new Phrase(Chunk.NEWLINE));
 			doc.add(par5C);
 			
-			
 			PdfPTable tabla1C = new PdfPTable(columnWidths1);
-			tabla1.setTotalWidth(500);
-			tabla1.setLockedWidth(true);
-			tabla1.setHorizontalAlignment(Element.ALIGN_RIGHT);
-			PdfPCell c1C = new PdfPCell(new Paragraph("__________________________",body));
-			PdfPCell c2C = new PdfPCell(new Paragraph("__________________________",body));
-			PdfPCell c11C = new PdfPCell(new Paragraph("Entregué",body));
-			PdfPCell c22C = new PdfPCell(new Paragraph("Recibí",body));
-			PdfPCell c33C = new PdfPCell(new Paragraph("Nombre:__________________",body));
-			PdfPCell c44C = new PdfPCell(new Paragraph("Nombre:__________________",body));
-			PdfPCell c55C = new PdfPCell(new Paragraph("C.I.:______________________",body));
-			PdfPCell c66C = new PdfPCell(new Paragraph("C.I.:______________________",body));
+			tabla1C.setTotalWidth(500);
+			tabla1C.setLockedWidth(true);
+			tabla1C.setHorizontalAlignment(Element.ALIGN_RIGHT);
+			PdfPCell c1C = new PdfPCell(new Paragraph("___________",body));
+			PdfPCell c2C = new PdfPCell(new Paragraph("___________",body));
+			PdfPCell c11C = new PdfPCell(new Paragraph("Hora entrada",body));
+			PdfPCell c22C = new PdfPCell(new Paragraph("Hora salida",body));
+			PdfPCell c33C = new PdfPCell(new Paragraph("Hora entrada",body));
+			PdfPCell c44C = new PdfPCell(new Paragraph("Hora salida",body));
+			PdfPCell c55C = new PdfPCell(new Paragraph("Hora entrada",body));
+			PdfPCell c66C = new PdfPCell(new Paragraph("Hora salida",body));
 			
 			c1C.setBorder(PdfPCell.NO_BORDER);
 			c2C.setBorder(PdfPCell.NO_BORDER);
