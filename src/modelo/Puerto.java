@@ -2,7 +2,8 @@ package modelo;
 
 public class Puerto {
 	public String puerto(){
-		String puerto="3307";
+		// --------- PUERTO DEFAULT 3306 
+		String puerto="3306";
 		return puerto;
 	}
 

@@ -33,10 +33,10 @@ public class Recibo {
 			
 			doc.open();
 
-			Image logo = Image.getInstance("images/logop.jpg");
-			logo.setAlignment(Image.ALIGN_LEFT | Image.UNDERLYING);
-			logo.scaleToFit(100, 100);
-			doc.add(logo);
+//			Image logo = Image.getInstance("images/logop.jpg");
+//			logo.setAlignment(Image.ALIGN_LEFT | Image.UNDERLYING);
+//			logo.scaleToFit(100, 100);
+//			doc.add(logo);
 			
 			//---------------------
 			Paragraph par = new Paragraph();
