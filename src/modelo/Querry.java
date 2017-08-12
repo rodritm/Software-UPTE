@@ -303,6 +303,8 @@ public class Querry {
 			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:"+puerto+"/upte","root","");
 			String sql = "INSERT INTO inscripcion(empleados_idempleados, estudiante_idestudiante, materia_has_docente_materia_idmateria, materia_has_docente_docente_iddocente, materia, paralelo) VALUES (?, ?, ?, ?, ?, ?)";
 			PreparedStatement pre = (PreparedStatement) con.prepareStatement(sql);
+
+			pre.execute("SET FOREIGN_KEY_CHECKS=0");
 			pre = (PreparedStatement) con.prepareStatement(sql);
 			pre.setString(1, "9896776");
 			pre.setString(2, id);
@@ -310,8 +312,10 @@ public class Querry {
 			pre.setString(4, idDocente);
 			pre.setString(5, materia);
 			pre.setString(6, paralelo);
-			
+			//JOptionPane.showMessageDialog(null, id+", "+idMateria+", "+idDocente);
 			pre.executeUpdate();
+
+			pre.execute("SET FOREIGN_KEY_CHECKS=1");
 			
 			ReciboAdd(monto,nit);
 			
